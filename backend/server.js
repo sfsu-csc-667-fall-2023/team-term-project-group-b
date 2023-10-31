@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const createError = require("http-errors");
 const requestTime = require("./middleware/request-time")
 
