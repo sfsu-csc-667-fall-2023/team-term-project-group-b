@@ -5,6 +5,7 @@ const requestTime = require("./middleware/request-time")
 
 const path = require("path");
 const rootRoutes = require("./routes/root");
+const testRoutes = require("./routes/test/index.js");
 
 const express = require("express");
 const app = express();
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "static")));
 app.use(requestTime);
 app.use(express.static(path.join(__dirname, "backend", "static")));
+app.use("/test", testRoutes);
 
 if (process.env.NODE_ENV == "development") {
   const livereload = require("livereload");
