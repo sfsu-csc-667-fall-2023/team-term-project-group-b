@@ -2,7 +2,3 @@
 
 ### Database Setup
   - while in the root of the project run these commands:
-```
-  touch.env
-  echo DATABASE_URL=postgres://`username`@localhost:`port`/`databaseName` >> .env
-```
