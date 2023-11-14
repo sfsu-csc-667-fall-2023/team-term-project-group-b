@@ -4,7 +4,6 @@ const createError = require("http-errors");
 const requestTime = require("./middleware/request-time")
 
 const path = require("path");
-const rootRoutes = require("./routes/root");
 const testRoutes = require("./routes/test/index.js");
 
 const express = require("express");
@@ -36,7 +35,18 @@ if (process.env.NODE_ENV == "development") {
   app.use(connectLiveReload());
 }
 
-app.use("/", rootRoutes);
+const gameRoutes = require("./routes/game");
+const authRoutes = require("./routes/authentication");
+const homeRoutes = require("./routes/home");
+const userProfileRoutes = require("./routes/user_profile");
+const lobbyRoutes = require("./routes/lobby");
+
+app.use("/", homeRoutes);
+app.use("/auth", authRoutes);
+app.use("/game", gameRoutes);
+app.use("/profile", userProfileRoutes);
+app.use("/lobby", lobbyRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 
