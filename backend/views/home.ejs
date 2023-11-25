@@ -1,23 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home Page</h1>
-    <ul>
-        <li> <a href="/auth/login">login</a></li>
-        <li> <a href="/auth/sign_up">Sign Up</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/homepage.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <!-- <img src="../static/images/Texas-Holdem-logo.png" width="345" height="213" alt="Title Logo">   -->
+    <a href="/">
+      <img
+        class="titleLogo center"
+        src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo_thumb/8a6026f2e24c76678c283322a527f58f.png"
+        width="345"
+        height="213"
+        alt="Title Logo"
+      />
+    </a>
 
-        <li> <a href="/game/42">Game with ID 42</a></li>
+    <div class="center-container">
+      <a href="/lobby/">
+        <button class="playButton">Play Game</button>
+      </a>
+    </div>
+
+    <ul class="navLinks">
+      <li><a href="/auth/login">Login</a></li>
+      <li><a href="/auth/sign_up">Sign Up</a></li>
+
+      <!-- <li> <a href="/game/42">Game with ID 42</a></li>
         
         <li> <a href="/lobby">Global Lobby</a></li>
 
-        <li> <a href="/profile/44">User Profile ID: 44</a></li>
-
+        <li> <a href="/profile/44">User Profile ID: 44</a></li> -->
     </ul>
-</body>
+  </body>
 </html>
