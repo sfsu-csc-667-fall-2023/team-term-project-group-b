@@ -1,83 +1,112 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #15812c;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #15812c;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .navbar {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar li {
-    display: inline-block;
-    margin-right: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .navbar li a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
-  
 /* Add the following styles to your CSS */
 .navLinks {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
-  .navLinks li {
-    margin-right: 10px; /* Adjust the spacing between individual links */
-  }
-  
-  .navLinks li a {
-    text-decoration: none;
-    color: black;
-    margin-right: 10px;
-    /* Add any other styles you want for the links */
-  }
-  
-  .center {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.navLinks li {
+  margin-right: 10px; /* Adjust the spacing between individual links */
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: black;
+  margin-right: 10px;
+  /* Add any other styles you want for the links */
+}
+
+.center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .center-container {
-    position: absolute;
-    top: 72%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .playButton {
-    color: red;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    background-color: white;
+  color: red;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgb(220, 219, 219);
 }
 
 .playButton:hover {
-    background-color: #ddd; /* Darker background on hover */
+  background-color: #ddd; /* Darker background on hover */
+}
+
+.registerTitle {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 300px;
+  padding: 50px;
+  background: gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
