@@ -11,7 +11,7 @@ exports.up = (pgm) => {
     created_at: {
       type: "timestamp",
       notNull: true,
-      default: pgm.func("current_timestamp"),
+      default: pgm.func('current_timestamp'),
     },
     test_string: {
       type: "varchar(1000)",
