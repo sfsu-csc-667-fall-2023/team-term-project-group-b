@@ -58,12 +58,22 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-.center-container {
+.login-container {
   position: absolute;
   top: 72%;
-  left: 50%;
+  left: 60%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 15%;
+}
+
+.register-container {
+  position: absolute;
+  top: 72%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 15%;
 }
 
 .playButton {

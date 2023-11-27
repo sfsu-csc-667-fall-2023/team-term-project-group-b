@@ -8,4 +8,5 @@ router.get("/sign_up", (_request, response) => {
 router.get("/login", (_request, response) => {
     response.render("login");
 });
+
 module.exports = router; 
