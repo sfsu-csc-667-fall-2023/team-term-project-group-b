@@ -14,14 +14,13 @@ router.get("/login", (_request, response) => {
 });
 
 router.post("/login", async(request, response) =>{
-    const {email, password} = request.body;
+    const {username, password} = request.body;
     try{
-    const user = await Users.find_by_email(email);
+    const user = await Users.find_by_username(username);
     const isValidUser = await bcrypt.compare(password, user.password);
     if(isValidUser){
         //store in session and redirect
-
-        response.status(200).redirect("lobby");
+        response.status(200).redirect("/");
         console.log(user);
     }
     else{
@@ -75,9 +74,8 @@ router.post("/signup", async(request, response) =>{
         const salt = await bcrypt.genSalt(SALT_ROUNDS);
         const hash = await bcrypt.hash(password, salt);
         const id = Users.create(email, hash, username)
-        return response.status(200).redirect("/login")
+        return response.status(200).redirect("auth/login")
     }
-    response.redirect("/");
 });
 
 module.exports = router; 
