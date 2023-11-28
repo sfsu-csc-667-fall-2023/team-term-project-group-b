@@ -8,16 +8,15 @@
     <title>Register</title>
 </head>
 
-<% if (locals.error) { %>
-  <p style="color: red;"><%= locals.error %></p>
-<% }%>
-
 <body>
+<% if (locals.error) { %>
+        <p style="color: red;"><%= locals.error %></p>
+    <% }%>
     <div>
         <form
           name="createAcc"
-          onsubmit=""
-          action="/auth/sign_up"
+          onsubmit="return validateForm()"
+          action="/auth/signup"
           method="POST"
           enctype="application/x-www-form-urlencoded"
         >

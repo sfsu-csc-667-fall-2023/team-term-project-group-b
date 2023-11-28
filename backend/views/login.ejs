@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<% if (locals.error) { %>
-    <p style="color: red;"><%= locals.error %></p>
-  <% }%>
+
 <body class = "loginPage" >
-    <form id="login" onsubmit="return validateForm()" method="POST">
+    <% if (locals.error) { %>
+        <p style="color: red;"><%= locals.error %></p>
+      <% }%>
+    <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
         <div class="container">
             <h2 class = "loginTitle">
                 Login
@@ -19,12 +20,13 @@
             <label for="userName">  Username </label>
             <input type="text" id="username" name="username" required />
 
+
             <label for="passWord"> Password </label>
             <input type="password" id="password" name="password" required />
 
-            <a href="/auth/sign_up"> Create an Account </a> <br>
+            <a href="/auth/signup"> Create an Account </a> <br>
         </div>
-            <button type="button" class="loginbtn">Login</button>
+            <button type="submit" class="loginbtn">Login</button>
     </form>
 </body>
 </html>
