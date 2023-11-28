@@ -2,26 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <% if (locals.error) { %>
+<% if (locals.error) { %>
         <p style="color: red;"><%= locals.error %></p>
     <% }%>
-    <form action="/auth/signup" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Sign Up</button>
-    </form>
+    <div>
+        <form
+          name="createAcc"
+          onsubmit="return validateForm()"
+          action="/users/register"
+          method="POST"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <section class="container">
+             <h1 class="registerTitle">Create New Account</h1>
+            <label for="username"> Username </label>
+            <input type="text" id="username" name="username" required /><br />
+  
+            <label for="email"> Email </label>
+            <input type="email" id="email" name="email" required /><br />
+  
+            <label for="passWord"> Password </label>
+            <input type="password" id="password" name="password" required /><br />
+  
+            <label for="confirmedPassWord"> Confirm Password </label>
+            <input
+              type="password"
+              id="confirmedPassword"
+              name="confirmedPassword"
+              required
+            /><br />
+            <a href="/auth/login"> Returning User? </a> <br>
+          </section>
+          <button type="submit">Submit</button>
+          
+          <div class="errorMSG">
+            <span class="errorMSG" id="message"> &nbsp; </span>
+          </div>
+        </form>
+      </div>
 </body>
 </html>
