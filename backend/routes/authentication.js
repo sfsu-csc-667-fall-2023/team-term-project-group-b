@@ -18,6 +18,7 @@ router.post("/login", async(request, response) =>{
     try{
     const user = await Users.find_by_username(username);
     const isValidUser = await bcrypt.compare(password, user.password);
+    console.log(user);
     if(isValidUser){
         //store in session and redirect
         response.status(200).redirect("/");
@@ -74,7 +75,8 @@ router.post("/signup", async(request, response) =>{
         const salt = await bcrypt.genSalt(SALT_ROUNDS);
         const hash = await bcrypt.hash(password, salt);
         const id = Users.create(email, hash, username)
-        return response.status(200).redirect("auth/login")
+        console.log(`ID: ${id}------`);
+        return response.status(200).redirect("/auth/login")
     }
 });
 
