@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<% if (locals.error) { %>
+    <p style="color: red;"><%= locals.error %></p>
+  <% }%>
 <body class = "loginPage" >
     <form id="login" onsubmit="return validateForm()" method="POST">
         <div class="container">

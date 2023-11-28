@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
+
+<% if (locals.error) { %>
+  <p style="color: red;"><%= locals.error %></p>
+<% }%>
+
 <body>
     <div>
         <form
           name="createAcc"
-          onsubmit="return validateForm()"
-          action="/users/register"
+          onsubmit=""
+          action="/auth/sign_up"
           method="POST"
           enctype="application/x-www-form-urlencoded"
         >

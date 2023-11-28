@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
   </head>
+  <% if (locals.error) { %>
+    <p style="color: red;"><%= locals.error %></p>
+  <% }%>
   <body>
-    <!-- <img src="../static/images/Texas-Holdem-logo.png" width="345" height="213" alt="Title Logo">   -->
     <a href="/">
       <img
         class="titleLogo center"
@@ -41,6 +43,6 @@
 
         <li> <a href="/profile/44">User Profile ID: 44</a></li>
     </ul> -->
-    
+
   </body>
 </html>
