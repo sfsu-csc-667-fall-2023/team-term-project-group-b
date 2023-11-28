@@ -8,11 +8,10 @@
     <title>Document</title>
 </head>
 
-<% if (locals.error) { %>
-        <p style="color: red;"><%= locals.error %></p>
-    <% }%>
-
 <body class = "loginPage" >
+    <% if (locals.error) { %>
+        <p style="color: red;"><%= locals.error %></p>
+      <% }%>
     <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
         <div class="container">
             <h2 class = "loginTitle">
