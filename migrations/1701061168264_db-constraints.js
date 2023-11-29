@@ -16,7 +16,7 @@ exports.up = pgm => {
  pgm.addConstraint('game_state', 'fk_turn_player_id', {
      foreignKeys: {
        columns: 'turn_player_id',
-       references: '"user"(id)'
+       references: '"users"(id)'
      }
    });
    pgm.addConstraint("game_state", "fk_hole_cards_id", {
@@ -28,7 +28,7 @@ exports.up = pgm => {
     pgm.addConstraint('game_users', 'fk_user_id_game_users', {
      foreignKeys: {
        columns: 'user_id',
-       references: '"user"(id)',
+       references: '"users"(id)',
      },
    });
    pgm.addConstraint("game_users", "fk_game_id_game_users", {
@@ -52,7 +52,7 @@ exports.up = pgm => {
    pgm.addConstraint('game_cards', 'fk_user_id_game_cards', {
      foreignKeys: {
        columns: 'user_id',
-       references: '"user"(id)',
+       references: '"users"(id)',
      },
    });
    };

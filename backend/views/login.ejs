@@ -12,6 +12,11 @@
     <% if (locals.error) { %>
         <p style="color: red;"><%= locals.error %></p>
       <% }%>
+      <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/auth/login">login</a>
+        <a href="/auth/signup">Sign up</a>
+      </div>
     <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
         <div class="container">
             <h2 class = "loginTitle">
