@@ -6,7 +6,7 @@ pgm.createType("suits", ["diamonds", "hearts", "clubs", "spades"]);
 pgm.createType("trophies", ["3_streak", "5_streak", "10_streak"]);
 
 // Create "user" table
-pgm.createTable("user", {
+pgm.createTable("users", {
 id: { type: "id", primaryKey: true },
 username: { type: "varchar(255)", notNull: true },
 password: { type: "varchar(255)", notNull: true },
@@ -77,7 +77,7 @@ pgm.dropTable("cards");
 pgm.dropTable("game_users");
 pgm.dropTable("game_state");
 pgm.dropTable("game");
-pgm.dropTable("user");
+pgm.dropTable("users");
 
 // Drop ENUM types
 pgm.dropType("trophies");
