@@ -11,10 +11,14 @@
     <p style="color: red;"><%= locals.error %></p>
   <% }%>
   <body>
+    <% if (user) { %>
+      <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
+  <% }%>
     <div class="topnav">
       <a class="active" href="/">Home</a>
       <a href="/auth/login">login</a>
-      <a href="/auth/sign_up">Sign up</a>
+      <a href="/auth/signup">Sign up</a>
+      <a href="/auth/logout">logout</a>
     </div>
     <a href="/">
       <img
