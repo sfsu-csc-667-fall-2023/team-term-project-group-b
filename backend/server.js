@@ -59,7 +59,7 @@ const io = new Server(httpServer)
 io.engine.use(sessionMiddleware);
 
 io.on("connection", socket => {
-  console.log("connection made");
+  socket.join(socket.request.session.id);
 })
 
 //todo
@@ -72,6 +72,7 @@ app.use("/auth", Routes.authentication);
 app.use("/game", isAuthenticated, Routes.game);
 app.use("/profile",isAuthenticated, Routes.user_profile);
 app.use("/lobby", isAuthenticated, Routes.lobby);
+app.use("/chat", isAuthenticated, Routes.chat);
 
 
 const PORT = process.env.PORT || 3000;
