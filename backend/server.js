@@ -2,7 +2,8 @@ require("dotenv").config();
 
 const createError = require("http-errors");
 const requestTime = require("./middleware/request-time")
-
+const {sessionLocals} = require("./middleware/session.locals");
+const {isAuthenticated} = require("./middleware/is-Authenticated");
 const path = require("path");
 const testRoutes = require("./routes/test/index.js");
 
@@ -11,6 +12,7 @@ const app = express();
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser")
+const session = require("express-session");
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, "static")));
 app.use(requestTime);
 app.use(express.static(path.join(__dirname, "backend", "static")));
 app.use("/test", testRoutes);
+
 
 if (process.env.NODE_ENV == "development") {
   const livereload = require("livereload");
@@ -37,6 +40,17 @@ if (process.env.NODE_ENV == "development") {
   app.use(connectLiveReload());
 }
 
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  cookie: { secure: process.env.NODE_ENV === 'production' }
+}));
+
+app.use(sessionLocals);
+
 const gameRoutes = require("./routes/game");
 const authRoutes = require("./routes/authentication");
 const homeRoutes = require("./routes/home");
@@ -45,9 +59,9 @@ const lobbyRoutes = require("./routes/lobby");
 
 app.use("/", homeRoutes);
 app.use("/auth", authRoutes);
-app.use("/game", gameRoutes);
-app.use("/profile", userProfileRoutes);
-app.use("/lobby", lobbyRoutes);
+app.use("/game", isAuthenticated, gameRoutes);
+app.use("/profile",isAuthenticated, userProfileRoutes);
+app.use("/lobby", isAuthenticated, lobbyRoutes);
 
 
 const PORT = process.env.PORT || 3000;
