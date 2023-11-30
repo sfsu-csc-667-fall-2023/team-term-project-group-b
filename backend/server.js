@@ -1,9 +1,10 @@
 require("dotenv").config();
 
 const createError = require("http-errors");
-const requestTime = require("./middleware/request-time")
-const {sessionLocals} = require("./middleware/session.locals");
-const {isAuthenticated} = require("./middleware/is-Authenticated");
+const {isAuthenticated,sessionLocals,requestTime} = require("./middleware/");
+//const {requestTime} = require("./middleware/request-time")          //put this one in ^
+//const {sessionLocals} = require("./middleware/session.locals");
+//const {isAuthenticated} = require("./middleware/is-Authenticated");
 const path = require("path");
 const testRoutes = require("./routes/test/index.js");
 
@@ -51,17 +52,19 @@ app.use(session({
 
 app.use(sessionLocals);
 
-const gameRoutes = require("./routes/game");
+const Routes = require("./routes")
+
+/*const gameRoutes = require("./routes/game");
 const authRoutes = require("./routes/authentication");
 const homeRoutes = require("./routes/home");
 const userProfileRoutes = require("./routes/user_profile");
-const lobbyRoutes = require("./routes/lobby");
+const lobbyRoutes = require("./routes/lobby");*/
 
-app.use("/", homeRoutes);
-app.use("/auth", authRoutes);
-app.use("/game", isAuthenticated, gameRoutes);
-app.use("/profile",isAuthenticated, userProfileRoutes);
-app.use("/lobby", isAuthenticated, lobbyRoutes);
+app.use("/", Routes.home);
+app.use("/auth", Routes.authentication);
+app.use("/game", isAuthenticated, Routes.game);
+app.use("/profile",isAuthenticated, Routes.user_profile);
+app.use("/lobby", isAuthenticated, Routes.lobby);
 
 
 const PORT = process.env.PORT || 3000;

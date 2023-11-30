@@ -5,4 +5,6 @@ const requestTime = (request, response, next) => {
 
 };
 
-module.exports = requestTime;
+module.exports = {
+    requestTime,
+};
