@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/chat.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -9,6 +10,17 @@
     <script src="/scripts/games.js" defer></script>
 </head>
 <body>
-    <h1>Global lobby for chat and room creation/joining</h1>
+    <div class = grid>
+        <div><h2>Global lobby for chat and room creation/joining</h2></div>
+        <div>
+            <h2>Chat</h2>
+            <article id = "chat-window"></article>
+        </div>
+    <input
+        type="text" 
+        name= "message" 
+        id="message"
+        placeholder= "Message"/>
+    </div>
 </body>
 </html>

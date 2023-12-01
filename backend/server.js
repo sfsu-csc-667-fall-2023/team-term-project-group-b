@@ -57,6 +57,7 @@ app.use(sessionMiddleware);
 app.use(sessionLocals);
 const io = new Server(httpServer)
 io.engine.use(sessionMiddleware);
+app.set("io", io)
 
 io.on("connection", socket => {
   socket.join(socket.request.session.id);
