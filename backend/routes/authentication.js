@@ -24,7 +24,7 @@ router.post("/login", async(request, response) =>{
             username,
         }
 
-        response.status(200).redirect("/");
+        response.status(200).redirect("/lobby");
     }
     else{
         return response.status(401).render("login", {

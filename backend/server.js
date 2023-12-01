@@ -1,11 +1,9 @@
 require("dotenv").config();
 
 const createError = require("http-errors");
-const requestTime = require("./middleware/request-time")
-const {sessionLocals} = require("./middleware/session.locals");
-const {isAuthenticated} = require("./middleware/is-Authenticated");
 const path = require("path");
 const testRoutes = require("./routes/test/index.js");
+const {createServer} = require("http");
 
 const express = require("express");
 const app = express();
@@ -13,6 +11,11 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser")
 const session = require("express-session");
+const { Server } = require("socket.io");
+
+const {isAuthenticated,sessionLocals,requestTime} = require("./middleware/");
+
+const httpServer = createServer(app);
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -40,33 +43,41 @@ if (process.env.NODE_ENV == "development") {
   app.use(connectLiveReload());
 }
 
-app.use(session({
+const sessionMiddleware = session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
   }),
   secret: process.env.SESSION_SECRET,
   resave: false,
   cookie: { secure: process.env.NODE_ENV === 'production' }
-}));
+})
+
+app.use(sessionMiddleware);
 
 app.use(sessionLocals);
+const io = new Server(httpServer)
+io.engine.use(sessionMiddleware);
 
-const gameRoutes = require("./routes/game");
-const authRoutes = require("./routes/authentication");
-const homeRoutes = require("./routes/home");
-const userProfileRoutes = require("./routes/user_profile");
-const lobbyRoutes = require("./routes/lobby");
+io.on("connection", socket => {
+  socket.join(socket.request.session.id);
+})
 
-app.use("/", homeRoutes);
-app.use("/auth", authRoutes);
-app.use("/game", isAuthenticated, gameRoutes);
-app.use("/profile",isAuthenticated, userProfileRoutes);
-app.use("/lobby", isAuthenticated, lobbyRoutes);
+//todo
+
+const Routes = require("./routes");
+const { engine } = require("express/lib/application");
+
+app.use("/", Routes.home);
+app.use("/auth", Routes.authentication);
+app.use("/game", isAuthenticated, Routes.game);
+app.use("/profile",isAuthenticated, Routes.user_profile);
+app.use("/lobby", isAuthenticated, Routes.lobby);
+app.use("/chat", isAuthenticated, Routes.chat);
 
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
