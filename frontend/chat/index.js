@@ -4,10 +4,6 @@ const chatWindow = document.querySelector("#chat-window");
 
 const chatSocket = io();
 
-/*chatSocket.on("chat:message:0", payload => {
-    console.log({payload});
-})*/
-
 chatSocket.on("chat:message:0", ({ from, timestamp, message, hash }) => {
       //const div = document.querySelector("#chat-message").content.cloneNode(true);
       const div = document.createElement("div")

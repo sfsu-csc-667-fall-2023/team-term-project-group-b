@@ -70,7 +70,7 @@ const { engine } = require("express/lib/application");
 
 app.use("/", Routes.home);
 app.use("/auth", Routes.authentication);
-app.use("/game", isAuthenticated, Routes.game);
+app.use("/game", isAuthenticated, Routes.game);   //game is games in teachers proj
 app.use("/profile",isAuthenticated, Routes.user_profile);
 app.use("/lobby", isAuthenticated, Routes.lobby);
 app.use("/chat", isAuthenticated, Routes.chat);
