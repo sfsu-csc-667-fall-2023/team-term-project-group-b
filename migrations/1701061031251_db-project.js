@@ -36,6 +36,19 @@ created_at: {
 updated_at: { type: "timestamp", notNull: true },
 });
 
+  pgm.createTable("games", {
+    id: "id",
+    game_socket_id: {
+      type: "varchar",
+      notNull: true,
+    },
+    created_at: {
+      type: "timestamp",
+      notNull: true,
+      default: pgm.func("current_timestamp"),
+    },
+  });
+
 // Create "game_state" table
 pgm.createTable("game_state", {
 game_id: { type: "int", notNull: true , unique: true},
@@ -77,6 +90,7 @@ pgm.dropTable("cards");
 pgm.dropTable("game_users");
 pgm.dropTable("game_state");
 pgm.dropTable("game");
+pgm.dropTable("games");
 pgm.dropTable("users");
 
 // Drop ENUM types

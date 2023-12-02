@@ -61,6 +61,9 @@ app.set("io", io)
 
 io.on("connection", socket => {
   socket.join(socket.request.session.id);
+  if (socket.handshake.query !== undefined) {
+    socket.join(socket.handshake.query.gameSocketId);
+  }
 })
 
 //todo
