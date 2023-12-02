@@ -57,9 +57,13 @@ app.use(sessionMiddleware);
 app.use(sessionLocals);
 const io = new Server(httpServer)
 io.engine.use(sessionMiddleware);
+app.set("io", io)
 
 io.on("connection", socket => {
   socket.join(socket.request.session.id);
+  if (socket.handshake.query !== undefined) {
+    socket.join(socket.handshake.query.gameSocketId);
+  }
 })
 
 //todo
@@ -69,7 +73,7 @@ const { engine } = require("express/lib/application");
 
 app.use("/", Routes.home);
 app.use("/auth", Routes.authentication);
-app.use("/game", isAuthenticated, Routes.game);
+app.use("/game", isAuthenticated, Routes.game);   //game is games in teachers proj
 app.use("/profile",isAuthenticated, Routes.user_profile);
 app.use("/lobby", isAuthenticated, Routes.lobby);
 app.use("/chat", isAuthenticated, Routes.chat);
