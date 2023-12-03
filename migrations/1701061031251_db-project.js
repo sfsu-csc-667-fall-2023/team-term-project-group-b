@@ -36,7 +36,7 @@ created_at: {
 updated_at: { type: "timestamp", notNull: true },
 });
 
-  pgm.createTable("games", {
+pgm.createTable("games", {
     id: "id",
     game_socket_id: {
       type: "varchar",
@@ -63,9 +63,9 @@ hole_cards: "int",
 pgm.createTable("game_users", {
 user_id: { type: "int", notNull: true },
 game_id: { type: "int", notNull: true },
-seat: {type:"int", notNull: true},
+/*seat: {type:"int", notNull: true},
 chips: { type: "int", notNull: true, default: 0},
-folded: {type:"boolean", default: false},
+folded: {type:"boolean", default: false},*/
 });
 
 // Create "cards" table

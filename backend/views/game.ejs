@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/chat.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -9,15 +10,23 @@
     <script src="/scripts/games.js" defer></script>
 </head>
 <body>
-    <h1>Game page with ID: <%= id %></h1>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/auth/login">login</a>
         <a href="/auth/signup">Sign up</a>
-        <a href="/lobby">Lobby</a>
         <a href="/auth/logout">logout</a>
         <a href="/game/42">Game 42</a>
-      </div>
+        <a href="/lobby">Lobby</a>
+    </div>
+    <main class = "container">
+    <h1>Game page with ID: <%= id %></h1>
+        <h1>Game <%= id%></h1>
+        <input 
+        type="hidden" 
+        name="game-socket-id" 
+        id="game-socket-id" 
+        value="<%= gameSocketId %>" />
+    </main>
     
 </body>
 </html>
