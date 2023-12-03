@@ -11,8 +11,8 @@ router.get("/create" , async (request, response) => {
     const { id: gameId } = await Games.create(
         crypto.randomBytes(20).toString('hex')
     );        //unique game id created here
-    console.log(userId + " - user id");
-    console.log(gameId + " - game id");
+    //console.log(userId + " - user id");
+    //console.log(gameId + " - game id");
     await Games.addUser(userId, gameId);
     
 
@@ -29,12 +29,12 @@ router.get("/:id/join", async (request, response) => {
     await Games.addUser(userId, gameId);
     io.emit("game:user_added", { userId, userEmail, gameId });
   
-    response.redirect(`/games/${gameId}`);
+    response.redirect(`/game/${gameId}`);
   });
 
-router.get("/:id", (request, response) => {
+router.get("/:id", async (request, response) => {
     const {id} = request.params;
-    const{ game_socket_id: gameSocketId } = Games.getGame(id);
+    const{ game_socket_id: gameSocketId } = await Games.getGame(id);
     response.render("game", {id, gameSocketId});
 });
 

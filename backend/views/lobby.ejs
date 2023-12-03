@@ -28,8 +28,7 @@
             <ul>
               <% currentGames.forEach(game => { %>
               <li>
-                <a href="/game/<%= game.id %>"
-                  >Return to <%= game.id %></a
+                <a href="/game/<%= game.id %>/join">Join <%= game.id %></a
                 >
               </li>
               <% }) %>
