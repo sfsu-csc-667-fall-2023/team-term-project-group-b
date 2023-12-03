@@ -11,8 +11,8 @@ router.get("/create" , async (request, response) => {
     const { id: gameId } = await Games.create(
         crypto.randomBytes(20).toString('hex')
     );        //unique game id created here
-    //console.log(userId + " - user id");
-    //console.log(gameId + " - game id");
+    console.log(userId + " - user id");
+    console.log(gameId + " - game id");
     await Games.addUser(userId, gameId);
     
 

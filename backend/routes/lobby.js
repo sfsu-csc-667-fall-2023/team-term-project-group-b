@@ -1,8 +1,14 @@
 const express = require("express");
+const { Games } = require("../db");
 const router = express.Router();
 
-router.get("/", (_request, response) => {
-    response.render("lobby");
+  router.get("/", async (request, response) => {
+        const { id } = request.session.user;
+      
+        const currentGames = await Games.getAvailableGames();
+        //const currentGames = await Games.currentGamesForUser(id);
+      
+        response.render("lobby", { /*availableGames,*/ currentGames, });
 });
 
 

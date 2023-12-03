@@ -23,6 +23,18 @@
         <div>
         <h2>Available Games</h2>
         <section id="game-list">
+            <h2>Current Games</h2>
+          <section id="my-game-list" data-user="<%= user.id %>">
+            <ul>
+              <% currentGames.forEach(game => { %>
+              <li>
+                <a href="/game/<%= game.id %>"
+                  >Return to <%= game.id %></a
+                >
+              </li>
+              <% }) %>
+            </ul>
+          </section>
               
         </section>
         <form action="/game/create" method="get">
