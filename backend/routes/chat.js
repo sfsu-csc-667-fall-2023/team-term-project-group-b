@@ -1,21 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const { createHash } = require("crypto");
-
+// <!-- <input
+//       type="hidden"
+//       name="game-socket-id"
+//       id="game-socket-id"
+//       value="<%= gameSocketId %>"
+//     /> -->
 router.post("/:id", (request, response) => {
-    const { id } = request.params;
+    const {id} = request.params;
     const { message } = request.body;
-    const { email } = request.session.user;
-
+    if(message.length > 0){
+    const { username } = request.session.user;
     const io = request.app.get("io");
     
-    io.emit("chat:message:0", {
-        //hash: createHash("sha256").update(email).digest("hex"),
-        from: email,
+    io.emit(`chat:message:${id}`, {
+        hash: createHash("sha256").update(username).digest("hex"),
+        from: username,
         timestamp: Date.now(),
         message,
     });
-    response.status(200);
+}   response.status(200);
+
 });
+
 
 module.exports = router; 
