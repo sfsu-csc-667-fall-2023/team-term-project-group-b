@@ -1,6 +1,7 @@
 const path = require("path");
 module.exports = {
   entry: {
+    lobby: "./frontend/lobby/index.js",
     chat: "./frontend/chat/index.js",
     games: "./frontend/games/index.js"
   },
