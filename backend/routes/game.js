@@ -30,7 +30,7 @@ router.get("/:id/join", async (request, response) => {
 
 router.get("/:id", (request, response) => {
     const {id} = request.params;
-    response.render("game", {id});
+    response.render("game", {gameId : id, roomId: id });
 });
 
 module.exports = router; 

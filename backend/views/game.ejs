@@ -9,7 +9,7 @@
     <script src="/scripts/games.js" defer></script>
 </head>
 <body>
-    <h1>Game page with ID: <%= id %></h1>
+    <h1>Game page with ID: <%= gameId %></h1>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/auth/login">login</a>
@@ -18,6 +18,31 @@
         <a href="/auth/logout">logout</a>
         <a href="/game/42">Game 42</a>
       </div>
+      <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
+      <style>
+        .scroll-box {
+          width: 300px; /* Set the width of the box */
+          height: 200px; /* Set the height of the box */
+          overflow: auto; /* Enable scrolling if content exceeds box dimensions */
+          border: 1px solid #ccc; /* Add a border for visual separation */
+          padding: 10px; /* Add some padding for content spacing */
+        }
+      </style>
+      
+    <input
+    <div class = "grid">
+        <div><h1>Global lobby for chat and Game</h></div>
+        <h2><%= user.id %> <%= user.username %></h2>    //email?
+        <div class="scroll-box">
+            <h2>Chat</h2>
+            <article id = "chat-window"></article>
+        </div>
+    <input
+        type="text" 
+        name= "message" 
+        id="message"
+        placeholder= "Message"/>
+    </div>
     
 </body>
 </html>
