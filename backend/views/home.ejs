@@ -8,29 +8,25 @@
     <title>Homepage</title>
   </head>
   <% if (locals.error) { %>
-    <p style="color: red;"><%= locals.error %></p>
+  <p style="color: red"><%= locals.error %></p>
   <% }%>
   <body>
     <% if (user) { %>
-      <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
-  <% }%>
     <div class="topnav">
       <a class="active" href="/">Home</a>
-      <a href="/auth/login">login</a>
-      <a href="/auth/signup">Sign up</a>
       <a href="/lobby">Lobby</a>
-      <a href="/auth/logout">logout</a>
+      <a href="/auth/logout">Logout</a>
+      <a href="/user_profile"><%= user.username %></a>
     </div>
-    <a href="/">
-      <img
-        class="titleLogo center"
-        src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo_thumb/8a6026f2e24c76678c283322a527f58f.png"
-        width="431"
-        height="265"
-        alt="Title Logo"
-      />
-    </a>
 
+    <div class="play-container">
+      <a href="/lobby">
+        <button class="playButton">Play</button>
+      </a>
+    </div>
+
+    <% } else { %>
+    <!-- Content for users who are not logged in -->
     <div class="login-container">
       <a href="/auth/login">
         <button class="playButton">Login</button>
@@ -42,17 +38,16 @@
         <button class="playButton">Sign Up</button>
       </a>
     </div>
+    <% } %>
 
-    <!-- <ul class="navLinks">
-      <li><a href="/auth/login">Login</a></li>
-      <li><a href="/auth/signup">Sign Up</a></li>
-
-      <li> <a href="/game/42">Game with ID 42</a></li>
-        
-        <li> <a href="/lobby">Global Lobby</a></li>
-
-        <li> <a href="/profile/44">User Profile ID: 44</a></li>
-    </ul> -->
-
+    <a href="/">
+      <img
+        class="titleLogo center"
+        src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo_thumb/8a6026f2e24c76678c283322a527f58f.png"
+        width="539"
+        height="331"
+        alt="Title Logo"
+      />
+    </a>
   </body>
 </html>

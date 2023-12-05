@@ -76,10 +76,19 @@ h1 {
   width: 15%;
 }
 
+.play-container {
+  /* Remove the top, left, and transform properties */
+  text-align: center;
+  width: 15%;
+  align-items: center;
+  margin: auto;
+  padding-top: 34%;
+}
+
 .playButton {
   color: red;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 27px 40px;
+  font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 4px;

@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #15812c;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.block {
+    padding: 100px;
+    background-color: #fff; /* Adjust the background color as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 11%;
+    width: 60%;
+}
+
+.scroll-box {
+    overflow-y: auto;
+    max-height: 300px; /* Adjust the maximum height as needed */
+}
+
+  .topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is above other elements */
+}
+
+.lobbyTitle {
+    position: absolute;
+    top: 12%; /* Adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em; /* Adjust the font size as needed */
+}
