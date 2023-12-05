@@ -47,6 +47,7 @@ pgm.createTable("games", {
     notNull: true,
     default: pgm.func("current_timestamp"),
   },
+  initialized: {type: "boolean", default: false},
 });
 
 // Create "game_state" table
@@ -63,6 +64,7 @@ hole_cards: "int",
 pgm.createTable("game_users", {
 user_id: { type: "int", notNull: true },
 game_id: { type: "int", notNull: true },
+ready: { type: "boolean", default: false},
 /*seat: {type:"int", notNull: true},
 chips: { type: "int", notNull: true, default: 0},
 folded: {type:"boolean", default: false},*/

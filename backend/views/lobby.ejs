@@ -28,7 +28,7 @@
           <section id="my-game-list" data-user="<%= user.id %>">
             <ul>
               <% currentGames.forEach(game => { %>
-              <li>
+              <li id="list">
                 <a href="/game/<%= game.id %>/join">Join <%= game.id %></a
                 >
               </li>
@@ -53,7 +53,8 @@
           type="text"
           name= "message"
           id="message"
-          placeholder= "Message"/>
+          placeholder= "Message"
+          action/>
       </div>
 
 </body>
