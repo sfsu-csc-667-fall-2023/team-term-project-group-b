@@ -12,8 +12,9 @@ gameSocketConfig(gameSocketId)
     fetch(`/game/${roomId}/ready`, { method: "post" });
   });
 
-const hitForm = document.querySelector("#hit-form");
-const stayForm = document.querySelector("#stay-form");
+  // we will add our own actions and behaviour for texas holdem
+//const hitForm = document.querySelector("#hit-form");
+//const stayForm = document.querySelector("#stay-form");
 
 const handleUserAction = (event) => {
   event.preventDefault();
@@ -23,10 +24,13 @@ const handleUserAction = (event) => {
 
   return false;
 };
+  // we will add our own actions and behaviour for texas holdem
 
-hitForm.addEventListener("submit", handleUserAction);
-stayForm.addEventListener("submit", handleUserAction);
+//hitForm.addEventListener("submit", handleUserAction);
+//stayForm.addEventListener("submit", handleUserAction);
 
+
+// rewrite to make sure that when game is created it automatically shows up:
 // const gameId = document.querySelector("#")
 // const gameSocket = io({ query: { gameSocketId } });
 // const userSocket = io({query: {userSocket }}); 
