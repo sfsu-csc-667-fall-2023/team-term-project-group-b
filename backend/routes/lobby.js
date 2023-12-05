@@ -8,8 +8,7 @@ const router = express.Router();
         const currentGames = await Games.getAvailableGames();
         //const currentGames = await Games.currentGamesForUser(id);
 
-        response.render("lobby", { /*availableGames,*/ currentGames, });
+        response.render("lobby", { /*availableGames,*/ currentGames, roomId: id});
 });
-
 
 module.exports = router;
