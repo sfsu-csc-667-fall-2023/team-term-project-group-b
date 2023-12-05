@@ -23,7 +23,7 @@ router.post("/login", async(request, response) =>{
             id: user.id,
             username,
         }
-
+        console.log(request.session);
         response.status(200).redirect("/lobby");
     }
     else{
