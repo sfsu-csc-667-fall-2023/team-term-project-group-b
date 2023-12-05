@@ -4,11 +4,12 @@ const chatWindow = document.querySelector("#chat-window");
 
 const chatSocket = io();
 
-chatSocket.on("chat:message:0", ({ from, timestamp, message, hash }) => {
+const roomId = document.querySelector("#room-id").value;
+
+chatSocket.on(`chat:message:${roomId}`, ({ from, timestamp, message, hash }) => {
       //const div = document.querySelector("#chat-message").content.cloneNode(true);
       const div = document.createElement("div")
       div.classList.add("message");
-  
       //const img = div.querySelector("img");
       const img = document.createElement("img");
       img.src = `https://gravatar.com/avatar/${hash}?s=30`;
@@ -16,7 +17,6 @@ chatSocket.on("chat:message:0", ({ from, timestamp, message, hash }) => {
   
       const p = document.createElement("p");
       p.innerText = message;
-
       div.appendChild(img);
       div.appendChild(p);
   
@@ -29,12 +29,12 @@ document.querySelector("#message").addEventListener("keydown", (event) => {
       const message = event.target.value;
       const url = event.target.dataset.url;
   
-      fetch(`/chat/0`, {
+      fetch(`/chat/${roomId}`, {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
       });
-  
+      
       event.target.value = "";
     }
   });
