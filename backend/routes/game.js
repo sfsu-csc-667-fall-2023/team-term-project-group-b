@@ -35,7 +35,7 @@ router.get("/:id/join", async (request, response) => {
 router.get("/:id", async (request, response) => {
     const {id} = request.params;
     const{ game_socket_id: gameSocketId } = await Games.getGame(id);
-    response.render("game", {id, gameSocketId});
+    response.render("game", {id, gameSocketId, roomId: id});
     //response.render("game", {gameId : id, roomId: id });
 });
 

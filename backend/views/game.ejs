@@ -10,13 +10,12 @@
     <script src="/scripts/games.js" defer></script>
 </head>
 <body>
-    <h1>Game page with ID: <%= gameId %></h1>
+    <h1>Game page with ID: <%= id %></h1>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/auth/login">login</a>
         <a href="/auth/signup">Sign up</a>
         <a href="/auth/logout">logout</a>
-        <a href="/game/42">Game 42</a>
       </div>
       <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
       <style>
