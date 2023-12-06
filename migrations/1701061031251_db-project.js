@@ -48,55 +48,71 @@ pgm.createTable("games", {
     default: pgm.func("current_timestamp"),
   },
   initialized: {type: "boolean", default: false},
+  current_seat: {type: "int"},
 });
 
 // Create "game_state" table
 pgm.createTable("game_state", {
-game_id: { type: "int", notNull: true , unique: true},
-round_number: { type: "int", notNull: true },
-turn_player_id: { type: "int", notNull: true },
-turn_number: "int",
-pot: {type:"int", notNull: true, default: 0},
-hole_cards: "int",
+  game_id: { type: "int", notNull: true , unique: true},
+  round_number: { type: "int", notNull: true },
+  turn_player_id: { type: "int", notNull: true },
+  turn_number: "int",
+  pot: {type:"int", notNull: true, default: 0},
+  hole_cards: "int",
 });
 
 // Create "game_users" table
 pgm.createTable("game_users", {
-user_id: { type: "int", notNull: true },
-game_id: { type: "int", notNull: true },
-ready: { type: "boolean", default: false},
-/*seat: {type:"int", notNull: true},
-chips: { type: "int", notNull: true, default: 0},
-folded: {type:"boolean", default: false},*/
+  user_id: { type: "int", notNull: true },
+  game_id: { type: "int", notNull: true },
+  ready: { type: "boolean", default: false},
+  seat: {type:"int", notNull: true},
+  chips: { type: "int", notNull: true, default: 0},
+  folded: {type:"boolean", default: false},
 });
 
 // Create "cards" table
 pgm.createTable("cards", {
-id: { type: "id", primaryKey: true },
-number: {type: "int", notNull: true},
-suit: {type: "suits", notNull: true},
+  id: { type: "id", primaryKey: true },
+  value: {type: "int", notNull: true},
+  suit: {type: "int", notNull: true},
 });
+
+//(cards table)
+const sql = "INSERT INTO cards (suit, value) VALUES";
+const values = [];
+
+for (let suit = 0; suit < 4; suit++) {
+  for (let value = 1; value <= 13; value++) {
+      values.push(`(${suit}, ${value})`);
+  }
+}
+
+const query = `${sql} ${values.join(",")}`;
+
+pgm.sql(query);
 
 // Create "game_cards" table
 pgm.createTable("game_cards", {
-game_id: "int",
-card_id: "int",
-user_id: "int",
-card_order: "int",
+  game_id: "int",
+  card_id: "int",
+  user_id: "int",
+  card_order: "int",
+  seat: "int",
 });
 
 exports.down = (pgm) => {
 // Drop tables
-pgm.dropTable("game_cards");
-pgm.dropTable("cards");
-pgm.dropTable("game_users");
-pgm.dropTable("game_state");
-pgm.dropTable("game");
-pgm.dropTable("games");
-pgm.dropTable("users");
+  pgm.dropTable("game_cards");
+  pgm.dropTable("cards");
+  pgm.dropTable("game_users");
+  pgm.dropTable("game_state");
+  pgm.dropTable("game");
+  pgm.dropTable("games");
+  pgm.dropTable("users");
 
 // Drop ENUM types
-pgm.dropType("trophies");
-pgm.dropType("suits");
+  pgm.dropType("trophies");
+  pgm.dropType("suits");
 };
 }
