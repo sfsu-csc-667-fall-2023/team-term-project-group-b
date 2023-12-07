@@ -16,8 +16,8 @@ router.get("/create" , async (request, response) => {
     );        //unique game id created here
 
     await Games.addUser(userId, gameId);
-
-
+    // create game state
+    await Games.createGameState(gameId);
     io.emit(GAME_CONSTANTS.CREATED, { id: gameId });
 
     response.redirect(`/game/${gameId}`);
@@ -32,7 +32,7 @@ router.post("/:id/ready", async (request, response) => {
     const { ready_count, player_count } = await Games.readyPlayer(userId, gameId);
     console.log({ ready_count, player_count, initialized });
 
-    const method = ready_count === 1 || initialized ? "initialize" : "getState"; // TODO set limit
+    const method = ready_count <= 1 || initialized ? "initialize" : "getState"; // TODO set limit
     const gameState = await Games[method](parseInt(gameId));
 
     console.log({ gameState, method });

@@ -13,12 +13,17 @@ const IS_INITIALIZED = `SELECT initialized FROM games WHERE id=$1`;
 const READY_PLAYER = `UPDATE game_users SET ready=true WHERE user_id=$1 AND game_id=$2`;
 const READY_COUNT = `SELECT (SELECT COUNT(*) FROM game_users WHERE game_id=$1) AS player_count,
     (SELECT COUNT(*) FROM game_users WHERE game_id=$1 AND ready=true) as ready_count`;
+const UPDATE_TOTAL_PLAYERS = `UPDATE game_state SET player_count=$1 WHERE game_id=$2`;
+
 
 const create = (gameSocketId) => db.one(CREATE, [gameSocketId]);
 
 const addUser = (userId, gameId) => getUserCount(gameId).then(
-  playerCount => db.none(ADD_USER, [userId, gameId, playerCount])
-) 
+  playerCount => {
+    db.none(ADD_USER, [userId, gameId, playerCount])
+    db.none(UPDATE_TOTAL_PLAYERS, [playerCount + 1, gameId]);
+  }
+); 
 
 const getGame = (gameId) => db.one(GET_GAME, gameId);
 
@@ -120,6 +125,21 @@ const initialize = async (gameId) => {
       return memo;
     }, {}),
   };
+}
+
+const deal_cards_user = () => {
+};
+
+const set_seat_user = () => {
+
+}
+
+const set_chips_user = () => {
+  // 100, worth 500 each
+}
+
+const update_seat = () => {
+  // update game_state turn_player field to ++
 }
 
 const getState = async (gameId) => { 

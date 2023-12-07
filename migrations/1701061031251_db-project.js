@@ -22,6 +22,11 @@ updated_at: { type: "timestamp", default: pgm.func("now()")},
 trophies: { type: "trophies"},
 });
 
+let insertQuery = `INSERT INTO users (id, username, password, email) VALUES (0, 'dealer', 'wesfssesdv', 'kmrfkr')`;
+pgm.sql(insertQuery);
+insertQuery = `INSERT INTO users (id, username, password, email) VALUES (-1, 'played', 'koertokg', 'smclmceq')`;
+pgm.sql(insertQuery);
+
 // Create "game" table
 pgm.createTable("game", {
 id: { type: "id", primaryKey: true },
@@ -55,8 +60,7 @@ pgm.createTable("games", {
 pgm.createTable("game_state", {
   game_id: { type: "int", notNull: true , unique: true},
   round_number: { type: "int", notNull: true },
-  turn_player_id: { type: "int", notNull: true },
-  turn_number: "int",
+  player_count: "int",
   pot: {type:"int", notNull: true, default: 0},
   hole_cards: "int",
 });
