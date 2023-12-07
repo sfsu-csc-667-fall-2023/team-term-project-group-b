@@ -1,0 +1,38 @@
+body {
+    display: flex;
+}
+
+.chat-container {
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px;
+    height: 100vh;
+    overflow: auto;
+    margin-left: 800px;
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.body-container {
+    display: flex;
+    flex: 50%;
+}
+
+.topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.chat-title {
+    margin-top: 0;
+}
+
+.message-input{
+  margin-top: auto;
+  width: 100%;
+}

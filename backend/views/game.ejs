@@ -5,50 +5,88 @@
     <link rel="stylesheet" href="../css/chat.css" />
     <link rel="stylesheet" href="../css/homepage.css" />
     <link rel="stylesheet" href="../css/lobby.css" />
+    <link rel="stylesheet" href="../css/game.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/scripts/chat.js" defer></script>
     <script src="/scripts/games.js" defer></script>
+    <style>
+      body {
+          display: flex;
+      }
+  
+      .chat-container {
+          box-sizing: border-box;
+          background-color: white;
+          padding: 50px;
+          height: 100vh;
+          overflow: auto;
+          margin-left: 800px;
+          flex: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+      }
+  
+      .body-container {
+          display: flex;
+          flex: 50%;
+      }
+  
+      .topnav {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 1000; 
+      }
+  
+      .chat-title {
+          margin-top: 0;
+      }
+
+      .message-input{
+        margin-top: auto;
+        width: 100%;
+      }
+  </style>
+  
 </head>
 <body>
     <h1>Room ID: <%= id %></h1>
     <div class="topnav">
         <a class="active" href="/">Home</a>
-        <a href="/auth/login">login</a>
-        <a href="/auth/signup">Sign up</a>
-        <a href="/auth/logout">logout</a>
-      </div>
-      <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
-      <style>
-        .scroll-box {
-          width: 300px; /* Set the width of the box */
-          height: 200px; /* Set the height of the box */
-          overflow: auto; /* Enable scrolling if content exceeds box dimensions */
-          border: 1px solid #ccc; /* Add a border for visual separation */
-          padding: 10px; /* Add some padding for content spacing */
-        }
-      </style>
+        <a href="/auth/logout">Logout</a>
+    </div>
 
-    <input
-    <div class = "grid">
-          <input
-          type="hidden"
-          name="game-socket-id"
-          id="game-socket-id"
-          value="<%= gameSocketId %>" />
+    <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
+
+    <div class="grid">
+        <input
+            type="hidden"
+            name="game-socket-id"
+            id="game-socket-id"
+            value="<%= gameSocketId %>" />
         <h2><%= user.username %></h2>
     </div>
-        <div class="scroll-box">
-            <h2>Chat</h2>
-            <article id = "chat-window"></article>
-        </div>
-    <input
-        type="text"
-        name= "message"
-        id="message"
-        placeholder= "Message"/>
-    </div>
 
+    <div class="body-container">
+        <div class="chat-container">
+            <h2 class = "chat-title">Chat</h2>
+            <article id="chat-window"></article>
+            <div class="message-input">
+              <input
+              type="text"
+              name="message"
+              id="message"
+              placeholder="Message"/>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <!-- Your existing game content goes here -->
+        </div>
+    </div>
 </body>
 </html>

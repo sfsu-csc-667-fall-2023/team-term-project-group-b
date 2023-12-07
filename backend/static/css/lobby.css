@@ -10,7 +10,7 @@ body {
 
 .block {
     padding: 100px;
-    background-color: #fff; /* Adjust the background color as needed */
+    background-color: #fff; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,20 +20,20 @@ body {
 
 .scroll-box {
     overflow-y: auto;
-    max-height: 300px; /* Adjust the maximum height as needed */
+    max-height: 300px; 
 }
 
   .topnav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensure the navbar is above other elements */
+    z-index: 1000; 
 }
 
 .lobbyTitle {
     position: absolute;
-    top: 12%; /* Adjust as needed */
+    top: 12%; 
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2em; /* Adjust the font size as needed */
+    font-size: 2em; 
 }
