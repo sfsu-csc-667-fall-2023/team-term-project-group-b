@@ -7,6 +7,7 @@ const configure = (socketId) => {
   gameSocket = io({ query: { id: socketId } });
 
   gameSocket.on(GAME_CONSTANTS.START, data => {
+    // TODO
     console.log({event: GAME_CONSTANTS.START, data });
   })
 
