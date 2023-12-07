@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { createHash } = require("crypto");
-// <!-- <input
-//       type="hidden"
-//       name="game-socket-id"
-//       id="game-socket-id"
-//       value="<%= gameSocketId %>"
-//     /> -->
+
 router.post("/:id", (request, response) => {
     const {id} = request.params;
     const { message } = request.body;
@@ -20,8 +15,7 @@ router.post("/:id", (request, response) => {
         timestamp: Date.now(),
         message,
     });
-}   response.status(200);
-
+}   response.status(200).send();
 });
 
 

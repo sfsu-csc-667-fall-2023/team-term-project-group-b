@@ -32,8 +32,7 @@ router.post("/:id/ready", async (request, response) => {
     const { ready_count, player_count } = await Games.readyPlayer(userId, gameId);
     console.log({ ready_count, player_count, initialized });
 
-    const method = ready_count <= 1 || initialized ? "getState" : "initialize"; // TODO set limit
-
+    const method = ready_count === 1 || initialized ? "initialize" : "getState"; // TODO set limit
     const gameState = await Games[method](parseInt(gameId));
 
     console.log({ gameState, method });
@@ -58,7 +57,7 @@ router.get("/:id/join", async (request, response) => {
     }
   
     response.redirect(`/game/${gameId}`);
-    /*const { id: gameId } = request.params;
+  /*const { id: gameId } = request.params;
   const { id: userId, email: userEmail } = request.session.user;
 
   const io = request.app.get("io");

@@ -55,6 +55,7 @@ const initialize = async (gameId) => {
   const query = pgp.helpers.insert(values, columns);
   await db.none(query);
   
+  
   //set turn
   const { user_id: firstPlayer } = await db.one(GET_PLAYER_BY_SEAT, [
     0,
