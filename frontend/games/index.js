@@ -1,7 +1,7 @@
 import { configure as gameSocketConfig } from "./game_socket";
 import { configure as userSocketConfig } from "./user_socket";
 
-const gameSocketId = document.querySelector("#game-socket-id").value;
+const gameSocketId = document.querySelector("#game-socket-id").value;   //getting from html doms
 const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 
