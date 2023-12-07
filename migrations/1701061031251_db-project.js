@@ -22,22 +22,16 @@ updated_at: { type: "timestamp", default: pgm.func("now()")},
 trophies: { type: "trophies"},
 });
 
-// Create "game" table
-pgm.createTable("game", {
-id: { type: "id", primaryKey: true },
-players_allowed: { type: "int", notNull: true },
-password: { type: "varchar(100)", notNull: true },
-started_at: { type: "timestamp", notNull: true },
-created_at: {
-  type: "timestamp",
-  notNull: true,
-  default: pgm.func("now()"),
-},
-updated_at: { type: "timestamp", notNull: true },
-});
+let insertQuery = `INSERT INTO users (id, username, password, email) VALUES (0, 'dealer', 'wesfssesdv', 'kmrfkr')`;
+pgm.sql(insertQuery);
+insertQuery = `INSERT INTO users (id, username, password, email) VALUES (-1, 'played', 'koertokg', 'smclmceq')`;
+pgm.sql(insertQuery);
+
 
 pgm.createTable("games", {
-  id: "id",
+  id: { type: "id", primaryKey: true },
+  players_allowed: { type: "int"},
+  password: { type: "varchar(100)"},
   game_socket_id: {
     type: "varchar",
     notNull: true,
@@ -47,18 +41,24 @@ pgm.createTable("games", {
     notNull: true,
     default: pgm.func("current_timestamp"),
   },
+  updated_at: { 
+    type: "timestamp", 
+    notNull: true, 
+    default: pgm.func("current_timestamp")},
   initialized: {type: "boolean", default: false},
   current_seat: {type: "int"},
+  finished: {type: "boolean", default: "false"},
+  winner: { type: "int", unique: true},
 });
 
 // Create "game_state" table
 pgm.createTable("game_state", {
   game_id: { type: "int", notNull: true , unique: true},
-  round_number: { type: "int", notNull: true },
-  turn_player_id: { type: "int", notNull: true },
-  turn_number: "int",
+  round: { type: "int", notNull: true },
+  turn: {type: "int"},
+  player_count: "int",
   pot: {type:"int", notNull: true, default: 0},
-  hole_cards: "int",
+
 });
 
 // Create "game_users" table
