@@ -6,11 +6,7 @@ const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 
 gameSocketConfig(gameSocketId)
-  .then((_) => userSocketConfig(userSocketId))
-  .then((_) => {
-    console.log("Fetching");
-    fetch(`/game/${roomId}/ready`, { method: "post" });
-  });
+  .then((_) => userSocketConfig(userSocketId));
 
   // we will add our own actions and behaviour for texas holdem
 //const hitForm = document.querySelector("#hit-form");
@@ -21,9 +17,20 @@ const handleUserAction = (event) => {
 
   const { action, method } = event.target.attributes;
   fetch(action.value, { method: method.value });
-
   return false;
 };
+
+
+document.querySelector("#start").addEventListener("click", (event) => {
+  const gameId = event.target.value;
+  const url = event.target.dataset.url;
+  console.log({url});
+  fetch(`/game/${gameId}/ready`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  });
+
+});
   // we will add our own actions and behaviour for texas holdem
 
 //hitForm.addEventListener("submit", handleUserAction);

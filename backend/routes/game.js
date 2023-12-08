@@ -14,7 +14,8 @@ router.get("/create" , async (request, response) => {
     //unique game id created here
     await Games.addUser(gameId, userId);
     await Games.createGameState(gameId, 1, 1, 0, 0); //id, round, turn, player count, pot 
-    
+    await Games.setUserChips(gameId, userId);
+    await Games.readyPlayer(userId, gameId);
     io.emit(GAME_CONSTANTS.CREATED, { id: gameId, createdBy: userId});
 
     response.redirect(`/game/${gameId}`);
@@ -23,20 +24,14 @@ router.get("/create" , async (request, response) => {
 router.post("/:id/ready", async (request, response) => {
     const io = request.app.get("io");
     const { id: gameId } = request.params;
-    const { id: userId } = request.session.user;
-
     const { initialized } = await Games.isInitialized(gameId);
-    const { ready_count, player_count } = await Games.readyPlayer(userId, gameId);
-    console.log({ ready_count, player_count, initialized });
-
-    await Games.setUserChips(gameId, userId);
-    const method = ready_count <= 1 || initialized ? "initialize" : "getGameState"; // TODO set limit
-    const gameState = await Games[method](parseInt(gameId));
-
-    console.log({ gameState, method });
+    console.log({initialized });
+    await Games.initialize(parseInt(gameId));
+    const gameState = Games.getGameState(parseInt(gameId))
+    
+    console.log({ gameState});
 
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, gameState);
-
     response.status(200).send();
     
 });
@@ -48,12 +43,9 @@ router.get("/:id/join", async (request, response) => {
     const gameUsers = await Games.usersInGame(gameId);
     const userInGameAlready = gameUsers.some((user) => user.user_id === userId);
     if (!userInGameAlready) {
-      const totalPlayers = await Games.addUser(gameId, userId);
-      //const chips = await Games.setUserChips(gameId, userId);
-      console.log({totalPlayers});
-      // todo
-      //const hand = await Games.getUserHand(gameId, userId);
-      //const seat = await Games.getUserSeat(gameId, userId);
+      await Games.addUser(gameId, userId);
+      await Games.readyPlayer(userId, gameId);
+      await Games.setUserChips(gameId, userId);
     }
   // construct json with user hand, chips,seat
     response.redirect(`/game/${gameId}`);
@@ -95,5 +87,6 @@ router.get("/:id", async (request, response) => {
     console.log("user:", userSocketId);
     response.render("game", {id: gameId, gameSocketId, userSocketId, roomId: gameId});
 });
+
 
 module.exports = router;
