@@ -80,11 +80,6 @@ const updateRound = (gameId, roundNumber) => {db.one(UPDATE_ROUND, [roundNumber,
     const GET_CARDS = "SELECT card_id FROM game_cards WHERE game_id=$1 AND user_id=0 ORDER BY card_order LIMIT $2";
     const DEAL_CARD = "UPDATE game_cards SET user_id=$1 WHERE game_id=$2 AND card_id=$3";
     
-    
-    
-    
-
-
 
 module.exports = {
   create,
