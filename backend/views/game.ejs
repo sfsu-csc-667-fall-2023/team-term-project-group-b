@@ -32,6 +32,27 @@
     <div class = "grid">
       <h1>Game page with ID: <%= id %></h1>
           <h1>Game <%= id%></h1>
+          <% if (is_initialized.initialized) { %>
+            <h1>Game <%= id%> started</h1>
+          <% } %> 
+          <section id="game-board">
+            <form method="post" action="/games/<%= id %>/hold" id="hold-form">
+              <button type="submit">Hold</button>
+            </form>
+            <form method="post" action="/games/<%= id %>/call" id="call-form">
+              <button type="submit">Call</button>
+            </form>
+            <form method="post" action="/games/<%= id %>/bet" id="bet-form">
+              <button type="submit">Bet</button>
+            </form>
+            <form method="post" action="/games/<%= id %>/fold" id="fold-form">
+              <button type="submit">Fold</button>
+            </form>
+    
+            <div class="hand dealer"></div>
+            <div class="hand player-one-hand"></div>
+            <div class="hand player-two-hand"></div>
+          </section>
           <input
           type="hidden"
           name="game-socket-id"

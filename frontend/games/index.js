@@ -9,9 +9,10 @@ const startButton = document.querySelector("#start");
 gameSocketConfig(gameSocketId)
   .then((_) => userSocketConfig(userSocketId));
 
-  // we will add our own actions and behaviour for texas holdem
-//const hitForm = document.querySelector("#hit-form");
-//const stayForm = document.querySelector("#stay-form");
+const holdForm = document.querySelector("#hold-form");
+const callForm = document.querySelector("#call-form");
+const betForm = document.querySelector("#bet-form");
+const foldForm = document.querySelector("#fold-form");
 
 const handleUserAction = (event) => {
   event.preventDefault();
@@ -30,25 +31,8 @@ startButton.addEventListener("click", (event) => {
   });
 
 });
-  // we will add our own actions and behaviour for texas holdem
 
-//hitForm.addEventListener("submit", handleUserAction);
-//stayForm.addEventListener("submit", handleUserAction);
-
-
-// rewrite to make sure that when game is created it automatically shows up:
-// const gameId = document.querySelector("#")
-// const gameSocket = io({ query: { gameSocketId } });
-// const userSocket = io({query: {userSocket }}); 
-// chatSocket.on(`game:created"`, ({ from, timestamp, message, hash }) => {
-//       //const div = document.querySelector("#chat-message").content.cloneNode(true);
-//       const div = document.createElement("div")
-  
-//       const p = document.createElement("p");
-//       p.innerText = message;
-//       div.appendChild(img);
-//       div.appendChild(p);
-  
-//       chatWindow.appendChild(div);
-//     },
-//   );
+holdForm.addEventListener("submit", handleUserAction);
+callForm.addEventListener("submit", handleUserAction);
+betForm.addEventListener("submit", handleUserAction);
+foldForm.addEventListener("submit", handleUserAction);
