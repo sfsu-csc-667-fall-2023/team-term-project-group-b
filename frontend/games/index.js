@@ -4,6 +4,7 @@ import { configure as userSocketConfig } from "./user_socket";
 const gameSocketId = document.querySelector("#game-socket-id").value;   //getting from html doms
 const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
+const startButton = document.querySelector("#start");
 
 gameSocketConfig(gameSocketId)
   .then((_) => userSocketConfig(userSocketId));
@@ -21,10 +22,8 @@ const handleUserAction = (event) => {
 };
 
 
-document.querySelector("#start").addEventListener("click", (event) => {
+startButton.addEventListener("click", (event) => {
   const gameId = event.target.value;
-  const url = event.target.dataset.url;
-  console.log({url});
   fetch(`/game/${gameId}/ready`, {
     method: "post",
     headers: { "Content-Type": "application/json" },

@@ -6,7 +6,7 @@ const GET_PLAYER_BY_SEAT = `
   WHERE seat=$1 AND game_id=$2
 `;
 
-const getPlayerBySeat = (seatIndex, gameId) =>
+const getPlayerBySeat = (gameId, seatIndex) =>
   db.one(GET_PLAYER_BY_SEAT, [seatIndex, gameId]);
 
 module.exports = { getPlayerBySeat };
