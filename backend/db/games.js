@@ -2,6 +2,8 @@ const database = require("./connection");
 const { connection: db, pgp } = database;
 const Users = require("./users");
 
+const {initialize} = require("./games/initialize");
+
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -84,7 +86,7 @@ const getGameState = async (gameId) => {
     const GET_PLAYER_BY_SEAT = "SELECT user_id FROM game_users WHERE seat=$1 AND game_id=$2";
     const GET_CARDS = "SELECT card_id FROM game_cards WHERE game_id=$1 AND user_id=0 ORDER BY card_order LIMIT $2";
     const DEAL_CARD = "UPDATE game_cards SET user_id=$1 WHERE game_id=$2 AND card_id=$3";
-    
+    /*
     const initialize = async (gameId) => {
       const shuffledDeck = await db.many(SHUFFLED_DECK);
       const columns = new pgp.helpers.ColumnSet(
@@ -167,7 +169,7 @@ const getGameState = async (gameId) => {
         }, {}),
       };
     }
-    
+    */
     // deconstruct initialize method and do:
     const deal_cards_user = () => {
     };
