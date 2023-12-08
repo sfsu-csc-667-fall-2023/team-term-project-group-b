@@ -79,16 +79,16 @@
             <h1>Game <%= id%> started</h1>
           <% } %> 
           <section id="game-board">
-            <form method="post" action="/games/<%= id %>/hold" id="hold-form">
+            <form method="post" action="/game/<%= id %>/hold" id="hold-form">
               <button type="submit">Hold</button>
             </form>
-            <form method="post" action="/games/<%= id %>/call" id="call-form">
+            <form method="post" action="/game/<%= id %>/call" id="call-form">
               <button type="submit">Call</button>
             </form>
-            <form method="post" action="/games/<%= id %>/bet" id="bet-form">
+            <form method="post" action="/game/<%= id %>/bet" id="bet-form">
               <button type="submit">Bet</button>
             </form>
-            <form method="post" action="/games/<%= id %>/fold" id="fold-form">
+            <form method="post" action="/game/<%= id %>/fold" id="fold-form">
               <button type="submit">Fold</button>
             </form>
     
