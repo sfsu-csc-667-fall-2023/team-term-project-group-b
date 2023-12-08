@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #15812c;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.block {
+    padding: 100px;
+    background-color: #fff; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 11%;
+    width: 60%;
+}
+
+.scroll-box {
+    overflow-y: auto;
+    max-height: 300px; 
+}
+
+  .topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+.lobbyTitle {
+    position: absolute;
+    top: 12%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em; 
+}

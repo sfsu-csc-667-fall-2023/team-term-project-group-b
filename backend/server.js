@@ -29,7 +29,6 @@ app.use(requestTime);
 app.use(express.static(path.join(__dirname, "backend", "static")));
 app.use("/test", testRoutes);
 
-
 if (process.env.NODE_ENV == "development") {
   const livereload = require("livereload");
   const connectLiveReload = require("connect-livereload");
@@ -66,8 +65,6 @@ io.on("connection", socket => {
   }
 })
 
-//todo
-
 const Routes = require("./routes");
 const { engine } = require("express/lib/application");
 
@@ -77,7 +74,6 @@ app.use("/game", isAuthenticated, Routes.game);   //game is games in teachers pr
 app.use("/profile",isAuthenticated, Routes.user_profile);
 app.use("/lobby", isAuthenticated, Routes.lobby);
 app.use("/chat", isAuthenticated, Routes.chat);
-
 
 const PORT = process.env.PORT || 3000;
 
