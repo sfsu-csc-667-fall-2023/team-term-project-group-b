@@ -12,34 +12,26 @@
   <% }%>
   <body>
     <% if (user) { %>
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="/lobby">Lobby</a>
-      <a href="/auth/logout">Logout</a>
-      <a href="/user_profile"><%= user.username %></a>
+      <div class="logout">
+        <a class = "logout" href="/auth/logout">LOGOUT</a>
     </div>
-
     <div class="play-container">
       <a href="/lobby">
         <button class="playButton">Play</button>
       </a>
     </div>
-
     <% } else { %>
-    <!-- Content for users who are not logged in -->
     <div class="login-container">
       <a href="/auth/login">
         <button class="playButton">Login</button>
       </a>
     </div>
-
     <div class="register-container">
       <a href="/auth/signup">
         <button class="playButton">Sign Up</button>
       </a>
     </div>
     <% } %>
-
     <a href="/">
       <img
         class="titleLogo center"

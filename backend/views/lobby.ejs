@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/chat.css" />
     <link rel="stylesheet" href="../css/lobby.css" />
+    <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -14,9 +15,19 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="/">Home</a> 
-        <a href="/user_profile"><%= user.username %></a>
-        <a href="/auth/logout">Logout</a>
+      <a href="/">
+        <img
+          class="titleLogo center"
+          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
+          width="120"
+          height="70"
+          alt="Title Logo"
+        />
+      </a>
+      <span class="active">Back To Homepage</span>
+    </div>
+    <div class="logout">
+        <a class = "logout" href="/auth/logout">LOGOUT</a>
     </div>
     <h1 class="lobbyTitle">Lobby</h1>
     <div class="block">
@@ -35,7 +46,7 @@
             </section>
         </section>
         <form action="/game/create" method="get">
-            <button type="submit">Create Game</button>
+            <button type="submit" class="submitbtn">CREATE GAME</button>
         </form>
     </div>
 </body>

@@ -10,15 +10,22 @@
 
 <body>
 <% if (locals.error) { %>
-        <p style="color: red;"><%= locals.error %></p>
+    <p class="error-container" style="color: red;"><%= locals.error %></p>
     <% }%>
     <% if (user) { %>
       <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
   <% }%>
     
     <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="/auth/login">Login</a>
+      <a href="/">
+        <img
+          class="titleLogo center"
+          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
+          width="120"
+          height="70"
+          alt="Title Logo"
+        />
+      <a class="active" href="/">Back To Homepage</a>
     </div>
     <div>
         <form
@@ -48,7 +55,7 @@
             /><br />
             <a href="/auth/login"> Returning User? </a> <br>
           </section>
-          <button type="submit">Submit</button>
+          <button type="submit" class="loginbtn">Submit</button>
           
           <div class="errorMSG">
             <span class="errorMSG" id="message"> &nbsp; </span>
