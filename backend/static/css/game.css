@@ -16,6 +16,11 @@ body {
     align-items: center;
 }
 
+.grid {
+    display: flex;
+    flex: 50%;
+}
+
 .body-container {
     display: flex;
     flex: 50%;
@@ -35,4 +40,17 @@ body {
 .message-input{
   margin-top: auto;
   width: 100%;
+}
+
+.card-suit-0.card-value-1 {
+    background-image: url("../PNG-cards-1.3/2_of_spades.png");
+}
+.card-suits-1.card-value-1 {
+    background-image: url("../PNG-cards-1.3/2_of_diamonds.png");
+}
+.card-suits-2.card-value-1 {
+    background-image: url("../PNG-cards-1.3/2_of_clubs.png");
+}
+.card-suits-3.card-value-1 {
+    background-image: url("../PNG-cards-1.3/2_of_hearts.png");
 }

@@ -14,7 +14,9 @@ const handler = async (request, response) => {
 
     const gameState = await Games.initialize(parseInt(gameId));
 
+    console.log("before emit");
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, gameState);
+    console.log("after emit");
 
     io.to(gameState.game_socket_id).emit(`game:deleteChat:${gameId}`);
 

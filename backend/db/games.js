@@ -2,7 +2,9 @@ const database = require("./connection");
 const { connection: db, pgp } = database;
 const Users = require("./users");
 
-const {initialize} = require("./games/initialize");
+const { initialize } = require("./games/initialize");
+const { getCards } = require("./games/get-cards");
+const { getState } = require("./games/get-state");
 
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
@@ -82,6 +84,7 @@ const updateRound = (gameId, roundNumber) => {db.one(UPDATE_ROUND, [roundNumber,
     
 
 module.exports = {
+  getCards,
   create,
   addUser,
   getGameSocket,
@@ -92,6 +95,7 @@ module.exports = {
   isInitialized,
   readyPlayer,
   initialize,
+  getState,
   createGameState,
   updateRound,
   updateTurn,
