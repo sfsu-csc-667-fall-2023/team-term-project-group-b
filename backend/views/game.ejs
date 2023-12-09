@@ -60,7 +60,6 @@
         <a href="/auth/logout">Logout</a>
     </div>
 
-
     <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
 
     <div class="grid">
@@ -92,9 +91,8 @@
               <button type="submit">Fold</button>
             </form>
     
-            <div class="hand dealer"></div>
-            <div class="hand player-one-hand"></div>
-            <div class="status"></div>
+            <div class="hand hole-cards"></div>
+            <div class="hand player-hand"></div>
 
           </section>
           <input
@@ -141,5 +139,8 @@
             <!-- Your existing game content goes here -->
         </div>
     </div>
+    <template id="card">
+      <div class="card"></div>
+    </template>
 </body>
 </html>
