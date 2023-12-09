@@ -33,8 +33,6 @@ const configure = (socketId) => {
       startButton.remove();
     }
 });
-
-  return Promise.resolve();
 };
 
 const stateUpdated = ({ game_id, current_player, players }) => { //updates ui when there is change in game_state

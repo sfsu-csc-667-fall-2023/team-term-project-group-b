@@ -13,8 +13,6 @@ const configure = (socketId) => {
   });
 
   console.log("User socket configured");
-
-  return Promise.resolve();
 };
 
 export { configure };

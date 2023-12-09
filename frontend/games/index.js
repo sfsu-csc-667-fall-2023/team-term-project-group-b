@@ -6,8 +6,8 @@ const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
 
-gameSocketConfig(gameSocketId)
-  .then((_) => userSocketConfig(userSocketId));
+gameSocketConfig(gameSocketId);
+userSocketConfig(userSocketId);
 
 const holdForm = document.querySelector("#hold-form");
 const callForm = document.querySelector("#call-form");
