@@ -1,16 +1,15 @@
 body {
-    margin-top: 30px;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #15812c;
-  }  
+  margin-top: 30px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #15812c;
+}
 
 .registerTitle {
-    text-align: center;
-    font-size: 25px;
-    margin-top: 5px;
-  }
-
+  text-align: center;
+  font-size: 25px;
+  margin-top: 5px;
+}
 
 .loginTitle {
   text-align: center;
@@ -20,33 +19,92 @@ body {
 .loginPage {
   margin-top: 110px;
 }
-  
-  input[type="text"],
-  input[type="password"],
-  input[type="email"],
-  button {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0;
-    display: inline-block;
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
-  
-  .container {
-    width: 382px;
-    overflow: hidden;
-    margin: auto;
-    margin: 20 0 0 300px;
-    padding: 50px;
-    background: gray;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  button {
-    margin-top: 10px;
-    margin-left: 340px;
-    width: 42%;
-  }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  padding: 50px;
+  background-color: rgb(220, 219, 219);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.error-container{
+  width: 450px;
+  overflow: hidden;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(220, 219, 219);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.loginbtn {
+  color: red;
+  padding: 24px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgb(220, 219, 219);
+  width: 33%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 1%;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.submitbtn {
+  color: red;
+  padding: 24px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgb(220, 219, 219);
+}
+
+.topnav {
+  position: fixed;
+  top: 6%;
+  left: 3%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.active {
+  color: black;
+  font-size: 18px;
+  margin-top: 8px;
+  text-decoration: none;
+}
+
+.logout {
+  position: absolute;
+  top: 6%;
+  right: 3%;
+  padding: 14px 16px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}

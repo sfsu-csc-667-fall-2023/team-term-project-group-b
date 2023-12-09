@@ -10,14 +10,24 @@
 
 <body class = "loginPage" >
     <% if (locals.error) { %>
-        <p style="color: red;"><%= locals.error %></p>
+        <p class="error-container" style="color: red;"><%= locals.error %></p>
       <% }%>
       <% if (user) { %>
         <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
     <% }%>
-      <div class="topnav">
-        <a class="active" href="/">Home</a>
-      </div>
+    <div class="topnav">
+      <a href="/">
+        <img
+          class="titleLogo center"
+          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
+          width="120"
+          height="70"
+          alt="Title Logo"
+        />
+      </a>
+      <span class="active">Back To Homepage</span>
+    </div>
+    
     <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
         <div class="container">
             <h2 class = "loginTitle">
@@ -32,7 +42,8 @@
 
             <a href="/auth/signup"> Create an Account </a> <br>
         </div>
-            <button type="submit" class="loginbtn">Login</button>
+            <button type="submit" class="loginbtn">LOGIN</button>
     </form>
 </body>
 </html>
+

@@ -11,57 +11,14 @@
     <title>Play</title>
     <script src="/scripts/chat.js" defer></script>
     <script src="/scripts/games.js" defer></script>
-    <style>
-      body {
-          display: flex;
-      }
-  
-      .chat-container {
-          box-sizing: border-box;
-          background-color: white;
-          padding: 50px;
-          height: 100vh;
-          overflow: auto;
-          margin-left: 800px;
-          flex: 50%;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: center;
-      }
-  
-      .body-container {
-          display: flex;
-          flex: 50%;
-      }
-  
-      .topnav {
-          position: fixed;
-          top: 0;
-          width: 100%;
-          z-index: 1000; 
-      }
-  
-      .chat-title {
-          margin-top: 0;
-      }
 
-      .message-input{
-        margin-top: auto;
-        width: 100%;
-      }
-  </style>
-  
 </head>
 <body>
-    <h1>Room ID: <%= id %></h1>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/auth/logout">Logout</a>
     </div>
-
     <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
-
     <div class="grid">
         <input
             type="hidden"
@@ -69,14 +26,14 @@
             id="game-socket-id"
             value="<%= gameSocketId %>" />
         <h2><%= user.username %></h2>
+        <% if (!is_initialized.initialized) { %>
+          <button id="start" value="<%= id %>">Start the Game</button>
+        <% } %>
 
     <input
-    <div class = "grid">
-      <h1>Game page with ID: <%= id %></h1>
-          <h1>Game <%= id%></h1>
           <% if (is_initialized.initialized) { %>
             <h1>Game <%= id%> started</h1>
-          <% } %> 
+          <% } %>
           <section id="game-board">
             <form method="post" action="/game/<%= id %>/hold" id="hold-form">
               <button type="submit">Hold</button>
@@ -90,7 +47,7 @@
             <form method="post" action="/game/<%= id %>/fold" id="fold-form">
               <button type="submit">Fold</button>
             </form>
-    
+
             <div class="hand hole-cards"></div>
             <div class="hand player-hand"></div>
 
@@ -106,20 +63,6 @@
           id="user-socket-id"
           value="<%= userSocketId %>"
       />
-        <div><h1>Global lobby for chat and Game</h></div>
-        <h2><%= user.id %> <%= user.username %></h2>
-        <div class="scroll-box">
-            <h2>Chat</h2>
-            <article id = "chat-window"></article>
-        </div>
-        <% if (!is_initialized.initialized) { %>
-          <button id="start" value="<%= id %>">Start the Game</button>
-        <% } %>        
-    <input
-        type="text"
-        name= "message"
-        id="message"
-        placeholder= "Message"/>
     </div>
 
     <div class="body-container">

@@ -8,7 +8,7 @@ body {
     padding: 50px;
     height: 100vh;
     overflow: auto;
-    margin-left: 800px;
+    margin-left: 70%;
     flex: 50%;
     display: flex;
     flex-direction: column;
