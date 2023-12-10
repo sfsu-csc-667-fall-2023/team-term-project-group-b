@@ -41,16 +41,216 @@ body {
   margin-top: auto;
   width: 100%;
 }
+div.card {
+    width: 190px;
+    height: 275px;
+}
 
-.card-suit-0.card-value-1 {
+div.suits-0.value-1 {
     background-image: url("../PNG-cards-1.3/2_of_spades.png");
+    background-size: contain;
 }
-.card-suits-1.card-value-1 {
+div.suits-1.value-1 {
     background-image: url("../PNG-cards-1.3/2_of_diamonds.png");
+    background-size: contain;
 }
-.card-suits-2.card-value-1 {
+div.suits-2.value-1 {
     background-image: url("../PNG-cards-1.3/2_of_clubs.png");
+    background-size: contain;
 }
-.card-suits-3.card-value-1 {
+div.suits-3.value-1 {
     background-image: url("../PNG-cards-1.3/2_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-2 {
+    background-image: url("../PNG-cards-1.3/3_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-2 {
+    background-image: url("../PNG-cards-1.3/3_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-2 {
+    background-image: url("../PNG-cards-1.3/3_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-2 {
+    background-image: url("../PNG-cards-1.3/3_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-3 {
+    background-image: url("../PNG-cards-1.3/4_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-3 {
+    background-image: url("../PNG-cards-1.3/4_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-3 {
+    background-image: url("../PNG-cards-1.3/4_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-3 {
+    background-image: url("../PNG-cards-1.3/4_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-4 {
+    background-image: url("../PNG-cards-1.3/5_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-4 {
+    background-image: url("../PNG-cards-1.3/5_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-4 {
+    background-image: url("../PNG-cards-1.3/5_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-4 {
+    background-image: url("../PNG-cards-1.3/5_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-5 {
+    background-image: url("../PNG-cards-1.3/6_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-5 {
+    background-image: url("../PNG-cards-1.3/6_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-5 {
+    background-image: url("../PNG-cards-1.3/6_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-5 {
+    background-image: url("../PNG-cards-1.3/6_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-6 {
+    background-image: url("../PNG-cards-1.3/7_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-6 {
+    background-image: url("../PNG-cards-1.3/7_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-6 {
+    background-image: url("../PNG-cards-1.3/7_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-6 {
+    background-image: url("../PNG-cards-1.3/7_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-7 {
+    background-image: url("../PNG-cards-1.3/8_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-7 {
+    background-image: url("../PNG-cards-1.3/8_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-7 {
+    background-image: url("../PNG-cards-1.3/8_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-7 {
+    background-image: url("../PNG-cards-1.3/8_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-8 {
+    background-image: url("../PNG-cards-1.3/9_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-8 {
+    background-image: url("../PNG-cards-1.3/9_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-8 {
+    background-image: url("../PNG-cards-1.3/9_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-8 {
+    background-image: url("../PNG-cards-1.3/9_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-9 {
+    background-image: url("../PNG-cards-1.3/10_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-9 {
+    background-image: url("../PNG-cards-1.3/10_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-9 {
+    background-image: url("../PNG-cards-1.3/10_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-9 {
+    background-image: url("../PNG-cards-1.3/10_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-10 {
+    background-image: url("../PNG-cards-1.3/jack_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-10 {
+    background-image: url("../PNG-cards-1.3/jack_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-10 {
+    background-image: url("../PNG-cards-1.3/jack_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-10 {
+    background-image: url("../PNG-cards-1.3/jack_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-11 {
+    background-image: url("../PNG-cards-1.3/queen_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-11 {
+    background-image: url("../PNG-cards-1.3/queen_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-11 {
+    background-image: url("../PNG-cards-1.3/queen_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-11 {
+    background-image: url("../PNG-cards-1.3/queen_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-12 {
+    background-image: url("../PNG-cards-1.3/king_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-12 {
+    background-image: url("../PNG-cards-1.3/king_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-12 {
+    background-image: url("../PNG-cards-1.3/king_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-12 {
+    background-image: url("../PNG-cards-1.3/king_of_hearts.png");
+    background-size: contain;
+}
+div.suits-0.value-13 {
+    background-image: url("../PNG-cards-1.3/ace_of_spades.png");
+    background-size: contain;
+}
+div.suits-1.value-13 {
+    background-image: url("../PNG-cards-1.3/ace_of_diamonds.png");
+    background-size: contain;
+}
+div.suits-2.value-13 {
+    background-image: url("../PNG-cards-1.3/ace_of_clubs.png");
+    background-size: contain;
+}
+div.suits-3.value-13 {
+    background-image: url("../PNG-cards-1.3/ace_of_hearts.png");
+    background-size: contain;
 }

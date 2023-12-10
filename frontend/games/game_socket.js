@@ -44,9 +44,9 @@ const updateHand = (handContainer, cardList) => {
     const container = cardTemplate.content.cloneNode(true);
     const div = container.querySelector(".card");
 
-    div.classList.add(`suit-${suit}`);
+    div.classList.add(`suits-${suit}`);
     div.classList.add(`value-${value}`);
-    div.innerText = `${value}`;
+    //div.innerText = `${value}`;
 
     handContainer.appendChild(div);
   })
