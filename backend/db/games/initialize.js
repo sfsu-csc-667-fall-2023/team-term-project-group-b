@@ -17,7 +17,7 @@ const initialize = async (gameId) => {
 
     await createShuffledDeck(gameId);
     const users = await getUsers(gameId)
-    const cards = await drawCards(gameId, users.length * 2 + 5 );
+    const cards = await drawCards(gameId, users.length * 2 + 3 );
 
     users.push({ user_id: -1 });
 
@@ -25,13 +25,13 @@ const initialize = async (gameId) => {
 
     dealer.hand = [];
 
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 3; i++){
       cards[i].user_id = -1;
       dealer.hand.push(cards[i]);
       await setGameCards(gameId, -1, cards[i].card_id);
     }
 
-    let card_index = 5; // game rules
+    let card_index = 3; // game rules
 
     for(const user of users){
       if(user.user_id !== -1){
@@ -44,6 +44,7 @@ const initialize = async (gameId) => {
         user.chips = await getUserChips(gameId, user.user_id).then(({ chips }) => chips);
         //set the seat
         card_index += 2;
+        //console.log({user});
       }
     }
 
