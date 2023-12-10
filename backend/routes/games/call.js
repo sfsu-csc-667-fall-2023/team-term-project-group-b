@@ -17,11 +17,11 @@ const handler = async (request, response) => {
     console.log({ isPlayerInGame, gameId, userId });
 
     
-    // Broadcast
+    /*// Broadcast
     const state = await Games.getState(gameId);
     io.to(state.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, state);
 
-    response.status(200).send();
+    response.status(200).send();*/
 }
     
 module.exports = { method, route, handler };

@@ -23,10 +23,10 @@ const io = request.app.get("io");
 
   
   // Broadcast
-  const state = await Games.getState(gameId);
+  /*const state = await Games.getState(gameId);
   io.to(state.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, state);
   
-  response.status(200).send();
+  response.status(200).send();*/
 }
 
 module.exports = { method, route, handler };
