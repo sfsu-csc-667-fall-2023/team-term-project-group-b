@@ -74,4 +74,24 @@ body {
     padding: 10px;
     box-sizing: border-box;
   }
+  .message {
+    display: flex;
+    max-width: 180px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px; /* Adjust the padding as needed */
+  }
   
+  .profile-picture {
+    width: 40px; /* Adjust the width of the profile picture as needed */
+    height: 40px; /* Adjust the height of the profile picture as needed */
+    border-radius: 50%;
+  }
+  
+  .message-text {
+    display: flex;
+    background-color: #e5e5e5; /* Adjust background color for messages */
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
