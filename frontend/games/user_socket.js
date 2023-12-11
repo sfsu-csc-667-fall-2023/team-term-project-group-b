@@ -1,6 +1,5 @@
 import { io } from "socket.io-client";
 import * as GAME_CONSTANTS from "@constants/games";
-import { request } from "express";
 
 let userSocket;
 

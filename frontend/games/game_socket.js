@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import * as GAME_CONSTANTS from "@constants/games";
+const GAME_CONSTANTS = require("../../constants/games");
 
 let gameSocket;
 
