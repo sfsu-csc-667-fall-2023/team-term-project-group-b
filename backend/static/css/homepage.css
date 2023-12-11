@@ -35,7 +35,6 @@ h1 {
 }
 
 .play-container {
-  /* Remove the top, left, and transform properties */
   text-align: center;
   width: 15%;
   align-items: center;
@@ -55,7 +54,7 @@ h1 {
 }
 
 .playButton:hover {
-  background-color: #ddd; /* Darker background on hover */
+  background-color: #ddd; 
 }
 
 .registerTitle {

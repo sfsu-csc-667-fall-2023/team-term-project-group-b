@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/chat.css" />
-    <link rel="stylesheet" href="../css/homepage.css" />
-    <link rel="stylesheet" href="../css/lobby.css" />
-    <link rel="stylesheet" href="../css/game.css" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play</title>
-    <script src="/scripts/chat.js" defer></script>
-    <script src="/scripts/games.js" defer></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/chat.css" />
+  <link rel="stylesheet" href="../css/homepage.css" />
+  <link rel="stylesheet" href="../css/game.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play</title>
+  <script src="/scripts/chat.js" defer></script>
+  <script src="/scripts/games.js" defer></script>
 
 </head>
+
+
 <body>
-    <div class="topnav">
-        <a class="active" href="/">Home</a>
-        <a href="/auth/logout">Logout</a>
-    </div>
-    <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
-    <div class="grid">
-        <input
-            type="hidden"
-            name="game-socket-id"
-            id="game-socket-id"
-            value="<%= gameSocketId %>" />
-        <h2><%= user.username %></h2>
-        <% if (!is_initialized.initialized) { %>
-          <button id="start" value="<%= id %>">Start the Game</button>
-        <% } %>
+  <div class="topnav" style="left: 1%; top: 1%;">
+    <a href="/">
+      <img
+        class="titleLogo center"
+        src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
+        width="120"
+        height="70"
+        alt="Title Logo"
+        style="left: 5%; top: 300%"
+      />
+    </a>
+    <span class="active">Back To Homepage</span>
+  </div>
+  <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
+  <h2 class="username">
+    <%= user.username %>
+  </h2>
+  <div class="grid">
+    <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
 
-    <input
-          <section id="game-board">
-            
-            <div class="hand dealer"></div>
-            <div class="hand player-hand"></div>
+    <% if (!is_initialized.initialized) { %>
+      <button id="start" value="<%= id %>">Start the Game</button>
+      <% } %>
 
+        <section id="game-board">
+          <!-- Add inline style to the "cards" class -->
+          <div class="hand dealer"></div>
+          <div class="hand player-hand"></div>
+
+          <div class="game-buttons">
             <form method="post" action="/game/<%= id %>/hold" id="hold-form">
               <button type="submit">Hold</button>
             </form>
@@ -48,40 +58,28 @@
             <form method="post" action="/game/<%= id %>/fold" id="fold-form">
               <button type="submit">Fold</button>
             </form>
+          </div>
+        </section>
+        <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
+        <input type="hidden" name="user-socket-id" id="user-socket-id" value="<%= userSocketId %>" />
+  </div>
 
-          </section>
-          <input
-          type="hidden"
-          name="game-socket-id"
-          id="game-socket-id"
-          value="<%= gameSocketId %>" />
-          <input
-          type="hidden"
-          name="user-socket-id"
-          id="user-socket-id"
-          value="<%= userSocketId %>"
-      />
+  <div class="body-container">
+    <div class="chat-container">
+      <h2 class="chat-title">Chat</h2>
+      <article id="chat-window"></article>
+      <div class="message-input">
+        <input type="text" name="message" id="message" placeholder="Message" />
+      </div>
     </div>
 
-    <div class="body-container">
-        <div class="chat-container">
-            <h2 class = "chat-title">Chat</h2>
-            <article id="chat-window"></article>
-            <div class="message-input">
-              <input
-              type="text"
-              name="message"
-              id="message"
-              placeholder="Message"/>
-            </div>
-        </div>
-
-        <div class="game-container">
-            <!-- Your existing game content goes here -->
-        </div>
+    <div class="game-container">
+      <!-- Your existing game content goes here -->
     </div>
-    <template id="card">
-      <div class="card"></div>
-    </template>
+  </div>
+  <template id="card">
+    <div class="card"></div>
+  </template>
 </body>
+
 </html>
