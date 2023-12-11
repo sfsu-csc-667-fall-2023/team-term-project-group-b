@@ -11,9 +11,9 @@
     "build": "webpack",
     "build:dev": "webpack --watch",
     "prepare": "husky install",
-    "db:create": "node-pg-migrate create -- ",
-    "db:migrate": "node-pg-migrate up",
-    "db:rollback": "node-pg-migrate down",
+    "db:create": "./node_modules/.bin/node-pg-migrate create --",
+    "db:migrate": "./node_modules/.bin/node-pg-migrate up",
+    "db:rollback": "./node_modules/.bin/node-pg-migrate down",
     "postinstall": "npm run db:migrate"
   },
   "keywords": [],
