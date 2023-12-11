@@ -17,19 +17,35 @@ body {
     flex-direction: column;
 }
 .chat-container {
-  position: fixed;
-  box-sizing: border-box;
-  background-color: white;
-  padding: 60px;
-  height: 100vh;
-  overflow: auto;
-  margin-left: 20%;
-  flex: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
+    box-sizing: border-box;
+    background-color: white;
+    padding: 20px; /* Adjust padding as needed */
+    width: 100%; /* Adjust the width as needed */
+    margin: auto;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow chat container to take up all available vertical space */
+  }
+  
+  .chat-title {
+    margin-top: 0;
+    font-size: 24px; /* Adjust font size as needed */
+  }
+  
+  #chat-window {
+    max-height: 680px; /* Set a maximum height for the chat window */
+    min-height: 680px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Add a border to separate chat window visually */
+    padding: 10px; /* Add padding inside the chat window */
+    margin-top: auto;
+  }
+  
+  .message-input {
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
 .hand.dealer{
     display: flex; 
@@ -82,16 +98,6 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-}
-
-.chat-title {
-  margin-top: 0;
-  font-size: 30px;
-}
-
-.message-input {
-  margin-top: auto;
-  width: 100%;
 }
 
 div.card {
