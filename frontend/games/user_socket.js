@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import * as GAME_CONSTANTS from "@constants/games";
+const GAME_CONSTANTS = require("../../constants/games");
 
 let userSocket;
 
@@ -9,9 +9,7 @@ const configure = (socketId) => {
 
   console.log(socketId);
 
-
   const cardTemplate = document.querySelector("#card");
-
   const userHand = document.querySelector(".player-hand");
 
   Object.keys(GAME_CONSTANTS).forEach((key) => {
@@ -22,8 +20,9 @@ const configure = (socketId) => {
 
   console.log("User socket configured");
 
-  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, userStateUpdated);
-
+  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, ({gameState}) =>{
+    userStateUpdated(gameState);
+  });
 };
 
 const playerHand = document.querySelector(".player-hand");
