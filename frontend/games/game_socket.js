@@ -52,8 +52,6 @@ const updateHand = (handContainer, cardList) => {
 
 const stateUpdated = ({ game_id, current_player, players }) => { //updates ui when there is change in game_state
   const dealerCards = players.find((player) => player.user_id === -1).hand;
-  //must find by the user session id
-  //const playerCards = players.find((player) => player.user_id === 1).hand;
 
   console.log({ dealerCards/*, playerCards*/});
 

@@ -4,15 +4,15 @@ import { configure as userSocketConfig } from "./user_socket";
 const gameSocketId = document.querySelector("#game-socket-id").value;   //getting from html doms
 const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
+
 const startButton = document.querySelector("#start");
+const holdButton = document.querySelector("#hold-form");
+const callButton = document.querySelector("#call-form");
+const betButton = document.querySelector ("#bet-form");
+const foldButton = document.querySelector("#fold-form");
 
 gameSocketConfig(gameSocketId);
 userSocketConfig(userSocketId);
-
-const holdForm = document.querySelector("#hold-form");
-const callForm = document.querySelector("#call-form");
-const betForm = document.querySelector("#bet-form");
-const foldForm = document.querySelector("#fold-form");
 
 const handleUserAction = (event) => {
   event.preventDefault();
@@ -29,10 +29,9 @@ startButton.addEventListener("click", (event) => {
     method: "post",
     headers: { "Content-Type": "application/json" },
   });
-
 });
 
-holdForm.addEventListener("submit", handleUserAction);
-callForm.addEventListener("submit", handleUserAction);
-betForm.addEventListener("submit", handleUserAction);
-foldForm.addEventListener("submit", handleUserAction);
+callButton.addEventListener("submit", handleUserAction);
+holdButton.addEventListener("submit", handleUserAction);
+betButton.addEventListener("submit", handleUserAction);
+foldButton.addEventListener("submit", handleUserAction);
