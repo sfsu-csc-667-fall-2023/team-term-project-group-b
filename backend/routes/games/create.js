@@ -15,12 +15,11 @@ const handler = async (request, response) => {
     );
 
     await Games.addUser(gameId, userId);
-    await Games.createGameState(gameId, 1, 1, 0, 0); //id, round, turn, player count, pot 
+    await Games.createGameState(gameId, 1, 1, 1, 0); //id, round, turn, player count, pot 
     await Games.setUserChips(gameId, userId);
     await Games.readyPlayer(userId, gameId);
 
     io.emit(GAME_CONSTANTS.CREATED, { id: gameId, createdBy: userId});
-
     response.redirect(`/game/${gameId}`);
 };
 

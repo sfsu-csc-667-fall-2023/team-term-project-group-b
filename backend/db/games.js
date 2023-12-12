@@ -4,7 +4,7 @@ const Users = require("./users");
 
 const { initialize } = require("./games/initialize");
 const { getCards } = require("./games/get-cards");
-
+const { getState } = require("./games/get-game-state");
 
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
@@ -100,5 +100,5 @@ module.exports = {
   updateTurn,
   updatePot,
   setUserChips,
-
+  getState,
 };
