@@ -18,7 +18,7 @@ const configure = (socketId) => {
   })
 
   gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, stateUpdated);
-
+  
   gameSocket.on(`game:deleteChat:${roomId}`, () => {
     console.log(`game:deleteChat:${roomId}`);
     if (startButton) {
@@ -33,8 +33,6 @@ const dealerHand = document.querySelector(".dealer");
 
 const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
-
-//const playerHand = document.querySelector(".player-hand");
 
 
 const updateHand = (handContainer, cardList) => {

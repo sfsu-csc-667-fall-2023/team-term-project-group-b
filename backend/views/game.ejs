@@ -34,8 +34,6 @@
     <%= user.username %>
   </h2>
   <div class="grid">
-    <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
-
     <% if (!is_initialized.initialized) { %>
       <button id="start" value="<%= id %>">Start the Game</button>
       <% } %>
