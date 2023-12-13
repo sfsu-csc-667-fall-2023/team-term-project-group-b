@@ -12,8 +12,19 @@ const handler = async (request, response) => {
     const gameState = await Games.initialize(parseInt(gameId));
 
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.START, gameState);
+    let userState;
     gameState.players.forEach(player =>{
-        io.to(player.sid).emit(GAME_CONSTANTS.USER_STATE_UPDATED, gameState);
+        console.log(gameState.game_socket_id);
+        userState = {
+            chips: player.chips,
+            hand: player.hand,
+            seat: player.seat,
+        }
+        if(player.user_id === -1){
+            io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: userState.hand});
+        }
+        else
+            io.to(player.sid).emit(GAME_CONSTANTS.START, userState);
     });
     io.to(gameState.game_socket_id).emit(`game:deleteChat:${gameId}`);
 

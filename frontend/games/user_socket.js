@@ -24,7 +24,9 @@ const configure = (socketId) => {
 
   console.log("User socket configured");
 
-  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, userStateUpdated);
+  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED);
+  userSocket.on(GAME_CONSTANTS.START, renderPlayerState);
+
 
   userSocket.on("test", data =>{
     console.log(data);
@@ -32,16 +34,9 @@ const configure = (socketId) => {
 };
 
 
-const userStateUpdated = ({ game_id, current_player, players }) => {
-  console.log(players);
-  console.log(user_socket_id + "-  socketId");
-  const playerCards = players.find((player) => player.sid === user_socket_id).hand;
-  
-  console.log({playerCards});
-
+const renderPlayerState = ({chips, hand, seat}) => {
   playerHand.innerHTML = "";
-
-  playerCards.forEach(({ suit, value }) => {
+  hand.forEach(({ suit, value }) => {
     const container = cardTemplate.content.cloneNode(true);
     const div = container.querySelector(".card");
     div.classList.add(`suits-${suit}`);

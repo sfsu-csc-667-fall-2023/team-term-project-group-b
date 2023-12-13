@@ -7,6 +7,7 @@ const {setGameCards } = require("./set-game-cards");
 const {getPlayerBySeat} = require("./get-player-by-seat");
 const {setCurrentPlayer} = require("./set-current-player");
 const { getUserChips } = require("./get-user-chips");
+const { getPlayerSeat } = require("./get-player-seat");
 
 const initialize = async (gameId) => {
     const {game_socket_id} = await getGame(gameId);
@@ -40,11 +41,12 @@ const initialize = async (gameId) => {
           user.hand.push(cards[index]);
           await setGameCards(gameId, user.user_id, cards[index].card_id);
         }
-        user.chips = await getUserChips(gameId, user.user_id).then(({ chips }) => chips);
+        user.chips = await getUserChips(gameId, user.user_id);
+        user.seat = await getPlayerSeat(gameId, user.user_id);
         card_index += 2;
       }
     }
-
+    console.log(users);
     await setInitialized(gameId);
 
     return {

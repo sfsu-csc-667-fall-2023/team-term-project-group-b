@@ -8,7 +8,8 @@ const configure = (socketId) => {
 
   console.log("gameSocket configured!!");
 
-  gameSocket.on(GAME_CONSTANTS.START, stateUpdated)
+  gameSocket.on(GAME_CONSTANTS.START);
+  gameSocket.on(GAME_CONSTANTS.DEALER_STATE_UPDATED, renderDealerHand);
 
   gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
     console.log({event: GAME_CONSTANTS.USER_ADDED, data });
@@ -19,7 +20,6 @@ const configure = (socketId) => {
   });
   
   gameSocket.on(`game:deleteChat:${roomId}`, () => {
-    console.log(`game:deleteChat:${roomId}`);
     if (startButton) {
       startButton.remove();
     }
@@ -34,24 +34,15 @@ const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
 
 
-const updateHand = (handContainer, cardList) => {
-  handContainer.innerHTML = "";
-
-  cardList.forEach(({ suit, value }) => {
+const renderDealerHand = ({hand}) => { //updates ui when there is change in game_state
+  dealerHand.innerHTML = "";
+  hand.forEach(({ suit, value }) => {
     const container = cardTemplate.content.cloneNode(true);
     const div = container.querySelector(".card");
     div.classList.add(`suits-${suit}`);
     div.classList.add(`value-${value}`);
-    handContainer.appendChild(div);
+    dealerHand.appendChild(div);
   })
-}
-
-const stateUpdated = ({ game_id, current_player, players }) => { //updates ui when there is change in game_state
-  const dealerCards = players.find((player) => player.user_id === -1).hand;
-  console.log({ dealerCards/*, playerCards*/});
-
-  updateHand(dealerHand, dealerCards);
-  console.log(current_player);
 
 };
 
