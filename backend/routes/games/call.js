@@ -1,7 +1,5 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
-const {getCurrentTurn} = require("../../db");
-const { getPlayerSeat } = require("../../db");
 const method = "post";
 const route = "/:id/call";
 
@@ -12,15 +10,9 @@ const handler = async (request, response) => {
     
     const gameId = parseInt(textGameId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
-
-    const currentTurn = await Games.getCurrentTurn(gameId);
-    const userSeat = await Games.getPlayerSeat(gameId, userId);
-    console.log(isPlayerInGame, currentTurn, userSeat);
-    if(isPlayerInGame){
-        if(currentTurn == userSeat){
-            console.log("worked");
-            response.status(200).send();
-        }
+    const isPlayerTurn = await Games.checkTurn(gameId, userId);
+    if(isPlayerInGame && isPlayerTurn){
+        // do
     }
     /*// Broadcast
     const state = await Games.getState(gameId);

@@ -8,6 +8,7 @@ const { getState } = require("./games/get-game-state");
 const {getCurrentTurn} = require("./games/get-current-turn");
 const { getPlayerSeat } = require("./games/get-player-seat");
 const {getPlayerBySeat} = require("./games/get-player-by-seat");
+const {checkTurn} = require("./games/checkTurn");
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -74,16 +75,7 @@ const setUserChips = (gameId, userId) => db.one(SET_USER_CHIPS, [gameId, userId]
 const createGameState = (gameId, roundNumber, turn, playerCount, pot) => db.one(CREATE_GAME_STATE, [gameId, roundNumber, turn, playerCount, pot]);
 const updateTurn = (gameId, turn) => {db.one(UPDATE_TURN, [turn, gameId])};
 const updatePot = (gameId, pot) => {db.one(UPDATE_POT, [pot, gameId])};
-const updateRound = (gameId, roundNumber) => {db.one(UPDATE_ROUND, [roundNumber, gameId])};
-
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-    // cards
-    const SHUFFLED_DECK = "SELECT *, random() AS rand FROM cards ORDER BY rand";
-    const GET_PLAYER_BY_SEAT = "SELECT user_id FROM game_users WHERE seat=$1 AND game_id=$2";
-    const GET_CARDS = "SELECT card_id FROM game_cards WHERE game_id=$1 AND user_id=0 ORDER BY card_order LIMIT $2";
-    const DEAL_CARD = "UPDATE game_cards SET user_id=$1 WHERE game_id=$2 AND card_id=$3";
-    
+const updateRound = (gameId, roundNumber) => {db.one(UPDATE_ROUND, [roundNumber, gameId])};    
 
 module.exports = {
   getCards,
@@ -106,4 +98,5 @@ module.exports = {
   getCurrentTurn,
   getPlayerSeat,
   getPlayerBySeat,
+  checkTurn,
 };
