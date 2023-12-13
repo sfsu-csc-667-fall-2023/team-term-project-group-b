@@ -3,9 +3,12 @@ const GAME_CONSTANTS = require("../../constants/games");
 
 let userSocket;
 
+const user_socket_id = document.querySelector("#user-socket-id").value;
+
 const configure = (socketId) => {
   userSocket = io({ query: { id: socketId } });
   console.log("userSocketConfig");
+
 
   console.log(socketId);
 
@@ -20,24 +23,29 @@ const configure = (socketId) => {
 
   console.log("User socket configured");
 
-  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, ({gameState}) =>{
-    console.log("after update");
-    userStateUpdated();
-  });
+  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, userStateUpdated);
 };
 
+const cardTemplate = document.querySelector("#card");
 const playerHand = document.querySelector(".player-hand");
 
-const userStateUpdated = () => { //updates ui when there is change in game_state
+const userStateUpdated = ({ game_id, current_player, players }) => { //updates ui when there is change in game_state
   console.log("inside userStateUpdated");
-  //console.log(request.session.user.id);
-  //const playerCards = players.find((player) => player.user_id === request.session.user.id).hand;
-  //const playerCards = players.find((player) => player.user_id === 1).hand;
+  console.log(players);
+  console.log(user_socket_id + "-  socketId");
+  const playerCards = players.find((player) => player.sid === user_socket_id).hand;
+  
+  console.log({playerCards});
 
+  playerHand.innerHTML = "";
 
-  //console.log({ playerCards});
-
-  //updateHand(dealerHand, dealerCards);
+  playerCards.forEach(({ suit, value }) => {
+    const container = cardTemplate.content.cloneNode(true);
+    const div = container.querySelector(".card");
+    div.classList.add(`suits-${suit}`);
+    div.classList.add(`value-${value}`);
+    playerHand.appendChild(div);
+  })
 
 };
 
