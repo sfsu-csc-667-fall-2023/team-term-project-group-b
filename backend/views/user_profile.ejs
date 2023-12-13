@@ -2,13 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/profile.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/scripts/chat.js" defer></script>
+    <script src="/scripts/games.js" defer></script>
+    <script src="/scripts/lobby.js" defer></script>
+    <script src="/scripts/user_profile.js" defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/scripts/user_profile.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=VT323&display=swap" rel="stylesheet">
+
     <title>Me</title>
 </head>
 <body>
+    <div class="profile">
     <% if (user) { %>
-        <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
+        <h1 style="color: blue;"> <%= user.username %></h1>
     <% }%>
+    <p>
+        Games Played:
+    </p>
+    <p>
+        Games Won:
+    </p>
+
+</div>
 </body>
 </html>

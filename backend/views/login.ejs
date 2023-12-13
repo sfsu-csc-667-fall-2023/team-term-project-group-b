@@ -5,45 +5,53 @@
     <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="backend\static\scripts\favicon.ico" href="/views">
     <title>Login</title>
 </head>
 
-<body class = "loginPage" >
+<body>
+  <!-- <img 
+    class="bg src="\css\assets\bg.png"
+    alt=""
+    /> -->
     <% if (locals.error) { %>
         <p class="error-container" style="color: red;"><%= locals.error %></p>
       <% }%>
       <% if (user) { %>
         <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
     <% }%>
+
+
     <div class="topnav">
       <a href="/">
         <img
           class="titleLogo center"
-          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
-          width="120"
-          height="70"
+          src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
+          height="140"
           alt="Title Logo"
+          style="padding-left: 50px;" 
+          style="padding-top: 40px;"
         />
       </a>
-      <span class="active">Back To Homepage</span>
+      <!-- <span class="active">Back To Homepage</span> -->
     </div>
-    
-    <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
-        <div class="container">
-            <h2 class = "loginTitle">
-                Login
-            </h2>
-            <label for="userName">  Username </label>
-            <input type="text" id="username" name="username" required />
 
+    <!--sign in box-->
+    <div class="container">
+      <form id="login" onsubmit="return validateForm()" method="POST" action="/auth/login">
+        <h2 class="header"> Log In </h2>
 
-            <label for="passWord"> Password </label>
-            <input type="password" id="password" name="password" required />
-
-            <a href="/auth/signup"> Create an Account </a> <br>
-        </div>
-            <button type="submit" class="loginbtn">LOGIN</button>
+        <!--<label for="userName">  Username </label>-->
+        <input class="input" type="text" id="username" name="username" placeholder="username" required />
+        <br>
+        <!--<label for="passWord"> Password </label>-->
+        <input class="input" type="password" id="password" name="password" placeholder="password" required />
+        <br>
+        <a href="/auth/signup"> Create an Account </a> <br>
+        
+        <button class="button" type="submit">LOG IN</button>
     </form>
+  </div>
 </body>
 </html>
 
