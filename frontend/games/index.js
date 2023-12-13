@@ -23,6 +23,7 @@ const handleUserAction = (event) => {
 };
 
 
+
 startButton.addEventListener("click", (event) => {
   const gameId = event.target.value;
   fetch(`/game/${gameId}/ready`, {
