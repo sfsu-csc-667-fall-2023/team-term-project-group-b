@@ -4,13 +4,14 @@ const {getPlayerBySeat} = require("./get-player-by-seat");
 
 const updateTurn = async(gameId, currentSeat) => {
     const userCount = await getUserCount(gameId);
-	const nextSeat = currentSeat + 1;
+	let nextSeat = currentSeat + 1;
 	if(nextSeat > userCount)
 		nextSeat = 1;
 
-    console.log("next Seat:", nextSeat);
+    console.log("next Seat:", nextSeat, "count", userCount);
 	const nextPlayer =  await getPlayerBySeat(gameId, nextSeat);	
-    updateTurnTable(gameId, nextPlayer)
+    const t = await updateTurnTable(gameId, nextPlayer)
+    console.log("update, next turn id:", t);
     return nextPlayer;
 }
 

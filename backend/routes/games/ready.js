@@ -9,9 +9,6 @@ const handler = async (request, response) => {
     const io = request.app.get("io");
 
     const { id: gameId } = request.params;
-    const { id: userId } = request.session.user;    
-    const user_socket_id = await Users.getUserSocket(userId);
-    
     const gameState = await Games.initialize(parseInt(gameId));
 
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.START, gameState);

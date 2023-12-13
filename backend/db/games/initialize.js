@@ -10,8 +10,9 @@ const { getUserChips } = require("./get-user-chips");
 
 const initialize = async (gameId) => {
     const {game_socket_id} = await getGame(gameId);
-    const firstPlayer = await getPlayerBySeat(gameId, 1).then(({ user_id }) =>
+    const firstPlayer = await getPlayerBySeat(gameId, 1).then(user_id  =>
       setCurrentPlayer(gameId, user_id));
+
 
     await createShuffledDeck(gameId);
     const users = await getUsers(gameId)
