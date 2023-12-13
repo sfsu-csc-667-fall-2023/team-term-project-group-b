@@ -4,8 +4,10 @@ const Users = require("./users");
 
 const { initialize } = require("./games/initialize");
 const { getCards } = require("./games/get-cards");
-const { getState } = require("./games/get-state");
-
+const { getState } = require("./games/get-game-state");
+const {getCurrentTurn} = require("./games/get-current-turn");
+const { getPlayerSeat } = require("./games/get-player-seat");
+const {getPlayerBySeat} = require("./games/get-player-by-seat");
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -95,11 +97,13 @@ module.exports = {
   isInitialized,
   readyPlayer,
   initialize,
-  getState,
   createGameState,
   updateRound,
   updateTurn,
   updatePot,
   setUserChips,
-
+  getState,
+  getCurrentTurn,
+  getPlayerSeat,
+  getPlayerBySeat,
 };

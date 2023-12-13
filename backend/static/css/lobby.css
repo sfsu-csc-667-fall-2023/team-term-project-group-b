@@ -70,3 +70,62 @@ body {
 .lobby-item:hover{
     background-color: #2d5033;
 }
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .chat-container {
+    box-sizing: border-box;
+    background-color: white;
+    padding: 20px; /* Adjust padding as needed */
+    width: 100%; /* Adjust the width as needed */
+    margin: auto;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow chat container to take up all available vertical space */
+  }
+  
+  .chat-title {
+    margin-top: 0;
+    font-size: 24px; /* Adjust font size as needed */
+  }
+  
+  #chat-window {
+    max-height: 680px; /* Set a maximum height for the chat window */
+    min-height: 680px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Add a border to separate chat window visually */
+    padding: 10px; /* Add padding inside the chat window */
+    margin-top: auto;
+  }
+  
+  .message-input {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .message {
+    display: flex;
+    max-width: 180px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px; /* Adjust the padding as needed */
+  }
+  
+  .profile-picture {
+    width: 40px; /* Adjust the width of the profile picture as needed */
+    height: 40px; /* Adjust the height of the profile picture as needed */
+    border-radius: 50%;
+  }
+  
+  .message-text {
+    display: flex;
+    background-color: #e5e5e5; /* Adjust background color for messages */
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
