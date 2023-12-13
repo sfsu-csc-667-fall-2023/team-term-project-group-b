@@ -7,6 +7,6 @@ const GET_USER_CHIPS = `
 `;
 
 const getUserChips = (gameId, userId) =>
-  db.one(GET_USER_CHIPS, [gameId, userId]);
+  db.one(GET_USER_CHIPS, [gameId, userId]).then(({ chips }) => chips);
 
 module.exports = { getUserChips };

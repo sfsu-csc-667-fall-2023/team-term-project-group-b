@@ -5,9 +5,14 @@ const chatWindow = document.querySelector("#chat-window");
 const chatSocket = io();
 
 const roomId = document.querySelector("#room-id").value;
+const userSocketId = document.querySelector("#user-socket-id").value;
 
 chatSocket.on(`chat:message:${roomId}`, ({ from, timestamp, message, hash }) => {
-      //const div = document.querySelector("#chat-message").content.cloneNode(true);
+      appendMessage(from, message, hash);
+    },
+  );
+
+function appendMessage(from, message, hash){
       const div = document.createElement("a")
       div.classList.add("message");
       const img = document.createElement("img");
@@ -22,8 +27,7 @@ chatSocket.on(`chat:message:${roomId}`, ({ from, timestamp, message, hash }) => 
       div.appendChild(p);
   
       chatWindow.appendChild(div);
-    },
-  );
+}
 
 document.querySelector("#message").addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {

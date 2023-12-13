@@ -58,7 +58,8 @@ pgm.createTable("game_state", {
   turn: {type: "int"},
   player_count: "int",
   pot: {type:"int", notNull: true, default: 0},
-
+  loop_to_seat: {type: "int", default: 0},
+  pot_for_round: {type: "int", default: 0},
 });
 
 // Create "game_users" table

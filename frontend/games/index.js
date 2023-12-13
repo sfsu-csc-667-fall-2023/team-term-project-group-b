@@ -14,7 +14,7 @@ const foldButton = document.querySelector("#fold-form");
 gameSocketConfig(gameSocketId);
 userSocketConfig(userSocketId);
 
-const handleUserAction = (event) => {
+const handleUserAction = async (event) => {
   event.preventDefault();
 
   const { action, method } = event.target.attributes;
