@@ -8,31 +8,21 @@ const playerHand = document.querySelector(".player-hand");
 
 const configure = (socketId) => {
   userSocket = io({ query: { id: socketId } });
-  console.log("userSocketConfig");
-
-
-  console.log(socketId);
-
-  const cardTemplate = document.querySelector("#card");
-  const userHand = document.querySelector(".player-hand");
 
   Object.keys(GAME_CONSTANTS).forEach((key) => {
     userSocket.on(GAME_CONSTANTS[key], (data) => {
       console.log({ event: GAME_CONSTANTS[key], data });
     });
   });
-
+  
   console.log("User socket configured");
 
-  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED);
+  userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED,data => {
+    console.log({event: GAME_CONSTANTS.USER_STATE_UPDATED, data });
+  })
+  
   userSocket.on(GAME_CONSTANTS.START, renderPlayerState);
-
-
-  userSocket.on("test", data =>{
-    console.log(data);
-  });
 };
-
 
 const renderPlayerState = ({chips, hand, seat}) => {
   playerHand.innerHTML = "";

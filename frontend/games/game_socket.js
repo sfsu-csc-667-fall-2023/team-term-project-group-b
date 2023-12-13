@@ -2,6 +2,10 @@ import { io } from "socket.io-client";
 const GAME_CONSTANTS = require("../../constants/games");
 
 let gameSocket;
+const cardTemplate = document.querySelector("#card");
+const dealerHand = document.querySelector(".dealer");
+const roomId = document.querySelector("#room-id").value;
+const startButton = document.querySelector("#start");
 
 const configure = (socketId) => {
   gameSocket = io({ query: { id: socketId } });
@@ -9,7 +13,7 @@ const configure = (socketId) => {
   console.log("gameSocket configured!!");
 
   gameSocket.on(GAME_CONSTANTS.START, data => {
-    console.log({event: GAME_CONSTANTS.USER_ADDED, data });
+    console.log({event: GAME_CONSTANTS.START, data });
   })
   gameSocket.on(GAME_CONSTANTS.DEALER_STATE_UPDATED, renderDealerHand);
 
@@ -27,14 +31,6 @@ const configure = (socketId) => {
     }
 });
 };
-
-const cardTemplate = document.querySelector("#card");
-
-const dealerHand = document.querySelector(".dealer");
-
-const roomId = document.querySelector("#room-id").value;
-const startButton = document.querySelector("#start");
-
 
 const renderDealerHand = ({hand}) => { //updates ui when there is change in game_state
   dealerHand.innerHTML = "";
