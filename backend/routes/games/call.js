@@ -12,7 +12,11 @@ const handler = async (request, response) => {
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
     if(isPlayerInGame && isPlayerTurn){
-        // do
+        console.log("worked");
+        response.status(200).send();
+        const playerSeat = await Games.getPlayerSeat(gameId, userId);
+        const nextPlayer = await Games.updateTurn(gameId, playerSeat);
+        console.log(nextPlayer);
     }
     /*// Broadcast
     const state = await Games.getState(gameId);
