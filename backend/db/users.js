@@ -23,7 +23,7 @@ const create = (email, password, username) => db.one(ADD_USER, [email, password,
 
 const find_by_username = (username) => db.one(SIGN_USER_IN, [username]);
 
-const getUserSocket = (userId) => db.one(GET_USER_SOCKET, [userId]);
+const getUserSocket = (userId) => db.one(GET_USER_SOCKET, [userId]).then(result => result.sid);
 
 module.exports = {
   email_exists,

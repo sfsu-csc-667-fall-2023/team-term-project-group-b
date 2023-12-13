@@ -2,8 +2,9 @@ import { io } from "socket.io-client";
 const GAME_CONSTANTS = require("../../constants/games");
 
 let userSocket;
-
 const user_socket_id = document.querySelector("#user-socket-id").value;
+const cardTemplate = document.querySelector("#card");
+const playerHand = document.querySelector(".player-hand");
 
 const configure = (socketId) => {
   userSocket = io({ query: { id: socketId } });
@@ -24,13 +25,14 @@ const configure = (socketId) => {
   console.log("User socket configured");
 
   userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, userStateUpdated);
+
+  userSocket.on("test", data =>{
+    console.log(data);
+  });
 };
 
-const cardTemplate = document.querySelector("#card");
-const playerHand = document.querySelector(".player-hand");
 
-const userStateUpdated = ({ game_id, current_player, players }) => { //updates ui when there is change in game_state
-  console.log("inside userStateUpdated");
+const userStateUpdated = ({ game_id, current_player, players }) => {
   console.log(players);
   console.log(user_socket_id + "-  socketId");
   const playerCards = players.find((player) => player.sid === user_socket_id).hand;

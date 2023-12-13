@@ -8,16 +8,15 @@ const configure = (socketId) => {
 
   console.log("gameSocket configured!!");
 
-  gameSocket.on(GAME_CONSTANTS.START, data => {
-    // TODO
-    console.log({event: GAME_CONSTANTS.START, data });
-  })
+  gameSocket.on(GAME_CONSTANTS.START, stateUpdated)
 
   gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
     console.log({event: GAME_CONSTANTS.USER_ADDED, data });
   })
 
-  gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, stateUpdated);
+  gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, data =>{
+    console.log(data);
+  });
   
   gameSocket.on(`game:deleteChat:${roomId}`, () => {
     console.log(`game:deleteChat:${roomId}`);
