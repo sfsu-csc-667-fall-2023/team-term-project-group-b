@@ -50,6 +50,7 @@
               <button type="submit">Call</button>
             </form>
             <form method="post" action="/game/<%= id %>/bet" id="bet-form">
+              <input name="bet-amount" id="bet-amount" required>
               <button type="submit">Bet</button>
             </form>
             <form method="post" action="/game/<%= id %>/fold" id="fold-form">
