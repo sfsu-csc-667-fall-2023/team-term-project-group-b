@@ -13,9 +13,8 @@ const handler = async (request, response) => {
     const user_socket_id = await Users.getUserSocket(userId);
     
     const gameState = await Games.initialize(parseInt(gameId));
-    console.log(gameState);
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, gameState);
-    io.to(user_socket_id).emit(GAME_CONSTANTS.USER_STATE_UPDATED, gameState);
+    io.to(user_socket_id.sid).emit(GAME_CONSTANTS.USER_STATE_UPDATED, gameState);
     io.to(gameState.game_socket_id).emit(`game:deleteChat:${gameId}`);
 
     response.status(200).send();
