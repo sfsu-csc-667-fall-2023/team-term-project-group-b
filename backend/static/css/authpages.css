@@ -1,110 +1,158 @@
 body {
-  margin-top: 30px;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #15812c;
+  background-image: url("https://i.imgur.com/qnrahdN.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: white;
+  font-family: 'Nova Square', sans-serif;
+  font-family: 'VT323', monospace;
 }
 
-.registerTitle {
+.container{
+  border-radius: 10px;
+  /*border-color: white;
+  border-style: solid;*/
+  background-color: white;
   text-align: center;
-  font-size: 25px;
-  margin-top: 5px;
-}
-
-.loginTitle {
-  text-align: center;
-  font-size: 25px;
-}
-
-.loginPage {
-  margin-top: 110px;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-button {
-  width: 100%;
-  padding: 12px 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-.container {
-  width: 382px;
-  overflow: hidden;
-  margin: auto;
-  padding: 50px;
-  background-color: rgb(220, 219, 219);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
-}
-
-.error-container{
-  width: 450px;
-  overflow: hidden;
-  margin: auto;
-  padding: 20px;
-  background-color: rgb(220, 219, 219);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.loginbtn {
-  color: red;
-  padding: 24px 15px;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgb(220, 219, 219);
-  width: 33%;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 1%;
-  justify-content: center; 
-  align-items: center; 
-}
-
-.submitbtn {
-  color: red;
-  padding: 24px 15px;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgb(220, 219, 219);
-}
-
-.topnav {
-  position: fixed;
-  top: 6%;
-  left: 3%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.active {
-  color: black;
-  font-size: 18px;
-  margin-top: 8px;
-  text-decoration: none;
-}
-
-.logout {
+  height: 400px;
+  width: 500px;
+  padding: 10px;
   position: absolute;
-  top: 6%;
-  right: 3%;
-  padding: 14px 16px;
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
 }
+
+.logo{
+  position: absolute;
+  left: 50% !important;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+
+}
+
+.home-button{
+  position: absolute;
+  left: 50% !important;
+  top: 70%;
+  -webkit-transform: translate(-50%, -50%);
+  
+}
+
+
+/* try to create a shadow on the image or just use a diff image or do it manually
+
+.logo-div{
+  box-shadow: 4px 4px 4px #000000,
+   6px 6px 6px #000000,
+   8px 8px 8px #000000,
+   10px 10px 10px #000000,
+   12px 12px 12px #000000,
+   14px 14px 14px #000000;
+
+} */
+
+.header{
+  size: 100px;
+  font-size: 40px;
+  margin-bottom: 10px !important;
+}
+
+.input{
+  padding:10px;
+  margin:10px 0;
+  border: 2px solid #eee;
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 20px;
+  background: #fff;
+  color: #525865;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.45;
+  outline: none;
+  padding: 0.6em 1.45em 0.7em;
+  -webkit-transition: .18s ease-out;
+  -moz-transition: .18s ease-out;
+  -o-transition: .18s ease-out;
+  transition: .18s ease-out;
+}
+.input:hover {
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+.input:focus {
+  color: #4b515d;
+  border: 1px solid #B8B6B6;
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.button {
+  margin-left: 100px;
+  touch-action: manipulation;
+  width: 100px;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  text-transform: inherit;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 40px !important;
+}
+
+.button:focus {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.button {
+  touch-action: manipulation;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.button {
+  touch-action: manipulation;
+  position: relative;
+  border: 1px solid #0360df;
+  border-radius: 50px;
+  padding: 12px 16px;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px #116ee7;
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  width: 80%;
+  height: 40%;
+  background-image: linear-gradient(to bottom, #f4feff, transparent);
+  opacity: 0.75;
+}
+.button:hover {
+  transform: scale(1.04);
+}
+.button:active {
+  border-color: #0048d5;
+  transform: scale(0.96);
+  background-color: #0048d5;
+}
+

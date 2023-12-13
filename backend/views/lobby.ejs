@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/chat.css" />
-    <link rel="stylesheet" href="../css/lobby.css" />
+    <!-- <link rel="stylesheet" href="../css/chat.css" />
+    <link rel="stylesheet" href="../css/lobby.css" /> -->
     <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <script src="/scripts/chat.js" defer></script>
     <script src="/scripts/games.js" defer></script>
     <script src="/scripts/lobby.js" defer></script>
+    <script src="/scripts/user_profile.js" defer></script>
 </head>
 
 <body>
@@ -31,18 +32,27 @@
     </div>
     <h1 class="lobbyTitle">Lobby</h1>
     <div class="block">
-        <h2><%= user.username %></h2>
+        <!--<h2 ><%= user.username %></h2>
+        <a href="/user_profile"> <%= user.username %></a>-->
+
+        <div class="play-container">
+            <a href="/profile/:id">
+              <button  href="/profile/:id" class="button"><%= user.username %></button>
+            </a>
+        
         <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
         <section id="game-list">
             <h2>Current Games</h2>
             <section id="my-game-list" data-user="<%= user.id %>">
-                <ul>
+                <ul class="lobul">
+                    <div class="lobby-item">
                     <% currentGames.forEach(game => { %>
-                    <li>
-                        <a href="/game/<%= game.id %>/join">Join <%= game.id %></a>
+                    <li >
+                        <a class="lobby-item" href="/game/<%= game.id %>/join">Join <%= game.id %></a>
                     </li>
                     <% }) %>
-                </ul>
+                </div>
+            
             </section>
         </section>
         <form action="/game/create" method="get">
