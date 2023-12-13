@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/homepage.css" />
+    <!-- <link rel="stylesheet" href="../css/homepage.css" /> -->
+    <link rel="stylesheet" href="../css/authpages.css" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
@@ -15,31 +17,32 @@
       <div class="logout">
         <a class = "logout" href="/auth/logout">LOGOUT</a>
     </div>
-    <div class="play-container">
+    <div class="home-button">
       <a href="/lobby">
-        <button class="playButton">Play</button>
+        <button class="button">PLAY NOW</button>
       </a>
     </div>
     <% } else { %>
-    <div class="login-container">
+    <div class="home-button">
       <a href="/auth/login">
-        <button class="playButton">Login</button>
+        <button class="button">LOG IN</button>
       </a>
-    </div>
-    <div class="register-container">
+   
       <a href="/auth/signup">
-        <button class="playButton">Sign Up</button>
+        <button class="button">SIGN UP</button>
       </a>
     </div>
     <% } %>
-    <a href="/">
+    <div class="logo-div">
+      <a href="/">
       <img
-        class="titleLogo center"
-        src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo_thumb/8a6026f2e24c76678c283322a527f58f.png"
-        width="539"
-        height="331"
+        class="logo"
+        src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
+        height="600"
         alt="Title Logo"
       />
     </a>
+  </div>
+    
   </body>
 </html>
