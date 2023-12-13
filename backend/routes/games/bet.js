@@ -8,17 +8,26 @@ const route = "/:id/bet";
 const handler = async (request, response) => {
   const io = request.app.get("io");
     const { id: textGameId } = request.params;
-    const textBetAmout = request.body['bet-amount'];
+    let textBetAmout = request.body['bet-amount'];
+    // is undefined?
+    console.log(textBetAmout);
     const { id: userId } = request.session.user;
     const user_socket_id = await Users.getUserSocket(userId);
     const gameId = parseInt(textGameId);
     const betAmount = parseInt(textBetAmout);
+    const playerChips = await Games.getUserChips(gameId, userId);
+    console.log(betAmount, playerChips);
+    if(betAmount > playerChips){
+        //not working: emitToChat("Not enough chips", user_socket_id, io);
+        response.status(200).send();
+    }
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
-    // check if bets have been placed 
     if(isPlayerInGame && isPlayerTurn){
-        const playerSeat = await Games.getPlayerSeat(gameId, userId);
-        const nextPlayer = await Games.updateTurn(gameId, playerSeat);
+
+      //update Turn
+      const playerSeat = await Games.getPlayerSeat(gameId, userId);
+      await Games.updateTurn(gameId, playerSeat);
     }
     response.status(200).send();
 }

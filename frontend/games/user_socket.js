@@ -22,7 +22,27 @@ const configure = (socketId) => {
   })
   
   userSocket.on(GAME_CONSTANTS.START, renderPlayerState);
+  
+  userSocket.on(`chat:message`, ({ from, timestamp, message, hash }) => {
+    appendMessage(from, message, hash);
+  });
 };
+function appendMessage(from, message, hash){
+    const div = document.createElement("a")
+    div.classList.add("message");
+    const img = document.createElement("img");
+    img.src = `https://gravatar.com/avatar/${hash}?s=30`;
+    img.alt = `Avatar of ${from}`;
+
+    const p = document.createElement("p");
+    p.classList.add("message-text");
+    p.innerText = message;
+   
+    div.appendChild(img);
+    div.appendChild(p);
+
+    chatWindow.appendChild(div);
+}
 
 const renderPlayerState = ({chips, hand, seat}) => {
   playerHand.innerHTML = "";
