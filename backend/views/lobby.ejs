@@ -61,11 +61,12 @@
       </section>
     </section>
 
+    <div class="profile">
+
+    <h2 class="username"><%= user.username %></h2>
     <!-- username container -->
     <div class="right-info">
-      <h2 ><%= user.username %></h2>
     
-
 
     <!-- chat container -->
     <div class="chat-container">
@@ -80,12 +81,15 @@
     </div>
     <!-- chat container -->
 
-      <form action="/game/create" method="get">
-        <button type="submit" class="button">CREATE GAME</button>
-      </form>
+      
 
     </div>
     <!-- username container -->
+
+    <form action="/game/create" method="get">
+      <button type="submit" class="button">CREATE GAME</button>
+    </form>
+  </div>
 
   </div>
   <!--to contain everything-->

@@ -1,60 +1,115 @@
 body {
-    background-image: url("https://i.imgur.com/qnrahdN.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-color: white;
-    font-family: 'Nova Square', sans-serif;
-    font-family: 'VT323', monospace;
-  }
+  background-image: url("https://i.imgur.com/qnrahdN.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: white;
+  font-family: 'Nova Square', sans-serif;
+  font-family: 'VT323', monospace;
+}
 
+.message {
+  display: flex;
+  /* max-width: 180px; */
+  align-items: center;
+  margin-bottom: 10px;
+  width:200;
+  padding: 0 10px; /* Adjust the padding as needed */
+}
 
-  /* width */
+.profile-picture {
+  width: 40px; /* Adjust the width of the profile picture as needed */
+  height: 40px; /* Adjust the height of the profile picture as needed */
+  border-radius: 50%;
+}
+
+.message-text {
+  display: flex;
+  text-align: left;
+  background-color: #e5e5e5; /* Adjust background color for messages */
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+  /* SCROLL BAR */
 ::-webkit-scrollbar {
     width: 20px;
-  }
+}
   
   /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
    
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #b1b1b1; 
-    border-radius: 10px;
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b1b1b1; 
+  border-radius: 10px;
+}
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #0360df; 
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1; 
+}
 
-  .game-menu{
-    border-radius: 10px;
-    /*border-color: white;
-    border-style: solid;*/
-    background-color: white;
-    text-align: center;
-    height: 400px;
-    width: 500px;
-    padding: 10px;
-    position: absolute;
-    left: 40%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    overflow-y: auto;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
-  }
 
-  .right-info{
-border-radius: 10px;
-  /*border-color: white;
-  border-style: solid;*/
+/* Box that contains all the join games */
+.game-menu{
+  border-radius: 10px;
   background-color: white;
   text-align: center;
   height: 400px;
+  width: 500px;
+  padding: 10px;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+}
+
+.profile{
+  /* background-color: #0048d5; */
+  width: 300px;
+  height: 425px;
+  text-align: center;
+  position: fixed;
+  float: right;
+  right: 27%; 
+  top: 26%;
+  
+}
+
+
+.username{
+  margin-bottom: 18px;
+  color: white;
+  background-color: #1061d3;
+  padding: 10px 0px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+
+}
+
+.chat-container{
+  background-color: white;
+  border-radius: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+}
+
+/* MESSAGE CONTAINER */
+/* .right-info{
+  border-radius: 10px;
+  /*border-color: white;
+  border-style: solid;
+  background-color: white;
+  text-align: center;
+  height: 300px;
   width: 200px;
   padding: 10px;
   position: fixed;
@@ -62,23 +117,26 @@ border-radius: 10px;
   right: 27%; 
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
+  overflow-y: scroll;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
-  }
+} */
 
-  .header{
-    size: 10px !important;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 10px !important;
-    text-align: left;
-  }
+/* OPEN GAMES HEADING TEXT */
+.header{
+  size: 10px !important;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px !important;
+  text-align: left;
+}
 
-  .message-input{
+/* CHAT BOX TO ENTER AND SEND TEXT */
+.message-input{
     padding:10px;
   margin:10px 0;
   border: 2px solid #eee;
-  width: 150px;
+  width: 200px;
   height: 20px;
   font-size: 20px;
   border-radius: 20px;
@@ -96,6 +154,8 @@ border-radius: 10px;
   -o-transition: .18s ease-out;
   transition: .18s ease-out;
 }
+
+
 .message-input:hover {
   box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
@@ -105,27 +165,12 @@ border-radius: 10px;
   box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-  /* .lobby-item{
-    background-color: #0048d5;
-    padding: 10px;
-    margin: 10px;
-  } */
+/* BUTTONS BELOW */
 
-  .lobby-game{
-    /* margin:20px; */
-    /* text-decoration: none;
-   
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    padding: 10px; 
-    margin: 100px;
-    font-size: 10px;
-    text-align: center;
-    width: 100px !important; */
-    /* background-color: red(255, 255, 255, 0.8); */
-    width: 100px;
-    margin: 25px;
-    
+/* THE JOIN BUTTONS */
+.lobby-game{
+  width: 100px;
+  margin: 25px;
   background-color: #A6CAF3;
   border-radius: 100px;
   box-shadow: rgba(44, 102, 225, 0.2) 0 -25px 18px -14px inset,rgba(44, 102, 225, .15) 0 1px 2px,rgba(44, 102, 225, .15) 0 2px 4px,rgba(44, 102, 225, .15) 0 4px 8px,rgba(44,  102, 225, .15) 0 8px 16px,rgba(44,  102, 225, .15) 0 16px 32px;
@@ -149,67 +194,68 @@ border-radius: 10px;
   transform: scale(1.05) rotate(-1deg);
 }
 
-  .button {
-    margin-left: 100px;
-    width: 200px;
-    touch-action: manipulation;
-    -webkit-appearance: none;
-    appearance: none;
-    vertical-align: middle;
-    color: inherit;
-    font: inherit;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    text-align: center;
-    text-transform: inherit;
-    -webkit-tap-highlight-color: transparent;
-    margin-top: 10px !important;
-  }
+/* CREATE GAME BUTTONS */
+.button {
+  margin-left: 100px;
+  width: 300px;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  text-transform: inherit;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 10px !important;
+}
   
-  .button:focus {
-    outline-style: solid;
-    outline-color: transparent;
-  }
-  
-  .button {
-    touch-action: manipulation;
-    margin: 3px;
-    cursor: pointer;
-  }
-  
-  .button {
-    touch-action: manipulation;
-    position: relative;
-    border: 1px solid #0360df;
-    border-radius: 50px;
-    padding: 12px 16px;
-    background-color: #0360df;
-    background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
-    box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    text-shadow: 0 1px 1px #116ee7;
-    transition-property: border-color, transform, background-color;
-    transition-duration: 0.2s;
-  }
-  .button::after {
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50px;
-    width: 80%;
-    height: 40%;
-    background-image: linear-gradient(to bottom, #f4feff, transparent);
-    opacity: 0.75;
-  }
-  .button:hover {
-    transform: scale(1.04);
-  }
-  .button:active {
-    border-color: #0048d5;
-    transform: scale(0.96);
-    background-color: #0048d5;
-  }
+.button:focus {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.button {
+  touch-action: manipulation;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.button {
+  touch-action: manipulation;
+  position: relative;
+  border: 1px solid #0360df;
+  border-radius: 50px;
+  padding: 12px 16px;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px #116ee7;
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  width: 80%;
+  height: 40%;
+  background-image: linear-gradient(to bottom, #f4feff, transparent);
+  opacity: 0.75;
+}
+.button:hover {
+  transform: scale(1.04);
+}
+.button:active {
+  border-color: #0048d5;
+  transform: scale(0.96);
+  background-color: #0048d5;
+}
