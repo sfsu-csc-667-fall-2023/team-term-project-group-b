@@ -8,7 +8,9 @@ const configure = (socketId) => {
 
   console.log("gameSocket configured!!");
 
-  gameSocket.on(GAME_CONSTANTS.START);
+  gameSocket.on(GAME_CONSTANTS.START, data => {
+    console.log({event: GAME_CONSTANTS.USER_ADDED, data });
+  })
   gameSocket.on(GAME_CONSTANTS.DEALER_STATE_UPDATED, renderDealerHand);
 
   gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
