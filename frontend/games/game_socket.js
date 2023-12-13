@@ -41,11 +41,8 @@ const updateHand = (handContainer, cardList) => {
   cardList.forEach(({ suit, value }) => {
     const container = cardTemplate.content.cloneNode(true);
     const div = container.querySelector(".card");
-
     div.classList.add(`suits-${suit}`);
     div.classList.add(`value-${value}`);
-    //div.innerText = `${value}`;
-
     handContainer.appendChild(div);
   })
 }
@@ -55,9 +52,8 @@ const stateUpdated = ({ game_id, current_player, players }) => { //updates ui wh
   console.log({ dealerCards/*, playerCards*/});
 
   updateHand(dealerHand, dealerCards);
+  console.log(current_player);
 
-  
-  //console.log({ data });
 };
 
 export {configure};

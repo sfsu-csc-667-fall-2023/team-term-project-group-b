@@ -21,13 +21,14 @@ const configure = (socketId) => {
   console.log("User socket configured");
 
   userSocket.on(GAME_CONSTANTS.USER_STATE_UPDATED, ({gameState}) =>{
-    userStateUpdated(gameState);
+    console.log("after update");
+    userStateUpdated();
   });
 };
 
 const playerHand = document.querySelector(".player-hand");
 
-const userStateUpdated = ({ game_id, current_player, players, user_socket_id }) => { //updates ui when there is change in game_state
+const userStateUpdated = () => { //updates ui when there is change in game_state
   console.log("inside userStateUpdated");
   //console.log(request.session.user.id);
   //const playerCards = players.find((player) => player.user_id === request.session.user.id).hand;
