@@ -13,9 +13,9 @@ const {updateTurnTable} = require("./games/update-turn-table");
 const {getUserCount} = require("./games/get-user-count");
 const {getUserChips} = require("./games/get-user-chips");
 const {createGameState} = require("./games/create-game-state");
-const {updateUserChips} = require("./games/update-user-chips");
+const {updatePlayerChips} = require("./games/update-player-chips");
 const {getPotForRound} = require("./games/get-pot-for-round");
-
+const {getPot} = require("./games/get-pot");
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -101,6 +101,9 @@ module.exports = {
   updateTurn,
   getUserCount,
   getUserChips,
-  updateUserChips,
-  getPotForRound
+  updatePlayerChips,
+  getPotForRound,
+  updatePlayerChips,
+  getPot,
+  
 };
