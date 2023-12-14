@@ -3,6 +3,15 @@ body {
   flex-direction: row;
 }
 
+
+.logo{
+  position: absolute;
+  left: 50% !important;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+
+}
+
 .username{
     margin-top: 120px;
     margin-left: 20px;

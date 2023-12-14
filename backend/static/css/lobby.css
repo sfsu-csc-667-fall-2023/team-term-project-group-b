@@ -8,11 +8,24 @@ body {
   font-family: 'VT323', monospace;
 }
 
+
+/* note for later
+- style chat window id seperate to fix
+the message box not being at bottom prolem 
+힘들어 */
+
+
+.TT{
+  /* background-color: blue; */
+  height:230px;
+  overflow-y: scroll;
+}
 .message {
+  /* background-color: red; */
   display: flex;
   /* max-width: 180px; */
   align-items: center;
-  margin-bottom: 10px;
+
   width:200;
   padding: 0 10px; /* Adjust the padding as needed */
 }
@@ -28,6 +41,7 @@ body {
   text-align: left;
   background-color: #e5e5e5; /* Adjust background color for messages */
   padding: 10px;
+  margin-bottom: 12px !important;
   border-radius: 10px;
   margin-left: 10px;
 }
@@ -98,7 +112,6 @@ body {
   background-color: white;
   border-radius: 10px;
   height: 300px;
-  overflow-y: scroll;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
 }
 
