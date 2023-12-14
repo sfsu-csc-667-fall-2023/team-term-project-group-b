@@ -1,3 +1,4 @@
+
 import { configure as gameSocketConfig } from "./game_socket";
 import { configure as userSocketConfig } from "./user_socket";
 
@@ -6,22 +7,37 @@ const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 
 const startButton = document.querySelector("#start");
-const holdButton = document.querySelector("#hold-form");
-const callButton = document.querySelector("#call-form");
-const betButton = document.querySelector ("#bet-form");
-const foldButton = document.querySelector("#fold-form");
+const holdForm = document.querySelector("#hold-form");
+const callForm = document.querySelector("#call-form");
+const betForm = document.querySelector ("#bet-form");
+const foldForm = document.querySelector("#fold-form");
 
 gameSocketConfig(gameSocketId);
 userSocketConfig(userSocketId);
 
 const handleUserAction = async (event) => {
   event.preventDefault();
-
   const { action, method } = event.target.attributes;
   fetch(action.value, { method: method.value });
   return false;
 };
 
+const handleUserActionBet = async (event) => {
+  event.preventDefault();
+  const { action, method } = event.target.attributes;
+  const formData = new FormData(event.target);
+  const formDataObject = {};
+  formData.forEach((value, key) => {
+    formDataObject[key] = value;
+  });
+  console.log(formDataObject);
+  fetch(action.value, { 
+   method: method.value, 
+   body: JSON.stringify({ formDataObject}),
+   headers: {"Content-Type": "application/json"
+  },
+});
+}
 
 
 startButton.addEventListener("click", (event) => {
@@ -32,7 +48,7 @@ startButton.addEventListener("click", (event) => {
   });
 });
 
-callButton.addEventListener("submit", handleUserAction);
-holdButton.addEventListener("submit", handleUserAction);
-betButton.addEventListener("submit", handleUserAction);
-foldButton.addEventListener("submit", handleUserAction);
+callForm.addEventListener("submit", handleUserAction);
+holdForm.addEventListener("submit", handleUserAction);
+betForm.addEventListener("submit", handleUserActionBet);
+foldForm.addEventListener("submit", handleUserAction);
