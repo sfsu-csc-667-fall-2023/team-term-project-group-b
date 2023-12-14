@@ -9,6 +9,9 @@ module.exports = {
     UPDATE_CURRENT_TURN: "games:turn_update",
     UPDATE_CURRENT_POT: "games:pot_update",
     UPDATE_MIN_BET: "games:min_bet_update",
-    UPDATE_PLAYER_POT: "games:player_pot_update",
-    UPDATE_PLAYER_STATUS: "games:player_status_update",
+    UPDATE_PLAYER_CHIPS: "user:player_chips_update",
+    UPDATE_PLAYER_STATUS: "user:player_status_update",
+    ERROR_MESSAGE: "user:error",
+    SUCCESSFUL_PLAYER_ACTION_MESSAGE: "user:sucessful_action",
+    
   };

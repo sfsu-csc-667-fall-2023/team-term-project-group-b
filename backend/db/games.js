@@ -17,7 +17,9 @@ const {updatePlayerChips} = require("./games/update-player-chips");
 const {getPotForRound} = require("./games/get-pot-for-round");
 const {getPot} = require("./games/get-pot");
 const {updateMaxBetRound} = require("./games/update-max-bet");
-const {getMaxBetRound} = require("./games/get-max-bet-round");
+const {getMaxBet} = require("./games/get-max-bet");
+const {getRound} = require("./games/get-round");
+const {updateRound} = require("./games/update-round");
 
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
@@ -29,9 +31,7 @@ const SET_WINNER = `UPDATE games SET winner=$1 WHERE id=$2`;
 // Table: game_state
 const UPDATE_TOTAL_PLAYERS = `UPDATE game_state SET player_count=$1 WHERE game_id=$2 RETURNING player_count`;
 
-const UPDATE_POT  = `UPDATE game_state SET pot=$1 WHERE game_id=$2 RETURNING pot`;
-const UPDATE_ROUND =`UPDATE game_state SET round=$1 WHERE game_id=$2 RETURNING round`;
-
+const UPDATE_POT  = `UPDATE game_state SET pot=$1 WHERE game_id=$2`;
 // Table: game_users
 const GET_GAME_USERS = "SELECT user_id FROM game_users WHERE game_id=$1";
 const USERS_IN_GAME = `SELECT * FROM game_users, users WHERE game_users.game_id = $1 AND game_users.user_id = users.id`;
@@ -45,7 +45,7 @@ const SET_USER_CHIPS = `UPDATE game_users SET chips=100 WHERE game_id=$1 AND use
 // games
 const create = (gameSocketId) => db.one(CREATE, [gameSocketId]);
 const getAvailableGames = () => db.any(GET_AVAILABLE_GAMES);
-const getGameSocket = (gameId) => db.one(GET_GAME_SOCKET, gameId);
+const getGameSocket = (gameId) => db.one(GET_GAME_SOCKET, gameId).then(result => result.game_socket_id);
 const isInitialized = (gameId) => db.one(IS_INITIALIZED, [gameId]);
 const setWinner = (gameId, userId) => db.one(SET_WINNER, [userId, gameId])
 
@@ -77,8 +77,7 @@ const setUserChips = (gameId, userId) => db.one(SET_USER_CHIPS, [gameId, userId]
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // game_state
-const updatePot = (gameId, pot) => {db.one(UPDATE_POT, [pot, gameId])};
-const updateRound = (gameId, roundNumber) => {db.one(UPDATE_ROUND, [roundNumber, gameId])};    
+const updatePot = (gameId, pot) => {db.none(UPDATE_POT, [pot, gameId])};
 
 module.exports = {
   getCards,
@@ -109,5 +108,6 @@ module.exports = {
   updatePlayerChips,
   getPot,
   updateMaxBetRound,
-  getMaxBetRound,
+  getMaxBet,
+  getRound,
 };
