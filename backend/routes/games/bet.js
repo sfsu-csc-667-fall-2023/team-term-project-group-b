@@ -27,7 +27,10 @@ const handler = async (request, response) => {
 
       const playerSeat = await Games.getPlayerSeat(gameId, userId);
       await Games.updateTurn(gameId, playerSeat);
-      // emit to game socket: next seat
+
+      const user_socket_id = await Users.getUserSocket(userId);
+      const game_socket_id = await Games.getGameSocket(gameId);
+      //io.to(game_socket_id).emit(GAME_CONSTANTS.)
     }
     response.status(200).send();
 }
@@ -43,11 +46,9 @@ async function completeBetting (gameId, userId, playerChips, betAmount, io){
       const user_socket_id = await Users.getUserSocket(userId);
       const game_socket_id = await Games.getGameSocket(gameId);
 
-      //update user chips: io.to(user_socket_id).emit(GAME_CONSTANTS.)
+      io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_POT, playerChips);
       io.to(game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, betAmount);
-
-      // emit to user socket: updated chips 
-      //emit to game socket: updatedPot
+      io.to(game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_POT, updatedPot);
 }
 
 module.exports = { method, route, handler };
