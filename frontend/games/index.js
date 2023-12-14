@@ -1,3 +1,4 @@
+
 import { configure as gameSocketConfig } from "./game_socket";
 import { configure as userSocketConfig } from "./user_socket";
 
@@ -16,12 +17,27 @@ userSocketConfig(userSocketId);
 
 const handleUserAction = async (event) => {
   event.preventDefault();
-
   const { action, method } = event.target.attributes;
   fetch(action.value, { method: method.value });
   return false;
 };
 
+const handleUserActionBet = async (event) => {
+  event.preventDefault();
+  const { action, method } = event.target.attributes;
+  const formData = new FormData(event.target);
+  const formDataObject = {};
+  formData.forEach((value, key) => {
+    formDataObject[key] = value;
+  });
+  console.log(formDataObject);
+  fetch(action.value, { 
+   method: method.value, 
+   body: JSON.stringify({ formDataObject}),
+   headers: {"Content-Type": "application/json"
+  },
+});
+}
 
 
 startButton.addEventListener("click", (event) => {
@@ -34,5 +50,5 @@ startButton.addEventListener("click", (event) => {
 
 callForm.addEventListener("submit", handleUserAction);
 holdForm.addEventListener("submit", handleUserAction);
-betForm.addEventListener("submit", handleUserAction);
+betForm.addEventListener("submit", handleUserActionBet);
 foldForm.addEventListener("submit", handleUserAction);
