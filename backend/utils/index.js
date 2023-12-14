@@ -20,6 +20,7 @@ const sortCards = ( tableCards, playerCards ) => {
 const evalHand = ( tableCards, playerCards ) => {
 
     const sorted = sortCards( tableCards, playerCards );
+    
 
     return {
         //player: 
