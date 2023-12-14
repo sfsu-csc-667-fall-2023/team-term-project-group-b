@@ -9,6 +9,7 @@ const turnDiv = document.querySelector(".turn");
 const roundDiv = document.querySelector(".round");
 const potDiv = document.querySelector(".pot");
 const betDiv = document.querySelector(".bet");
+const generalMessagesDiv = document.querySelector(".generalMessages");
 const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
 
@@ -31,9 +32,10 @@ const configure = (socketId) => {
 
   gameSocket.on(GAME_CONSTANTS.UPDATE_MIN_BET, updateMinBet);
 
-  gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
-    console.log({event: GAME_CONSTANTS.USER_ADDED, data });
-  })
+  gameSocket.on(GAME_CONSTANTS.GAME_ACTION, renderMessage);
+
+  gameSocket.on(GAME_CONSTANTS.USER_ADDED, renderMessage);
+
 
   gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, data =>{
     console.log(data);
@@ -69,7 +71,6 @@ const updateCurrentTurn = ({username}) => {
 }
 
 const updateCurrentPot = ({pot}) => {
-  console.log(pot);
   potDiv.innerHTML = "Game Pot: " + pot;
 }
 
@@ -77,6 +78,8 @@ const updateMinBet = ({bet}) => {
   betDiv.innerHTML = "Minimum Bet: " + bet;
 }
 
-
+const renderMessage = ({message})=>{
+  generalMessagesDiv.innerHTML = message;
+}
 
 export {configure};

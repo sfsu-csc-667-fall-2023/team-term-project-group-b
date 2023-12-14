@@ -1,4 +1,5 @@
 const { Games, Users } = require("../../db");
+const GAME_CONSTANTS = require("../../../constants/games");
 const { isInitialized } = require("../../db/games");
 
 const method = "get";
@@ -10,6 +11,10 @@ const handler = async (request, response) => {
 
     const gameSocketId= await Games.getGameSocket(gameId);
     const userSocketId = await Users.getUserSocket(userId);
+
+    const io = request.app.get("io");
+    const message = `${username} joined the game`
+    io.to(gameSocketId).emit(GAME_CONSTANTS.USER_ADDED, {message: message});
 
     const result = await isInitialized(gameId);
     
