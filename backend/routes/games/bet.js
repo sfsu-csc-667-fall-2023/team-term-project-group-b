@@ -8,9 +8,9 @@ const route = "/:id/bet";
 const handler = async (request, response) => {
   const io = request.app.get("io");
     const { id: textGameId } = request.params;
-    let textBetAmout = request.body['bet-amount'];
+    let textBetAmout = request.body['bet-form'];
     // is undefined?
-    console.log(textBetAmout);
+    console.log(request.body);
     const { id: userId } = request.session.user;
     const user_socket_id = await Users.getUserSocket(userId);
     const gameId = parseInt(textGameId);
