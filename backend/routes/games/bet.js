@@ -1,8 +1,7 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
 const {emitGameUpdates} = require("../../utils/emit-game-updates");
-const{emitSucessPlayerAction} = require("../../utils/emit-sucessful-action");
-const{emitErrorMessage} = require("../../utils/emit-error-message");
+const {emitErrorMessage} = require("../../utils/emit-error-message");
 const method = "post";
 const route = "/:id/bet";
 
@@ -15,8 +14,9 @@ const handler = async (request, response) => {
     const gameId = parseInt(textGameId);
     const betAmount = parseInt(textBetAmout);
 
-    const user_socket_id = await Users.getUserSocket(userId);
     let playerChips = await Games.getUserChips(gameId, userId);
+    const playerUsername = await Users.getUsername(userId);
+    const user_socket_id = await Users.getUserSocket(userId);
     const maxBetRound = await Games.getMaxBet(gameId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
@@ -32,12 +32,15 @@ const handler = async (request, response) => {
 
       const gameState = await Games.getState(gameId);
       emitGameUpdates(io, gameState.game_socket_id, gameState);
-      emitSucessPlayerAction(io, user_socket_id, `You Bet: ${betAmount}`);
       io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - betAmount});
+      const message = `${playerUsername} bet ${betAmount} chips`
+      io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
 
       //////check round
       
       //////      
+    }else{
+      emitErrorMessage(io, user_socket_id, "It is not your turn")
     }
     
     response.status(200).send();

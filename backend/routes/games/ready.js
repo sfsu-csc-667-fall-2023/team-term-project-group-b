@@ -30,7 +30,7 @@ const handler = async (request, response) => {
             io.to(player.sid).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: userState.chips});
     });
 
-    console.log(gameState.current_player_username);
+
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_ROUND, {round:1});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_POT, {pot:0});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, {username: gameState.current_player_username});

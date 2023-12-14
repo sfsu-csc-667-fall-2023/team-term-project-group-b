@@ -5,10 +5,10 @@ let userSocket;
 const user_socket_id = document.querySelector("#user-socket-id").value;
 const cardTemplate = document.querySelector("#card");
 const playerHand = document.querySelector(".player-hand");
-const playerChips = document.querySelector(".playerChips");
+const playerChipsDiv = document.querySelector(".playerChips");
 const errorMessageDiv = document.querySelector(".errorMessage");
 const sucessMessageDiv = document.querySelector(".sucessMessage");
-const statusDiv = document.querySelector(".status");
+const generalMessagesDiv = document.querySelector(".generalMessages");
 
 const configure = (socketId) => {
   userSocket = io({ query: { id: socketId } });
@@ -50,7 +50,7 @@ const renderPlayerState = ({chips, hand, seat}) => {
 };
 
 const updatePlayerChips = ({chips}) => {
-  playerChips.innerHTML = "Player Chips: " + chips
+  playerChipsDiv.innerHTML = "Player Chips: " + chips
 }
 
 const updatePlayerStatus = ({}) => {
