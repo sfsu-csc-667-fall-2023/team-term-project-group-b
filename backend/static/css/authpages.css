@@ -205,6 +205,25 @@ body {
   bottom: 50px !important;
   left: 210px !important;
   /* align-items: center !important; */
-
 }
 
+.error-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 27%;
+  background-color: rgb(170, 2, 2);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0 4px px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}

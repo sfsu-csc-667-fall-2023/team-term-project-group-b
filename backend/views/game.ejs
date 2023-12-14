@@ -6,12 +6,13 @@
   <!-- <link rel="stylesheet" href="../css/chat.css" />
   <link rel="stylesheet" href="../css/homepage.css" /> -->
   <link rel="stylesheet" href="../css/game.css" />
+  <link rel="stylesheet" href="../css/authpage.css" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Play</title>
   <script src="/scripts/chat.js" defer></script>
   <script src="/scripts/games.js" defer></script>
-
+  <script src="/scripts/fade.js" defer></script>
 </head>
 
 
@@ -44,7 +45,7 @@
           <div class="bet">Minimum Bet: </div>
           <div class="hand dealer"></div>
           <div class="hand player-hand"></div>
-          <div class="errorMessage" style="color: red; background-color: white;"></div>
+          <div id="errorContainer" class="error-container" style="color: red; background-color: white;"></div>
           <div class="generalMessages" style="color: blueviolet; background-color: white;"></div>
 
           <div class="game-buttons">

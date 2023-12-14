@@ -5,10 +5,16 @@
     <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/scripts/fade.js" defer></script>
+    
     <title>Register</title>
+
 </head>
 
 <body>
+  <% if (locals.error) { %>
+    <p id="errorContainer" class="error-container"><%= locals.error %></p>
+  <% }%>
 
   <!-- LOGO TO HOME IN CORNER -->
   <div>
@@ -62,13 +68,6 @@
     <br>
     <a href="/auth/login"> Returning User? </a> 
     <br>
-
-    <% if (locals.error) { %>
-      <p style="color: red; padding: 10px;"><%= locals.error %></p>
-      <% }%>
-      <% if (user) { %>
-        <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
-    <% }%>
           
     <button type="submit" class="button signinbutton">SIGN UP</button>
       
