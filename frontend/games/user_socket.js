@@ -27,6 +27,7 @@ const configure = (socketId) => {
     appendMessage(from, message, hash);
   });
 };
+
 function appendMessage(from, message, hash){
     const div = document.createElement("a")
     div.classList.add("message");
