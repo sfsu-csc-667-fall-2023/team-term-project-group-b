@@ -1,6 +1,64 @@
 body {
-  display: flex;
-  flex-direction: row;
+  background-image: url("https://imgur.com/pLv6MOT.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100px !important;
+  background-color: white;
+  font-family: 'Nova Square', sans-serif;
+  font-family: 'VT323', monospace;
+}
+
+/* CHAT BOX TO ENTER AND SEND TEXT */
+.message-input{
+  padding:10px;
+margin:10px 0;
+border: 2px solid #eee;
+width: 200px;
+height: 20px;
+font-size: 20px;
+border-radius: 20px;
+background: #fff;
+color: #525865;
+border: 1px solid #d1d1d1;
+box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+font-family: inherit;
+font-size: 1em;
+line-height: 1.45;
+outline: none;
+padding: 0.6em 1.45em 0.7em;
+-webkit-transition: .18s ease-out;
+-moz-transition: .18s ease-out;
+-o-transition: .18s ease-out;
+transition: .18s ease-out;
+}
+
+
+.message-input:hover {
+box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+.message-input:focus {
+color: #4b515d;
+border: 1px solid #B8B6B6;
+box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-container{
+  background-color: white;
+  border-radius: 10px;
+  height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+}
+
+
+
+/* 
+.logo{
+  position: absolute;
+  left: 50% !important;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+
 }
 
 .username{
@@ -19,26 +77,26 @@ body {
 .chat-container {
     box-sizing: border-box;
     background-color: white;
-    padding: 20px; /* Adjust padding as needed */
-    width: 100%; /* Adjust the width as needed */
+    padding: 20px; /* Adjust padding as needed 
+    width: 100%; /* Adjust the width as needed 
     margin: auto;
     margin-left: 100px;
     display: flex;
     flex-direction: column;
-    flex: 1; /* Allow chat container to take up all available vertical space */
+    flex: 1; /* Allow chat container to take up all available vertical space 
   }
   
   .chat-title {
     margin-top: 0;
-    font-size: 24px; /* Adjust font size as needed */
+    font-size: 24px; /* Adjust font size as needed 
   }
   
   #chat-window {
-    max-height: 680px; /* Set a maximum height for the chat window */
+    max-height: 680px; /* Set a maximum height for the chat window 
     min-height: 680px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ccc; /* Add a border to separate chat window visually */
-    padding: 10px; /* Add padding inside the chat window */
+    overflow-y: auto; /* Enable vertical scrolling 
+    border: 1px solid #ccc; /* Add a border to separate chat window visually
+    padding: 10px; /* Add padding inside the chat window 
     margin-top: auto;
   }
   
@@ -51,18 +109,18 @@ body {
     max-width: 180px;
     align-items: center;
     margin-bottom: 10px;
-    padding: 0 10px; /* Adjust the padding as needed */
+    padding: 0 10px; /* Adjust the padding as needed 
   }
   
   .profile-picture {
-    width: 40px; /* Adjust the width of the profile picture as needed */
-    height: 40px; /* Adjust the height of the profile picture as needed */
+    width: 40px; /* Adjust the width of the profile picture as needed 
+    height: 40px; /* Adjust the height of the profile picture as needed 
     border-radius: 50%;
   }
   
   .message-text {
     display: flex;
-    background-color: #e5e5e5; /* Adjust background color for messages */
+    background-color: #e5e5e5; /* Adjust background color for messages 
     padding: 10px;
     border-radius: 10px;
     margin-left: 10px;
@@ -119,7 +177,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-}
+} */
 
 div.card {
   width: 190px;

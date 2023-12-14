@@ -10,71 +10,74 @@
 
 <body>
 
-    <div>
-      <a href="/">
-        <a href="/">
-          <img
-            class="titleLogo center"
-            src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
-            height="140"
-            alt="Title Logo"
-            style="padding-left: 50px;" 
-            style="padding-top: 40px;"
-          />
-        </a>
-      <!-- <a class="active" href="/">Back To Homepage</a> -->
-    </div>
-    <div class="container">
-        <form
-          name="createAcc"
-          onsubmit="return validateForm()"
-          action="/auth/signup"
-          method="POST"
-          enctype="application/x-www-form-urlencoded"
-        >
-          <section class="container">
-            <h1 class="header">Create New Account</h1>
-            <!--<label for="username"> Username </label>-->
-            <input class="intput" type="text" id="username" placeholder="username" name="username" required >
-            <br>
-  
-            <!--<label for="email"> Email </label>-->
-            <input class="intput" type="email" id="email" placeholder="email" name="email" required >
-            <br>
-  
-            <!--<label for="passWord"> Password </label>-->
-            <input class="intput" type="password" id="password" placeholder="password" name="password" required >
-            <br>
-  
-            <!--<label for="confirmedPassWord"> Confirm Password </label>-->
-            <input
-              class="intput"
-              type="password"
-              id="confirmedPassword"
-              placeholder="confirm password"
-              name="confirmedPassword"
-              required
-            >
-            <br>
-            <a href="/auth/login"> Returning User? </a> 
-            <br>
+  <!-- LOGO TO HOME IN CORNER -->
+  <div>
+    <a href="/">
+      <img
+        src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
+        height="140"
+        alt="Title Logo"
+        style="padding-left: 50px;" 
+        style="padding-top: 40px;"
+      />
+    </a>
+  </div>
+  <!-- ---------------------- -->
 
-            <% if (locals.error) { %>
-              <p style="color: red; padding: 10px;"><%= locals.error %></p>
-              <% }%>
-              <% if (user) { %>
-                <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
-            <% }%>
-              
 
-            <button type="submit" class="button">SIGN UP</button>
-          </section>
-         
+  <!-- CONTAINER FOR FORM ITEMS -->
+  <div class="container signincont">
+
+    <form
+      name="createAcc"
+      onsubmit="return validateForm()"
+      action="/auth/signup"
+      method="POST"
+      enctype="application/x-www-form-urlencoded"
+    >
+    
+    <h1 class="header">Create New Account</h1>
+    
+    <input class="input signininput" type="text" id="username" placeholder="username" name="username" required >
+    <br>
+
+        
+    <input class="input signininput" type="email" id="email" placeholder="email" name="email" required >
+    <br>
+
+      
+    <input class="input signininput" type="password" id="password" placeholder="password" name="password" required >
+    <br>
+
+     
+    <input
+      class="input signininput"
+      type="password"
+      id="confirmedPassword"
+      placeholder="confirm password"
+      name="confirmedPassword"
+      required
+    >
+
+    <br>
+    <a href="/auth/login"> Returning User? </a> 
+    <br>
+
+    <% if (locals.error) { %>
+      <p style="color: red; padding: 10px;"><%= locals.error %></p>
+      <% }%>
+      <% if (user) { %>
+        <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
+    <% }%>
           
-          <div class="errorMSG">
-            <span class="errorMSG" id="message"> &nbsp; </span>
-          </div>
-        </form>
-      </div>
+    <button type="submit" class="button signinbutton">SIGN UP</button>
+      
+    <div class="errorMSG">
+      <span class="errorMSG" id="message"> &nbsp; </span>
+    </div>
+   </form>
+  </div>
+  <!-- ---------------------- -->
+
 </body>
 </html>

@@ -1,131 +1,267 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #FAF9F6 !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;  
+  background-image: url("https://i.imgur.com/qnrahdN.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: white;
+  font-family: 'Nova Square', sans-serif;
+  font-family: 'VT323', monospace;
 }
 
-.block {
-    padding: 100px;
-    /*background-color: white; */
-    border-style: solid !important ;
-    border-width: 10px;
-    border-color:#355E3B ;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 11%;
-    width: 60%;
+.TT{
+  /* background-color: blue; */
+  height:230px;
+  overflow-y: scroll;
+}
+.message {
+  /* background-color: red; */
+  display: flex;
+  /* max-width: 180px; */
+  align-items: center;
+
+  width:200;
+  padding: 0 10px; /* Adjust the padding as needed */
 }
 
-.scroll-box {
-    overflow-y: auto;
-    max-height: 300px; 
+.profile-picture {
+  width: 40px; /* Adjust the width of the profile picture as needed */
+  height: 40px; /* Adjust the height of the profile picture as needed */
+  border-radius: 50%;
 }
 
-  .topnav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; 
+.message-text {
+  display: flex;
+  text-align: left;
+  background-color: #e5e5e5; /* Adjust background color for messages */
+  padding: 10px;
+  margin-bottom: 12px !important;
+  border-radius: 10px;
+  margin-left: 10px;
 }
 
-.lobbyTitle {
-    position: absolute;
-    top: 12%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2em; 
+  /* SCROLL BAR */
+::-webkit-scrollbar {
+    width: 20px;
 }
-
-.lobul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #2d5033;
-    border-radius: 10px;
-    
+  
+  /* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
 }
-
-.lobby-item{
-    float: center;
-    color:#FAF9F6;
-    text-decoration: none;
-    border-width: 5px;
-    display: block;
    
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    margin: 5px;
-    background: #355E3B;
-     /*color: #FAF9F6;*/
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b1b1b1; 
+  border-radius: 10px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1; 
+}
+
+
+/* Box that contains all the join games */
+.game-menu{
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  height: 400px;
+  width: 500px;
+  padding: 10px;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+}
+
+.profile{
+  /* background-color: #0048d5; */
+  width: 300px;
+  height: 425px;
+  text-align: center;
+  position: fixed;
+  float: right;
+  right: 27%; 
+  top: 26%;
+  
+}
+
+
+.username{
+  margin-bottom: 18px;
+  color: white;
+  background-color: #1061d3;
+  padding: 10px 0px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
 
 }
-.lobby-item:hover{
-    background-color: #2d5033;
+
+.chat-container{
+  background-color: white;
+  border-radius: 10px;
+  height: 300px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
 }
 
-.body-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .chat-container {
-    box-sizing: border-box;
-    background-color: white;
-    padding: 20px; /* Adjust padding as needed */
-    width: 100%; /* Adjust the width as needed */
-    margin: auto;
-    margin-left: 100px;
-    display: flex;
-    flex-direction: column;
-    flex: 1; /* Allow chat container to take up all available vertical space */
-  }
-  
-  .chat-title {
-    margin-top: 0;
-    font-size: 24px; /* Adjust font size as needed */
-  }
-  
-  #chat-window {
-    max-height: 680px; /* Set a maximum height for the chat window */
-    min-height: 680px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ccc; /* Add a border to separate chat window visually */
-    padding: 10px; /* Add padding inside the chat window */
-    margin-top: auto;
-  }
-  
-  .message-input {
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  .message {
-    display: flex;
-    max-width: 180px;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 0 10px; /* Adjust the padding as needed */
-  }
-  
-  .profile-picture {
-    width: 40px; /* Adjust the width of the profile picture as needed */
-    height: 40px; /* Adjust the height of the profile picture as needed */
-    border-radius: 50%;
-  }
-  
-  .message-text {
-    display: flex;
-    background-color: #e5e5e5; /* Adjust background color for messages */
-    padding: 10px;
-    border-radius: 10px;
-    margin-left: 10px;
-  }
+/* MESSAGE CONTAINER */
+/* .right-info{
+  border-radius: 10px;
+  /*border-color: white;
+  border-style: solid;
+  background-color: white;
+  text-align: center;
+  height: 300px;
+  width: 200px;
+  padding: 10px;
+  position: fixed;
+  float: right;
+  right: 27%; 
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+} */
 
+/* OPEN GAMES HEADING TEXT */
+.header{
+  size: 10px !important;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px !important;
+  text-align: left;
+}
+
+/* CHAT BOX TO ENTER AND SEND TEXT */
+.message-input{
+    padding:10px;
+  margin:10px 0;
+  border: 2px solid #eee;
+  width: 200px;
+  height: 20px;
+  font-size: 20px;
+  border-radius: 20px;
+  background: #fff;
+  color: #525865;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.45;
+  outline: none;
+  padding: 0.6em 1.45em 0.7em;
+  -webkit-transition: .18s ease-out;
+  -moz-transition: .18s ease-out;
+  -o-transition: .18s ease-out;
+  transition: .18s ease-out;
+}
+
+
+.message-input:hover {
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+.message-input:focus {
+  color: #4b515d;
+  border: 1px solid #B8B6B6;
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* BUTTONS BELOW */
+
+/* THE JOIN BUTTONS */
+.lobby-game{
+  width: 100px;
+  margin: 25px;
+  background-color: #A6CAF3;
+  border-radius: 100px;
+  box-shadow: rgba(44, 102, 225, 0.2) 0 -25px 18px -14px inset,rgba(44, 102, 225, .15) 0 1px 2px,rgba(44, 102, 225, .15) 0 2px 4px,rgba(44, 102, 225, .15) 0 4px 8px,rgba(44,  102, 225, .15) 0 8px 16px,rgba(44,  102, 225, .15) 0 16px 32px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 15px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.lobby-game:hover {
+  box-shadow: rgba(44,102,225,.35) 0 -25px 18px -14px inset,rgba(44,102,225,.25) 0 1px 2px,rgba(44,102,225,.25) 0 2px 4px,rgba(44,102,225,.25) 0 4px 8px,rgba(44,102,225,.25) 0 8px 16px,rgba(44,102,225,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+/* CREATE GAME BUTTONS */
+.button {
+  margin-left: 100px;
+  width: 300px;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  text-transform: inherit;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 10px !important;
+}
+  
+.button:focus {
+  outline-style: solid;
+  outline-color: transparent;
+}
+
+.button {
+  touch-action: manipulation;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.button {
+  touch-action: manipulation;
+  position: relative;
+  border: 1px solid #0360df;
+  border-radius: 50px;
+  padding: 12px 16px;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 1px #116ee7;
+  transition-property: border-color, transform, background-color;
+  transition-duration: 0.2s;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  width: 80%;
+  height: 40%;
+  background-image: linear-gradient(to bottom, #f4feff, transparent);
+  opacity: 0.75;
+}
+.button:hover {
+  transform: scale(1.04);
+}
+.button:active {
+  border-color: #0048d5;
+  transform: scale(0.96);
+  background-color: #0048d5;
+}
