@@ -5,29 +5,24 @@ const chatWindow = document.querySelector("#chat-window");
 const chatSocket = io();
 
 const roomId = document.querySelector("#room-id").value;
-const userSocketId = document.querySelector("#user-socket-id").value;
 
 chatSocket.on(`chat:message:${roomId}`, ({ from, timestamp, message, hash }) => {
-      appendMessage(from, message, hash);
-    },
-  );
-
-function appendMessage(from, message, hash){
-      const div = document.createElement("a")
+      //const div = document.querySelector("#chat-message").content.cloneNode(true);
+      const div = document.createElement("div")
       div.classList.add("message");
+      //const img = div.querySelector("img");
       const img = document.createElement("img");
       img.src = `https://gravatar.com/avatar/${hash}?s=30`;
       img.alt = `Avatar of ${from}`;
   
       const p = document.createElement("p");
-      p.classList.add("message-text");
       p.innerText = message;
-     
       div.appendChild(img);
       div.appendChild(p);
   
       chatWindow.appendChild(div);
-}
+    },
+  );
 
 document.querySelector("#message").addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {
