@@ -39,6 +39,11 @@
       <% } %>
         <section id="game-board">
           <!-- Add inline style to the "cards" class -->
+          <div class="turn">Current Player Turn: </div>
+          <div class="round">Round Number: </div>
+          <div class="pot">Current Pot: </div>
+          <div class="personal">Player Pot: </div>
+          <div class="bet">Minimum Bet: </div>
           <div class="hand dealer"></div>
           <div class="hand player-hand"></div>
           
@@ -57,6 +62,9 @@
               <button type="submit">Fold</button>
             </form>
           </div>
+
+          <div class="status">Status: </div>
+
         </section>
         <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
         <input type="hidden" name="user-socket-id" id="user-socket-id" value="<%= userSocketId %>" />

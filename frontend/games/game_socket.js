@@ -2,8 +2,14 @@ import { io } from "socket.io-client";
 const GAME_CONSTANTS = require("../../constants/games");
 
 let gameSocket;
+
 const cardTemplate = document.querySelector("#card");
 const dealerHand = document.querySelector(".dealer");
+const turnDiv = document.querySelector(".turn");
+const roundDiv = document.querySelector(".round");
+const potDiv = document.querySelector(".pot");
+const betDiv = document.querySelector(".bet");
+const statusDiv = document.querySelector(".status");
 const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
 
@@ -15,7 +21,16 @@ const configure = (socketId) => {
   gameSocket.on(GAME_CONSTANTS.START, data => {
     console.log({event: GAME_CONSTANTS.START, data });
   })
+
   gameSocket.on(GAME_CONSTANTS.DEALER_STATE_UPDATED, renderDealerHand);
+
+  gameSocket.on(GAME_CONSTANTS.UPDATE_ROUND, updateRound);
+
+  gameSocket.on(GAME_CONSTANTS.UPDATE_CURRENT_TURN, updateCurrentTurn);
+
+  gameSocket.on(GAME_CONSTANTS.UPDATE_CURRENT_POT, updateCurrentPot);
+
+  gameSocket.on(GAME_CONSTANTS.UPDATE_MIN_BET, updateMinBet);
 
   gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
     console.log({event: GAME_CONSTANTS.USER_ADDED, data });
@@ -43,5 +58,21 @@ const renderDealerHand = ({hand}) => { //updates ui when there is change in game
   })
 
 };
+
+const updateRound = ({round}) => {
+
+}
+
+const updateCurrentTurn = ({turn}) => {
+
+}
+
+const updateCurrentPot = ({pot}) => {
+
+}
+
+const updateMinBet = ({bet}) => {
+
+}
 
 export {configure};
