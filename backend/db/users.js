@@ -8,6 +8,8 @@ const ADD_USER =
 const SIGN_USER_IN = "SELECT * FROM users WHERE username=$1";
 const GET_USER_SOCKET =
   "SELECT sid FROM session WHERE sess->'user'->>'id'='$1' ORDER BY expire DESC LIMIT 1";
+const GET_CURRENT_PLAYER_USERNAME =
+  "SELECT username FROM users WHERE id=$1";
 
 const username_exists = (username) =>{
   db
@@ -25,7 +27,10 @@ const find_by_username = (username) => db.one(SIGN_USER_IN, [username]);
 
 const getUserSocket = (userId) => db.one(GET_USER_SOCKET, [userId]).then(result => result.sid);
 
+const getCurrentUsername = (userId) => db.one(GET_CURRENT_PLAYER_USERNAME, [userId]).then(result => result.username);
+
 module.exports = {
+  getCurrentUsername,
   email_exists,
   username_exists,
   create,

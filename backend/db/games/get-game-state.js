@@ -11,6 +11,7 @@ const getState = async (gameId) => {
   const { game_socket_id } = await getGame(gameId);
   const current_turn =  await getCurrentTurn(gameId);
   const current_player = await getPlayerBySeat(gameId, current_turn);
+  //const current_player_username = await get
   const users = await getUsers(gameId);
   const dealtCards = await getCards(gameId);
   console.log({ dealtCards });
