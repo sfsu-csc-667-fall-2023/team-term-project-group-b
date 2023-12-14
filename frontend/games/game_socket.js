@@ -9,7 +9,6 @@ const turnDiv = document.querySelector(".turn");
 const roundDiv = document.querySelector(".round");
 const potDiv = document.querySelector(".pot");
 const betDiv = document.querySelector(".bet");
-const statusDiv = document.querySelector(".status");
 const roomId = document.querySelector("#room-id").value;
 const startButton = document.querySelector("#start");
 
@@ -60,19 +59,19 @@ const renderDealerHand = ({hand}) => { //updates ui when there is change in game
 };
 
 const updateRound = ({round}) => {
-
+  roundDiv.innerHTML = "Current round: " + round;
 }
 
 const updateCurrentTurn = ({turn}) => {
-
+  turnDiv.innerHTML = "Current Turn " + turn;
 }
 
 const updateCurrentPot = ({pot}) => {
-
+  potDiv.innerHTML = "Current Pot " + pot;
 }
 
 const updateMinBet = ({bet}) => {
-
+  betDiv.innerHTML = "Current Bet " + bet;
 }
 
 export {configure};
