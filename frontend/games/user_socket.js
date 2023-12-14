@@ -25,7 +25,9 @@ const configure = (socketId) => {
   
   userSocket.on(GAME_CONSTANTS.START, renderPlayerState);
 
-  userSocket.on(GAME_CONSTANTS.START, updatePlayerPot);
+  userSocket.on(GAME_CONSTANTS.UPDATE_PLAYER_POT, updatePlayerPot);
+
+  userSocket.on(GAME_CONSTANTS.UPDATE_PLAYER_STATUS, updatePlayerStatus);
   
   userSocket.on(`chat:message`, ({ from, timestamp, message, hash }) => {
     appendMessage(from, message, hash);
