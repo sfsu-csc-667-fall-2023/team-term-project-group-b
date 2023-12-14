@@ -7,7 +7,6 @@ const cardTemplate = document.querySelector("#card");
 const playerHand = document.querySelector(".player-hand");
 const playerChipsDiv = document.querySelector(".playerChips");
 const errorMessageDiv = document.querySelector(".errorMessage");
-const sucessMessageDiv = document.querySelector(".sucessMessage");
 const generalMessagesDiv = document.querySelector(".generalMessages");
 
 const configure = (socketId) => {
@@ -61,8 +60,5 @@ const renderError = ({message}) => {
   errorMessageDiv.innerHTML = message;
 }
 
-const renderSucess = ({message}) => {
-  sucessMessageDiv.innerHTML = message;
-}
 
 export { configure };
