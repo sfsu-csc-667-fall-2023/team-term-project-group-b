@@ -34,7 +34,7 @@ const handler = async (request, response) => {
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_POT, {pot:0});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, {username: gameState.current_player_username});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, {bet:0});
-    io.to(gameState.game_socket_id).emit(`game:deleteChat:${gameId}`);
+    io.to(gameState.game_socket_id).emit(`game:deleteStart:${gameId}`);
 
     response.status(200).send();
 };

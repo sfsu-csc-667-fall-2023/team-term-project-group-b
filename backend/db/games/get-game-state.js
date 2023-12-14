@@ -31,6 +31,7 @@ const getState = async (gameId) => {
     current_player,
     current_player_username: currentUserName,
     players: users,
+    round: round,
   };
 };
 

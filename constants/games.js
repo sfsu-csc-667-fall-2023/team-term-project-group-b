@@ -11,4 +11,5 @@ module.exports = {
     UPDATE_MIN_BET: "games:min_bet_update",
     UPDATE_PLAYER_POT: "games:player_pot_update",
     UPDATE_PLAYER_STATUS: "games:player_status_update",
+    ERROR_NOT_ENOUGH_CHIPS: "games:error_not_enough_chips",
   };

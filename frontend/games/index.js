@@ -30,6 +30,7 @@ const handleUserActionBet = async (event) => {
   formData.forEach((value, key) => {
     formDataObject[key] = value;
   });
+  
   console.log(formDataObject);
   fetch(action.value, { 
    method: method.value, 
