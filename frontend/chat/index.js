@@ -8,16 +8,15 @@ const roomId = document.querySelector("#room-id").value;
 
 chatSocket.on(`chat:message:${roomId}`, ({ from, timestamp, message, hash }) => {
       //const div = document.querySelector("#chat-message").content.cloneNode(true);
-      const div = document.createElement("a")
+      const div = document.createElement("div")
       div.classList.add("message");
+      //const img = div.querySelector("img");
       const img = document.createElement("img");
       img.src = `https://gravatar.com/avatar/${hash}?s=30`;
       img.alt = `Avatar of ${from}`;
   
       const p = document.createElement("p");
-      p.classList.add("message-text");
       p.innerText = message;
-     
       div.appendChild(img);
       div.appendChild(p);
   

@@ -7,13 +7,14 @@ const {setGameCards } = require("./set-game-cards");
 const {getPlayerBySeat} = require("./get-player-by-seat");
 const {setCurrentPlayer} = require("./set-current-player");
 const { getUserChips } = require("./get-user-chips");
+const { getPlayerSeat } = require("./get-player-seat");
+const { getUsername } = require("../users");
 
 const initialize = async (gameId) => {
     const {game_socket_id} = await getGame(gameId);
-    const firstPlayer = await getPlayerBySeat(gameId, 1).then(({ user_id }) =>
+    const firstPlayer = await getPlayerBySeat(gameId, 1).then(user_id  =>
       setCurrentPlayer(gameId, user_id));
-
-    console.log({firstPlayer});
+    const currentUserName = await getUsername(firstPlayer["turn"]);
 
     await createShuffledDeck(gameId);
     const users = await getUsers(gameId)
@@ -41,20 +42,19 @@ const initialize = async (gameId) => {
           user.hand.push(cards[index]);
           await setGameCards(gameId, user.user_id, cards[index].card_id);
         }
-        user.chips = await getUserChips(gameId, user.user_id).then(({ chips }) => chips);
-        //set the seat
+        user.chips = await getUserChips(gameId, user.user_id);
+        user.seat = await getPlayerSeat(gameId, user.user_id);
         card_index += 2;
-        //console.log({user});
       }
     }
-
+    console.log(users);
     await setInitialized(gameId);
 
     return {
       game_id: gameId,
       game_socket_id,
-      //user_socket_id,
       current_player: firstPlayer,
+      current_player_username: currentUserName,
       players: users,
     };
 

@@ -1,32 +1,73 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
-
+const {emitGameUpdates} = require("../../utils/emit-game-updates");
+const {emitErrorMessage} = require("../../utils/emit-error-message");
 const method = "post";
 const route = "/:id/bet";
 
-//player enters in amt to bet, mustr match or exceed current bet
-//after bet, checks current seat(current player), and cycles
-//checks if we are at the end of turn 3
-  //at end of turn three, run hand evaluator middleware
-
 const handler = async (request, response) => {
-const io = request.app.get("io");
+  const io = request.app.get("io");
+    const { id: textGameId } = request.params;
+    let {formDataObject} = request.body;
+    const { id: userId } = request.session.user;
+    const textBetAmout = formDataObject['bet-amount'];
+    const gameId = parseInt(textGameId);
+    const betAmount = parseInt(textBetAmout);
 
-  const { id: textGameId } = request.params;
-  const { id: userId } = request.session.user;
+    let playerChips = await Games.getUserChips(gameId, userId);
+    const playerUsername = await Users.getUsername(userId);
+    const user_socket_id = await Users.getUserSocket(userId);
+    const maxBetRound = await Games.getMaxBet(gameId);
+    const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
+    const isPlayerTurn = await Games.checkTurn(gameId, userId);
 
-  const gameId = parseInt(textGameId);
+    if(isPlayerInGame && isPlayerTurn){
+      const valid = validateBet(user_socket_id, betAmount, playerChips, maxBetRound, io);
+      if(!valid){
+        return response.status(200).send();
+      }
+      await completeBetting(gameId, userId, playerChips, betAmount, io);
+      const playerSeat = await Games.getPlayerSeat(gameId, userId);
+      await Games.updateTurn(gameId, playerSeat);
 
-  // Check if player in game
-  const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
-  console.log({ isPlayerInGame, gameId, userId });
+      const gameState = await Games.getState(gameId);
+      emitGameUpdates(io, gameState.game_socket_id, gameState);
+      io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - betAmount});
+      const message = `${playerUsername} bet ${betAmount} chips`
+      io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
 
-  
-  // Broadcast
-  /*const state = await Games.getState(gameId);
-  io.to(state.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, state);
-  
-  response.status(200).send();*/
+      //////check round
+      
+      //////      
+    }else{
+      emitErrorMessage(io, user_socket_id, "It is not your turn")
+    }
+    
+    response.status(200).send();
 }
 
+
+async function completeBetting (gameId, userId, playerChips, betAmount, io){
+      playerChips = playerChips - betAmount;
+      let updatedPot = await Games.getPot(gameId);
+      updatedPot = updatedPot + betAmount;
+      await Games.updatePlayerChips(gameId, userId, playerChips);
+      await Games.updatePot(gameId, updatedPot);
+      await Games.updateMaxBetRound(gameId, betAmount + 20);
+}
+
+function validateBet(user_socket_id, betAmount, playerChips, maxBetRound, io){
+    const hasEnoughChips = betAmount <= playerChips;
+    let valid = true;
+    if(!hasEnoughChips){
+      emitErrorMessage(io, user_socket_id, "Not enough chips to place the bet");
+      valid = false;
+  }
+    const isValidBet = (betAmount >= maxBetRound) || (betAmount == playerChips) //all in: valid
+    if(!isValidBet){
+      emitErrorMessage(io, user_socket_id, `Bet must be higher than: ${maxBetRound}`);
+      valid = false;
+    }
+    return valid
+  }
 module.exports = { method, route, handler };

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/chat.css" />
     <link rel="stylesheet" href="../css/lobby.css" />
     <!-- <link rel="stylesheet" href="../css/authpages.css" /> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lobby</title>
+    
     <script src="/scripts/chat.js" defer></script>
-    <script src="/scripts/games.js" defer></script>
     <script src="/scripts/lobby.js" defer></script>
     <!-- <script src="/scripts/user_profile.js" defer></script> -->
+    
 </head>
 
 <body>
@@ -29,6 +31,27 @@
        <!-- <h1 class="lobbyTitle">Lobby</h1> -->
        
         <!-- <a href="/user_profile"> <%= user.username %></a>-->
+
+</head>
+
+<body>
+    <div class="topnav">
+      <a href="/">
+        <img
+          class="titleLogo center"
+          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
+          width="120"
+          height="70"
+          alt="Title Logo"
+        />
+      </a>
+      <span class="active">Back To Homepage</span>
+    </div>
+    <h1 class="lobbyTitle">Lobby</h1>
+    
+    <div class="block">
+        <!--<h2 ><%= user.username %></h2>
+        <a href="/user_profile"> <%= user.username %></a>-->
 
         <!-- <div class="play-container">
             <a href="/profile/:id">
@@ -76,6 +99,7 @@
       <article id="chat-window"></article>
 
     </div>
+ 
       <!-- mesage input container -->
       
         <input class="message-input" type="text" name="message" id="message" placeholder="Chat with others!" />
@@ -97,9 +121,15 @@
   </div>
   <!--to contain everything-->
 
-
 </body>
 
-  
+    <div class="chat-container">
+      <h2 class="chat-title">Chat</h2>
+      <article id="chat-window"></article>
+      <div class="message-input">
+        <input type="text" name="message" id="message" placeholder="Message" />
+      </div>
+    </div>
 
+</body>
 </html>
