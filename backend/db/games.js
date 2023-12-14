@@ -16,6 +16,9 @@ const {createGameState} = require("./games/create-game-state");
 const {updatePlayerChips} = require("./games/update-player-chips");
 const {getPotForRound} = require("./games/get-pot-for-round");
 const {getPot} = require("./games/get-pot");
+const {updateMaxBetRound} = require("./games/update-max-bet");
+const {getMaxBetRound} = require("./games/get-max-bet-round");
+
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -105,5 +108,6 @@ module.exports = {
   getPotForRound,
   updatePlayerChips,
   getPot,
-  
+  updateMaxBetRound,
+  getMaxBetRound,
 };
