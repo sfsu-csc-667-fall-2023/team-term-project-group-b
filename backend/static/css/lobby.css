@@ -8,13 +8,6 @@ body {
   font-family: 'VT323', monospace;
 }
 
-
-/* note for later
-- style chat window id seperate to fix
-the message box not being at bottom prolem 
-힘들어 */
-
-
 .TT{
   /* background-color: blue; */
   height:230px;

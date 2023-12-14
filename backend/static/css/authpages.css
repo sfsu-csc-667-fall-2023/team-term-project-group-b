@@ -136,7 +136,7 @@ body {
 .button {
   margin-left: 100px;
   touch-action: manipulation;
-  width: 100px !important;
+  width: 110px !important;
   -webkit-appearance: none;
   appearance: none;
   vertical-align: middle;
