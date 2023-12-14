@@ -5,6 +5,8 @@ let userSocket;
 const user_socket_id = document.querySelector("#user-socket-id").value;
 const cardTemplate = document.querySelector("#card");
 const playerHand = document.querySelector(".player-hand");
+const personalDiv = document.querySelector(".personal");
+const statusDiv = document.querySelector(".status");
 
 const configure = (socketId) => {
   userSocket = io({ query: { id: socketId } });
@@ -22,6 +24,8 @@ const configure = (socketId) => {
   })
   
   userSocket.on(GAME_CONSTANTS.START, renderPlayerState);
+
+  userSocket.on(GAME_CONSTANTS.START, updatePlayerPot);
   
   userSocket.on(`chat:message`, ({ from, timestamp, message, hash }) => {
     appendMessage(from, message, hash);
@@ -56,6 +60,14 @@ const renderPlayerState = ({chips, hand, seat}) => {
   })
 
 };
+
+const updatePlayerPot = ({}) => {
+
+}
+
+const updatePlayerStatus = ({}) => {
+
+}
 
 
 export { configure };
