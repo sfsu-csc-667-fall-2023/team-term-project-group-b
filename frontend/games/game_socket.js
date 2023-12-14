@@ -38,8 +38,9 @@ const configure = (socketId) => {
   gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, data =>{
     console.log(data);
   });
+
   
-  gameSocket.on(`game:deleteChat:${roomId}`, () => {
+  gameSocket.on(`game:deleteStart:${roomId}`, () => {
     if (startButton) {
       startButton.remove();
     }
@@ -59,19 +60,23 @@ const renderDealerHand = ({hand}) => { //updates ui when there is change in game
 };
 
 const updateRound = ({round}) => {
-  roundDiv.innerHTML = "Current round: " + round;
+  roundDiv.innerHTML = "Round: " + round;
 }
 
 const updateCurrentTurn = ({username}) => {
-  turnDiv.innerHTML = "Current Turn: " + username;
+  console.log("next: ", username);
+  turnDiv.innerHTML = "Current Player's Turn: " + username;
 }
 
 const updateCurrentPot = ({pot}) => {
-  potDiv.innerHTML = "Current Pot: " + pot;
+  console.log(pot);
+  potDiv.innerHTML = "Game Pot: " + pot;
 }
 
 const updateMinBet = ({bet}) => {
-  betDiv.innerHTML = "Current Bet: " + bet;
+  betDiv.innerHTML = "Minimum Bet: " + bet;
 }
+
+
 
 export {configure};

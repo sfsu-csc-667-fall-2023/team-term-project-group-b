@@ -8,7 +8,7 @@ const handler = async (request, response) => {
     const {id: gameId} = request.params;
     const{id: userId, username} = request.session.user;
 
-    const{ game_socket_id: gameSocketId } = await Games.getGameSocket(gameId);
+    const gameSocketId= await Games.getGameSocket(gameId);
     const userSocketId = await Users.getUserSocket(userId);
 
     const result = await isInitialized(gameId);

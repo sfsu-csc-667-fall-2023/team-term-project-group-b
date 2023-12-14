@@ -8,13 +8,13 @@ const {getPlayerBySeat} = require("./get-player-by-seat");
 const {setCurrentPlayer} = require("./set-current-player");
 const { getUserChips } = require("./get-user-chips");
 const { getPlayerSeat } = require("./get-player-seat");
-const { getCurrentUsername } = require("../users");
+const { getUsername } = require("../users");
 
 const initialize = async (gameId) => {
     const {game_socket_id} = await getGame(gameId);
     const firstPlayer = await getPlayerBySeat(gameId, 1).then(user_id  =>
       setCurrentPlayer(gameId, user_id));
-    const currentUserName = await getCurrentUsername(firstPlayer["turn"]);
+    const currentUserName = await getUsername(firstPlayer["turn"]);
 
     await createShuffledDeck(gameId);
     const users = await getUsers(gameId)
