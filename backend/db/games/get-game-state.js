@@ -6,6 +6,7 @@ const { getPlayerBySeat } = require("./get-player-by-seat");
 const { getCurrentTurn } = require("./get-current-turn");
 const { getGame } = require("./get-game");
 const { getUsers } = require("./get-users");
+const { getCurrentUsername } = require("../users");
 
 const getState = async (gameId) => {
   const { game_socket_id } = await getGame(gameId);
