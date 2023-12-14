@@ -62,16 +62,16 @@ const updateRound = ({round}) => {
   roundDiv.innerHTML = "Current round: " + round;
 }
 
-const updateCurrentTurn = ({turn}) => {
-  turnDiv.innerHTML = "Current Turn " + turn;
+const updateCurrentTurn = ({username}) => {
+  turnDiv.innerHTML = "Current Turn: " + username;
 }
 
 const updateCurrentPot = ({pot}) => {
-  potDiv.innerHTML = "Current Pot " + pot;
+  potDiv.innerHTML = "Current Pot: " + pot;
 }
 
 const updateMinBet = ({bet}) => {
-  betDiv.innerHTML = "Current Bet " + bet;
+  betDiv.innerHTML = "Current Bet: " + bet;
 }
 
 export {configure};
