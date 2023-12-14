@@ -9,7 +9,6 @@ const handler = async (request, response) => {
     const { id: textGameId } = request.params;
     const { id: userId } = request.session.user;
     const user_socket_id = await Users.getUserSocket(userId);
-    console.log(user_socket_id);
     const gameId = parseInt(textGameId);
     const potCurrentRound = await Games.getPotForRound(gameId);
     if(potCurrentRound !== 0){
