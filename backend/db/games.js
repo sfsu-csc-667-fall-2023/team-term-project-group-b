@@ -12,7 +12,7 @@ const {updateTurn} = require("./games/update-turn")
 const {updateTurnTable} = require("./games/update-turn-table");
 const {getUserCount} = require("./games/get-user-count");
 const {getUserChips} = require("./games/get-user-chips");
-const {createGameState} = require("./games/create-game-state");
+const {addGameId} = require("./games/add-game-id");
 const {updatePlayerChips} = require("./games/update-player-chips");
 const {getPot} = require("./games/get-pot");
 const {updateMaxBetRound} = require("./games/update-max-bet");
@@ -24,6 +24,7 @@ const {getFolded} = require("./games/get-folded");
 const {setCalled} = require("./games/set-called");
 const {updateGameRound} = require("./games/update-game-round");
 const {updateGameLoop} = require("./games/update-game-loop");
+const {reInitialize} = require("./games/re-initialize");
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -43,7 +44,7 @@ const READY_COUNT = `SELECT (SELECT COUNT(*) FROM game_users WHERE game_id=$1) A
 (SELECT COUNT(*) FROM game_users WHERE game_id=$1 AND ready=true) as ready_count`;
 const ADD_USER = "INSERT INTO game_users (user_id, game_id, seat) VALUES ($1, $2, $3)";
 const IS_PLAYER_IN_GAME = `SELECT COUNT(*) FROM game_users WHERE game_id=$1 AND user_id=$2`;
-const SET_USER_CHIPS = `UPDATE game_users SET chips=200 WHERE game_id=$1 AND user_id=$2 RETURNING chips`;
+const SET_USER_CHIPS = `UPDATE game_users SET chips=$1 WHERE game_id=$2 AND user_id=$3`;
 
 // games
 const create = (gameSocketId) => db.one(CREATE, [gameSocketId]);
@@ -75,7 +76,7 @@ const addUser = (gameId, userId) => getUserCount(gameId).then(
   }
 ); 
 
-const setUserChips = (gameId, userId) => db.one(SET_USER_CHIPS, [gameId, userId]);
+const setUserChips = (gameId, userId, chips) => db.none(SET_USER_CHIPS, [chips, gameId, userId]);
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -93,7 +94,8 @@ module.exports = {
   isInitialized,
   readyPlayer,
   initialize,
-  createGameState,
+  reInitialize,
+  addGameId,
   updateRound,
   updateTurnTable,
   updatePot,

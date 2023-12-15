@@ -51,7 +51,7 @@ const handler = async (request, response) => {
       emitErrorMessage(io, user_socket_id, "It is not your turn");
     }
     
-    response.status(200).send();
+    return response.status(200).send();
 }
 
 

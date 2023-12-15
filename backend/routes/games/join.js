@@ -19,7 +19,7 @@ const handler = async (request, response) => {
     if (!userInGameAlready) {
       await Games.addUser(gameId, userId);
       await Games.readyPlayer(userId, gameId);
-      await Games.setUserChips(gameId, userId);
+      await Games.setUserChips(gameId, userId, GAME_CONSTANTS.CHIPS);
     }
   response.redirect(`/game/${gameId}`);
   }

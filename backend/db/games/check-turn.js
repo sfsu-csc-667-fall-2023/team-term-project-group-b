@@ -6,7 +6,6 @@ const checkTurn = async(gameId, userId) => {
     const seat = await getPlayerSeat(gameId, userId);
     const currentPlayerId = await getPlayerBySeat(gameId, seat);
     const currentTurn = await getCurrentTurn(gameId);
-    console.log("player making move id:", currentPlayerId, "id of actual turn: ",currentTurn);
     return currentPlayerId == currentTurn;
 }
 

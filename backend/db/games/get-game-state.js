@@ -10,6 +10,7 @@ const { getRound } = require("./get-round");
 const { getPot } = require("./get-pot");
 const {getMaxBet} = require("./get-max-bet");
 const {getDealerHand} = require("./get-dealer-hand");
+const { getUserChips } = require("./get-user-chips");
 
 const getState = async (gameId) => {
   const { game_socket_id } = await getGame(gameId);
@@ -18,16 +19,16 @@ const getState = async (gameId) => {
   const users = await getUsers(gameId);
   const dealtCards = await getCards(gameId);
   const dealerHand = await getDealerHand(gameId);
-  users.forEach((user) => {
+  users.forEach(async (user) => {
     user.hand = dealtCards.filter((card) => card.user_id === user.user_id);
     user.current_player = current_player === user.user_id;
+    user.chips = await getUserChips(gameId, user.user_id);
     if(user.user_id === -1){
       dealerHand = user.hand;
     }
   });
   const round = await getRound(gameId);
   const gamePot = await getPot(gameId);
-  console.log(gamePot);
   const minimumBet = await getMaxBet(gameId);
   return {
     game_id: gameId,
