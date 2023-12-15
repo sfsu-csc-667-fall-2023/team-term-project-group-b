@@ -32,8 +32,6 @@ const configure = (socketId) => {
 
   userSocket.on(GAME_CONSTANTS.ERROR_MESSAGE, renderError);
 
-  userSocket.on(GAME_CONSTANTS.SUCCESSFUL_PLAYER_ACTION_MESSAGE, renderSucess);
-
 };
 
 const renderPlayerState = ({chips, hand, seat}) => {

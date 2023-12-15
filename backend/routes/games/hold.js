@@ -1,7 +1,7 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
 const{emitErrorMessage} = require("../../utils/emit-error-message");
-const { emit } = require("process");
+const{emitGameUpdates} = require("../../utils/emit-game-updates");
 const method = "post";
 const route = "/:id/hold";
 
@@ -11,15 +11,9 @@ const handler = async (request, response) => {
     const { id: userId } = request.session.user;
     const user_socket_id = await Users.getUserSocket(userId);
     const gameId = parseInt(textGameId);
-    const potCurrentRound = await Games.getPotForRound(gameId);
-    const playerUsername = await Users.getUsername(userId);
-    if(potCurrentRound !== 0){
-        emitErrorMessage(io, user_socket_id, "You cannot Hold, you must bet");
-        response.status(200).send();
-        return;
-    }
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
+    const playerUsername = await Users.getUsername(userId);
     if(isPlayerInGame && isPlayerTurn){
         // check if bets have been placed 
         const roundBet = await Games.getMaxBet(gameId);
