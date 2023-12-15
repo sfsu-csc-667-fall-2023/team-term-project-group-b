@@ -27,10 +27,6 @@ const evalHand = ( tableCards, playerCards, id ) => {
 
     const sorted = combined.sort((a, b) => a.value - b.value);
 
-    //const test = [{value:6, suit: 0},{value:6, suit: 0},{value:6, suit: 0}, {value:3, suit: 0}, {value:3, suit: 0}]
-
-    //checkFull(test);
-
     let result;
 
     result = checkRoyal(sorted);
