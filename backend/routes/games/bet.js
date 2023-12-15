@@ -13,10 +13,15 @@ const handler = async (request, response) => {
     const textBetAmout = formDataObject['bet-amount'];
     const gameId = parseInt(textGameId);
     const betAmount = parseInt(textBetAmout);
-
+    
     let playerChips = await Games.getUserChips(gameId, userId);
     const playerUsername = await Users.getUsername(userId);
     const user_socket_id = await Users.getUserSocket(userId);
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      return response.status(200).send();
+    }
     const maxBetRound = await Games.getMaxBet(gameId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
@@ -41,9 +46,7 @@ const handler = async (request, response) => {
       const message = `${playerUsername} bet ${betAmount} chips`
       io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
 
-      //////check round
-      
-      //////checkHand(gameState.players)  
+      await Games.updateGameLoop(gameId, userId); 
     }else{
       emitErrorMessage(io, user_socket_id, "It is not your turn");
     }
@@ -59,6 +62,8 @@ async function completeBetting (gameId, userId, playerChips, betAmount){
       await Games.updatePlayerChips(gameId, userId, playerChips);
       await Games.updatePot(gameId, updatedPot);
       await Games.updateMaxBetRound(gameId, betAmount + GAME_CONSTANTS.ADD_MIN);
+      await Games.setCalled(gameId, userId);
+
 }
 
 function validateBet(user_socket_id, betAmount, playerChips, maxBetRound, io){

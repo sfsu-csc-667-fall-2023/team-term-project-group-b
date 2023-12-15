@@ -21,9 +21,7 @@ const initialize = async (gameId) => {
     const cards = await drawCards(gameId, users.length * 2 + 3 );
 
     users.push({ user_id: -1 });
-
     const dealer = users.find(user => user.user_id === -1);
-
     dealer.hand = [];
 
     for(let i = 0; i < 3; i++){
@@ -56,7 +54,7 @@ const initialize = async (gameId) => {
       current_player: firstPlayer,
       current_player_username: currentUserName,
       players: users,
-    };
+      };
 
   };
 module.exports = { initialize };

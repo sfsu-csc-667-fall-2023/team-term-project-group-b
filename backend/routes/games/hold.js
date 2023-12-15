@@ -16,6 +16,12 @@ const handler = async (request, response) => {
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
     const playerUsername = await Users.getUsername(userId);
 
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      return response.status(200).send();
+    }
+
     if(await Games.getFolded(gameId, userId)){
         emitErrorMessage(io, user_socket_id, "You have already folded");
         return response.status(200).send();
@@ -33,8 +39,6 @@ const handler = async (request, response) => {
         emitGameUpdates(io, gameState.game_socket_id, gameState);
         const message = `${playerUsername} held`;
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
-
-        // check round
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn")
     }

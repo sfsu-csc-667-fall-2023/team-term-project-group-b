@@ -15,6 +15,12 @@ const handler = async (request, response) => {
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
 
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      return response.status(200).send();
+    }
+    
     if(await Games.getFolded(gameId, userId)){
         emitErrorMessage(io, user_socket_id, "You have already folded");
         return response.status(200).send();
@@ -23,17 +29,15 @@ const handler = async (request, response) => {
     if(isPlayerInGame && isPlayerTurn){
         
         const playerSeat = await Games.getPlayerSeat(gameId, userId);
-        let next = await Games.updateTurn(gameId, playerSeat);
+        await Games.updateTurn(gameId, playerSeat);
         
         await Games.setFolded(gameId, userId);
         const gameState = await Games.getState(gameId);
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, 
             { username: gameState.current_player_username });
-            console.log(next);
         const message = `${playerUsername} folded`;
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
-
-        // check winner if(only 1 person hasnt folded or last round)
+        
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn");
     }

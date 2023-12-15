@@ -21,7 +21,9 @@ const {getRound} = require("./games/get-round");
 const {updateRound} = require("./games/update-round");
 const {setFolded} = require("./games/set-folded");
 const {getFolded} = require("./games/get-folded");
-
+const {setCalled} = require("./games/set-called");
+const {updateGameRound} = require("./games/update-game-round");
+const {updateGameLoop} = require("./games/update-game-loop");
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -112,5 +114,8 @@ module.exports = {
   getRound,
   setFolded,
   getFolded,
+  setCalled,
+  updateGameRound,
+  updateGameLoop,
 
 };
