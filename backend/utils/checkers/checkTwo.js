@@ -1,14 +1,23 @@
 const checkTwo = (sorted) => {
-    console.log(sorted);
-    
     for (let i = 0; i < sorted.length-1; i++) { 
         if (sorted[i].value == sorted[i+1].value) {
-            console.log("Found Pair!!!!!!");
+            if (sorted[sorted.length-1].value != sorted[i].value) {
+                return {
+                    found: 1,
+                    rank: sorted[i].value,
+                    high: sorted[sorted.length-1].value,
+                }
+            } else if (sorted[sorted.length-1].value == sorted[i].value) {
+                return {
+                    found: 1,
+                    rank: sorted[i].value,
+                    high: sorted[sorted.length-3].value,
+                }
+            }
         }
       }
-
-    return{
-
+    return {
+        found: 0,
     }
 }
 

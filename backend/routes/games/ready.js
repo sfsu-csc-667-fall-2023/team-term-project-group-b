@@ -42,6 +42,7 @@ const handler = async (request, response) => {
 
     //testing
     const winner = Check.checkWinner(gameState.players);
+    console.log(winner);
 
 
     response.status(200).send();
