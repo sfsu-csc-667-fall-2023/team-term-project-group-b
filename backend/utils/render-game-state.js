@@ -3,7 +3,6 @@ const GAME_CONSTANTS = require("../../constants/games");
 const renderGameState = async (io, gameState) =>{
     let userState;
     gameState.players.forEach(player =>{
-        //console.log(gameState.game_socket_id);
         userState = {
             chips: player.chips,
             hand: player.hand,
@@ -12,9 +11,11 @@ const renderGameState = async (io, gameState) =>{
         if(player.user_id === -1){
             io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: userState.hand});
         }
-        else
+        else{
             io.to(player.sid).emit(GAME_CONSTANTS.START, userState);
             io.to(player.sid).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: userState.chips});
+            console.log(userState.chips);
+        }
     });
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_ROUND, {round:1});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_POT, {pot:0});

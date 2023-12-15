@@ -50,9 +50,9 @@ pgm.createTable("games", {
 // Create "game_state" table
 pgm.createTable("game_state", {
   game_id: { type: "int", notNull: true , unique: true},
-  round: { type: "int", notNull: true },
-  turn: {type: "int"},
-  player_count: "int",
+  round: { type: "int", notNull: true, default: 1},
+  turn: {type: "int", default: 0},
+  player_count: {type: "int", default: 0},
   pot: {type:"int", notNull: true, default: 0},
   called: {type: "boolean", default: false},
   max_bet_round: {type: "int", default: 0},
@@ -96,7 +96,6 @@ pgm.createTable("game_cards", {
   card_id: "int",
   user_id: "int",
   card_order: "int",
-  seat: "int",
 });
 
 exports.down = (pgm) => {

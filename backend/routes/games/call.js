@@ -2,6 +2,7 @@ const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
 const {emitGameUpdates} = require("../../utils/emit-game-updates");
 const {emitErrorMessage} = require("../../utils/emit-error-message");
+const { renderGameState } = require("../../utils/render-game-state");
 
 const method = "post";
 const route = "/:id/call";
@@ -39,7 +40,8 @@ const handler = async (request, response) => {
         await Games.updateTurn(gameId, playerSeat);
         
         const isNextRound = await Games.updateGameRound(gameId);
-        const gameState = await Games.getState(gameId);
+        let gameState = await Games.getState(gameId);
+        console.log("===================");
         emitGameUpdates(io, gameState.game_socket_id, gameState);
         io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - bet});
         const message = `${playerUsername} bet ${bet} chips`
@@ -49,16 +51,20 @@ const handler = async (request, response) => {
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.UPDATE_ROUND, {round: gameState.round});
             const dealerHand = gameState.dealerHand;
-            console.log(dealerHand);
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: dealerHand});
         }
-        if(gameState.round == 4){
-            // who whon? emit a message, reinit game:
+        if(gameState.round == 2){
+            await Games.reInitialize(gameId);
+            gameState = await Games.getState(gameId);
+            await renderGameState(io, gameState);
+            io.to(gameState.game_socket_id)
+            .emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: gameState.dealerHand});
         }
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn")
     }
+    return response.status(200).send();
 }
 
 async function completeCall (gameId, userId, playerChips, bet){

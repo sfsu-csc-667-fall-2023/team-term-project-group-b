@@ -83,6 +83,5 @@ httpServer.listen(PORT, () => {
 });
 
 app.use((request, response, next) => {
-  console.log(`tests request: ${request.method} ${request.url}`);
   next(createError(404));
 });

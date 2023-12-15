@@ -13,7 +13,7 @@ const handler = async (request, response) => {
     io.to(gameState.game_socket_id).emit(`game:deleteStart:${gameId}`);
 
     //testing
-    const winner = Check.checkWinner(gameState.players);
+    //const winner = Check.checkWinner(gameState.players);
     response.status(200).send();
 };
 
