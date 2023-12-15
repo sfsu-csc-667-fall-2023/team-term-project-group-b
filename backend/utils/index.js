@@ -9,6 +9,7 @@ const { checkRoyal }  = require("./checkers/checkRoyal");
 const { checkStraight }  = require("./checkers/checkStraight");
 const { checkStraightFlush }  = require("./checkers/checkStraightFlush");
 const { checkTwoPair }  = require("./checkers/checkTwoPair");
+const { NONAME } = require("dns");
 
 
 const emitToChat = (message, userSocketId, io) => {
@@ -25,14 +26,118 @@ const evalHand = ( tableCards, playerCards, id ) => {
     const combined = tableCards.concat(playerCards);
 
     const sorted = combined.sort((a, b) => a.value - b.value);
-    
-    checkTwo(sorted);
 
-    return {
-        //player: id
-        //handVal:
-        //highCard:
+    let result;
+
+    result = checkRoyal(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Royal Flush",
+            handVal:1,
+            highCard: 0,
+        }
     }
+
+    result = checkStraightFlush(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Straight Flush",
+            handVal:2,
+            highCard: 0,
+        }
+    }
+
+    result = checkFour(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Four of a Kind",
+            handVal:3,
+            highCard: 0,
+        }
+    }
+
+    result = checkFull(sorted);
+    if (result.found == 1) {
+        console.log("Full House Found");
+        return {
+            player: id,
+            winningHand:"Full House",
+            handVal:4,
+            highCard: 0,
+        }
+    }
+
+    result = checkFlush(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Flush",
+            handVal:5,
+            highCard: 0,
+        }
+    }
+
+    result = checkStraight(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Straight",
+            handVal:6,
+            highCard: 0,
+        }
+    }
+
+    result = checkThree(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Three of a Kind",
+            handVal:7,
+            highCard: 0,
+        }
+    }
+
+    result = checkTwoPair(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Two Pair",
+            handVal:8,
+            highCard: 0,
+        }
+    }
+    
+    result = checkTwo(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"Pair",
+            handVal:9,
+            highCard: 0,
+        }
+    }
+
+    result = checkHigh(sorted);
+    if (result.found == 1) {
+        return {
+            player: id,
+            winningHand:"High Card",
+            handVal:10,
+            rank:result.high,
+            highCard: 0,
+        }
+    }
+    return {
+        player: id,
+        winningHand:"-1",
+        handVal:11,
+        rank: -1,
+        highCard: 0,
+    }
+
 }
 
 const checkWinner = (players, ) => {
@@ -41,7 +146,9 @@ const checkWinner = (players, ) => {
 
     let currentWinner = {
         winnerId: -1, //default before any hands have been checked
-        handVal: 0,     //default val = 0, even highcard val =1, will overwrite
+        handVal: 12,     //default val = 12, even highcard val =1, will overwrite
+        rank: -1, 
+        winningHand: "",
         high: 0,
     };
 
@@ -50,6 +157,27 @@ const checkWinner = (players, ) => {
             const hand = player.hand;
             const id = player.user_id;
             const evaluated = evalHand(dealerCards, hand, id);
+            console.log(evaluated);
+            if( evaluated.handVal < currentWinner.handVal) {
+                currentWinner.winnerId = evaluated.player;
+                currentWinner.handVal = evaluated.handVal;
+                currentWinner.winningHand = evaluated.winningHand;
+
+            } else if (evaluated.handVal == currentWinner.handVal) {
+                if(evaluated.handVal = 9) {     //in case of pair handle this way
+                    /*if (evaluated.rank == ) {
+
+                    }*/
+                }
+                if(evaluated.high == currentWinner.high) {
+
+                }
+                /*if (evaluated.rank == ) {
+
+                }*/
+                //pairRank:
+                //check high
+            }
         }
     });
 
