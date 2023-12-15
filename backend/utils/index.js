@@ -1,4 +1,14 @@
 const { createHash } = require("crypto");
+const { checkHigh }  = require("./checkers/checkHigh");
+const { checkTwo }  = require("./checkers/checkTwo");
+const { checkThree }  = require("./checkers/checkThree");
+const { checkFour }  = require("./checkers/checkFour");
+const { checkFlush }  = require("./checkers/checkFlush");
+const { checkFull }  = require("./checkers/checkFull");
+const { checkRoyal }  = require("./checkers/checkRoyal");
+const { checkStraight }  = require("./checkers/checkStraight");
+const { checkStraightFlush }  = require("./checkers/checkStraightFlush");
+const { checkTwoPair }  = require("./checkers/checkTwoPair");
 
 
 const emitToChat = (message, userSocketId, io) => {
@@ -10,26 +20,25 @@ const emitToChat = (message, userSocketId, io) => {
     });
 };
 
-const sortCards = ( tableCards, playerCards ) => {
+const evalHand = ( tableCards, playerCards, id ) => {
 
-    return{
-        //sorted cards
-    }
-}
+    const combined = tableCards.concat(playerCards);
 
-const evalHand = ( tableCards, playerCards ) => {
-
-    const sorted = sortCards( tableCards, playerCards );
+    const sorted = combined.sort((a, b) => a.value - b.value);
     
+    checkTwo(sorted);
 
     return {
-        //player: 
+        //player: id
         //handVal:
+        //highCard:
     }
 }
 
-const checkWinner = ( gameSocketId, players, ) => {
+const checkWinner = (players, ) => {
+
     const dealerCards = players.find((player) => player.user_id === -1).hand;
+
     let currentWinner = {
         winnerId: -1, //default before any hands have been checked
         handVal: 0,     //default val = 0, even highcard val =1, will overwrite
@@ -39,7 +48,8 @@ const checkWinner = ( gameSocketId, players, ) => {
     players.forEach(player => {
         if(player.user_id != -1){
             const hand = player.hand;
-            const evaluated = evalHand(dealerCards, hand);
+            const id = player.user_id;
+            const evaluated = evalHand(dealerCards, hand, id);
         }
     });
 
@@ -47,7 +57,6 @@ const checkWinner = ( gameSocketId, players, ) => {
         currentWinner
     }
 }
-
 
 module.exports = {
     emitToChat, checkWinner,
