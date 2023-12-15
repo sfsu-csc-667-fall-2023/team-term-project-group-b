@@ -7,7 +7,6 @@ const checkTwoPair = (sorted) => {
                         found: 1,
                         pair1Rank: sorted[i].value,
                         pair2Rank: sorted[x].value,
-                        //highCard: sorted[sorted.length-1].value,
                     }
                 }
             }

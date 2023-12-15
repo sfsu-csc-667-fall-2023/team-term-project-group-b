@@ -42,7 +42,7 @@ const handler = async (request, response) => {
         
         const isNextRound = await Games.updateGameRound(gameId);
         let gameState = await Games.getState(gameId);
-        console.log("===================");
+        
         emitGameUpdates(io, gameState.game_socket_id, gameState);
         io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - bet});
         const message = `${playerUsername} bet ${bet} chips`
@@ -59,7 +59,6 @@ const handler = async (request, response) => {
             const winner = checkWinner(gameState.players, gameState.dealerHand);
             const message = `Winner: ${await Users.getUsername(winner.currentWinner.winnerId)} with hand: ${winner.currentWinner.winningHand}`;
             io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
-            console.log(winner);
             await Games.reInitialize(gameId);
             gameState = await Games.getState(gameId);
             await renderGameState(io, gameState);

@@ -11,9 +11,7 @@ const handler = async (request, response) => {
     const gameState = await Games.initialize(parseInt(gameId));
     renderGameState(io, gameState);
     io.to(gameState.game_socket_id).emit(`game:deleteStart:${gameId}`);
-
-    //testing
-    //const winner = Check.checkWinner(gameState.players);
+    
     response.status(200).send();
 };
 

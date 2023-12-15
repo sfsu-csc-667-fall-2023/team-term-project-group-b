@@ -6,9 +6,6 @@ const checkFull = (sorted) => {
                     if(sorted[x].value == sorted[x+1].value) {
                         return {
                             found: 1,
-                            //pair1Rank: sorted[i].value,
-                            //pair2Rank: sorted[x].value,
-                            //highCard: sorted[sorted.length-1].value,
                         }
                     }
                 }
@@ -16,12 +13,8 @@ const checkFull = (sorted) => {
                 for (let x = i+2; x < sorted.length-2; x++) {
                     if(sorted[x].value == sorted[x+1].value) {
                         if(sorted[x+1].value == sorted[x+2].value) {
-                            console.log("found full house");
                             return {
                                 found: 1,
-                                //pair1Rank: sorted[i].value,
-                                //pair2Rank: sorted[x].value,
-                                //highCard: sorted[sorted.length-1].value,
                             }
                         }
                     }
