@@ -12,14 +12,12 @@ username: { type: "varchar(255)", notNull: true },
 password: { type: "varchar(255)", notNull: true },
 email: { type: "varchar(255)", notNull: true },
 profile_image: "varchar(255)",
-bio: {type: "varchar(255)", default: ""},
 created_at: {
   type: "timestamp",
   notNull: true,
   default: pgm.func("now()"),
 },
 updated_at: { type: "timestamp", default: pgm.func("now()")},
-trophies: { type: "trophies"},
 });
 
 let insertQuery = `INSERT INTO users (id, username, password, email) VALUES (0, 'dealer', 'wesfssesdv', 'kmrfkr')`;
@@ -30,8 +28,6 @@ pgm.sql(insertQuery);
 
 pgm.createTable("games", {
   id: { type: "id", primaryKey: true },
-  players_allowed: { type: "int"},
-  password: { type: "varchar(100)"},
   game_socket_id: {
     type: "varchar",
     notNull: true,
@@ -54,12 +50,11 @@ pgm.createTable("games", {
 // Create "game_state" table
 pgm.createTable("game_state", {
   game_id: { type: "int", notNull: true , unique: true},
-  round: { type: "int", notNull: true },
-  turn: {type: "int"},
-  player_count: "int",
+  round: { type: "int", notNull: true, default: 1},
+  turn: {type: "int", default: 0},
+  player_count: {type: "int", default: 0},
   pot: {type:"int", notNull: true, default: 0},
-  loop_to_seat: {type: "int", default: 0},
-  pot_for_round: {type: "int", default: 0},
+  called: {type: "boolean", default: false},
   max_bet_round: {type: "int", default: 0},
 });
 
@@ -71,6 +66,7 @@ pgm.createTable("game_users", {
   seat: {type:"int", notNull: true},
   chips: { type: "int", notNull: true, default: 0},
   folded: {type:"boolean", default: false},
+  called: {type:"boolean", default: false},
 });
 
 // Create "cards" table
@@ -100,7 +96,6 @@ pgm.createTable("game_cards", {
   card_id: "int",
   user_id: "int",
   card_order: "int",
-  seat: "int",
 });
 
 exports.down = (pgm) => {

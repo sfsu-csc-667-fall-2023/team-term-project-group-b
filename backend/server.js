@@ -70,7 +70,7 @@ const { engine } = require("express/lib/application");
 
 app.use("/", Routes.home);
 app.use("/auth", Routes.authentication);
-app.use("/game", isAuthenticated, Routes.game);   //game is games in teachers proj
+app.use("/game", isAuthenticated, Routes.game);
 app.use("/profile",isAuthenticated, Routes.user_profile);
 app.use("/lobby", isAuthenticated, Routes.lobby);
 app.use("/chat", isAuthenticated, Routes.chat);
@@ -83,6 +83,5 @@ httpServer.listen(PORT, () => {
 });
 
 app.use((request, response, next) => {
-  console.log(`tests request: ${request.method} ${request.url}`);
   next(createError(404));
 });

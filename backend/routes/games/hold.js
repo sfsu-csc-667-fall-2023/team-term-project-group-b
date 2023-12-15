@@ -1,7 +1,8 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
 const{emitErrorMessage} = require("../../utils/emit-error-message");
-const { emit } = require("process");
+const{emitGameUpdates} = require("../../utils/emit-game-updates");
+
 const method = "post";
 const route = "/:id/hold";
 
@@ -11,17 +12,22 @@ const handler = async (request, response) => {
     const { id: userId } = request.session.user;
     const user_socket_id = await Users.getUserSocket(userId);
     const gameId = parseInt(textGameId);
-    const potCurrentRound = await Games.getPotForRound(gameId);
-    const playerUsername = await Users.getUsername(userId);
-    if(potCurrentRound !== 0){
-        emitErrorMessage(io, user_socket_id, "You cannot Hold, you must bet");
-        response.status(200).send();
-        return;
-    }
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
+    const playerUsername = await Users.getUsername(userId);
+
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      return response.status(200).send();
+    }
+
+    if(await Games.getFolded(gameId, userId)){
+        emitErrorMessage(io, user_socket_id, "You have already folded");
+        return response.status(200).send();
+      }
+
     if(isPlayerInGame && isPlayerTurn){
-        // check if bets have been placed 
         const roundBet = await Games.getMaxBet(gameId);
         if(roundBet !== 0){
             emitErrorMessage(io, user_socket_id, "You cannot hold, you must bet");
@@ -37,7 +43,7 @@ const handler = async (request, response) => {
         emitErrorMessage(io, user_socket_id, "It is not your turn")
     }
     
-    response.status(200).send();
+    return response.status(200).send();
     
 }
     

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../css/game.css" />
-  <link rel="stylesheet" href="../css/authpages.css" />
+  <!-- <link rel="stylesheet" href="../css/authpages.css" /> -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Play</title>
@@ -29,14 +29,14 @@
   <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
 
 
-  <section id="game-board">
+  <!-- <section id="game-board"> -->
   <!-- Add inline style to the "cards" class -->
   <div class="game-info">
-    <div class="turn">Current Player's Turn: </div>
-    <div class="round">Round: </div>
-    <div class="pot">Game Pot: </div>
-    <div class="playerChips">Player Chips: </div>
-    <div class="bet">Minimum Bet: </div>
+    <div class="info turn">____'s Turn! </div>
+    <div class="info round">_____ Round </div>
+    <div class="info pot">Game Pot: </div>
+    <div class="info playerChips">Player Chips: </div>
+    <div class="info bet">Minimum Bet: </div>
     <div class="hand dealer"></div>
     <div class="hand player-hand"></div>
     <div class="errorMessage" style="color: red; background-color: white;"></div>
@@ -44,24 +44,33 @@
   </div>
 
 
-  <div class="game-buttons">
-    <form method="post" action="/game/<%= id %>/hold" id="hold-form">
-      <button type="submit">Hold</button>
-    </form>
-    <form method="post" action="/game/<%= id %>/call" id="call-form">
-      <button type="submit">Call</button>
-    </form>
-    <form method="post" action="/game/<%= id %>/bet" id="bet-form">
-      <input name="bet-amount" id="bet-amount" required>
-      <button type="submit">Bet</button>
-    </form>
-    <form method="post" action="/game/<%= id %>/fold" id="fold-form">
-      <button type="submit">Fold</button>
-    </form>
+    <div class="game-buttons">
+      <form method="post" action="/game/<%= id %>/hold" id="hold-form">
+        <button class="button leftButton holdButton" type="submit">Hold</button>
+      </form>
+      <form method="post" action="/game/<%= id %>/call" id="call-form">
+        <button class="button leftButton callButton" type="submit">Call</button>
+      </form>
+      
+      <form method="post" action="/game/<%= id %>/fold" id="fold-form">
+        <button class="button leftButton foldButton" type="submit">Fold</button>
+      </form>
+    </div>
+
+    <div class="betDiv">
+      <form method="post" action="/game/<%= id %>/bet" id="bet-form">
+        <input class="message-input betInput" name="bet-amount" id="bet-amount" required>
+        <button class="button leftButton betButton" type="submit">Bet </button>
+      </form>
+
+    </div>
+    
+
   </div>
 
 
-</section>
+
+<!-- </section> -->
         <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
         <input type="hidden" name="user-socket-id" id="user-socket-id" value="<%= userSocketId %>" />
   
@@ -103,15 +112,12 @@
       <button class="button" id="start" value="<%= id %>">Start the Game</button>
     <% } %>
 
-
-    </div>
-    <!-- username container -->
-
-
-
-  <template id="card">
+    <template id="card">
     <div class="card"></div>
   </template>
+
+  <button class="button end-game-button" type="submit">END GAME</button>
+</div>
 </body>
 
 </html>
