@@ -16,6 +16,12 @@ const handler = async (request, response) => {
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
     const playerUsername = await Users.getUsername(userId);
 
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      response.status(200).send();
+    }
+
     if(await Games.getFolded(gameId, userId)){
         emitErrorMessage(io, user_socket_id, "You have already folded");
         return response.status(200).send();

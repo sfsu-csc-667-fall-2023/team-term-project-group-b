@@ -13,10 +13,15 @@ const handler = async (request, response) => {
     const textBetAmout = formDataObject['bet-amount'];
     const gameId = parseInt(textGameId);
     const betAmount = parseInt(textBetAmout);
-
+    
     let playerChips = await Games.getUserChips(gameId, userId);
     const playerUsername = await Users.getUsername(userId);
     const user_socket_id = await Users.getUserSocket(userId);
+    const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    if(!isInitialized){
+      emitErrorMessage(io, user_socket_id, "Game has not started Yet");
+      response.status(200).send();
+    }
     const maxBetRound = await Games.getMaxBet(gameId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
