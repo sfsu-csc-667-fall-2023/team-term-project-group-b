@@ -27,13 +27,13 @@ const find_by_username = (username) => db.one(SIGN_USER_IN, [username]);
 
 const getUserSocket = (userId) => db.one(GET_USER_SOCKET, [userId]).then(result => result.sid);
 
-const getCurrentUsername = (userId) => db.one(GET_CURRENT_PLAYER_USERNAME, [userId]).then(result => result.username);
+const getUsername = (userId) => db.one(GET_CURRENT_PLAYER_USERNAME, [userId]).then(result => result.username);
 
 module.exports = {
-  getCurrentUsername,
   email_exists,
   username_exists,
   create,
   find_by_username,
   getUserSocket,
+  getUsername,
 };

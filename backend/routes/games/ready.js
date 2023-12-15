@@ -28,13 +28,17 @@ const handler = async (request, response) => {
         }
         else
             io.to(player.sid).emit(GAME_CONSTANTS.START, userState);
+            io.to(player.sid).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: userState.chips});
     });
+
+
+
 
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_ROUND, {round:1});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_POT, {pot:0});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, {username: gameState.current_player_username});
     io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, {bet:0});
-    io.to(gameState.game_socket_id).emit(`game:deleteChat:${gameId}`);
+    io.to(gameState.game_socket_id).emit(`game:deleteStart:${gameId}`);
 
     //testing
     const winner = Check.checkWinner(gameState.players);

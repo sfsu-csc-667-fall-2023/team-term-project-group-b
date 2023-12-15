@@ -6,7 +6,6 @@ router.post("/:id", (request, response) => {
     const {id} = request.params;
     const { message } = request.body;
     if(message.length > 0){
-
     const { username } = request.session.user;
     const io = request.app.get("io");
     io.emit(`chat:message:${id}`, {

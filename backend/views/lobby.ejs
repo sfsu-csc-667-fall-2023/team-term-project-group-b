@@ -1,68 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" href="../css/chat.css" />
-    <link rel="stylesheet" href="../css/lobby.css" /> -->
-    <link rel="stylesheet" href="../css/authpages.css" />
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/chat.css" />
+    <link rel="stylesheet" href="../css/lobby.css" />
+    <!-- <link rel="stylesheet" href="../css/authpages.css" /> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/scripts/chat.js" defer></script>
+    <script src="/scripts/games.js" defer></script>
     <script src="/scripts/lobby.js" defer></script>
+    <!-- <script src="/scripts/user_profile.js" defer></script> -->
 </head>
 
 <body>
-    <div class="topnav">
-      <a href="/">
-        <img
-          class="titleLogo center"
-          src="https://static-00.iconduck.com/assets.00/arrow-left-icon-512x357-pi5vmh11.png"
-          width="120"
-          height="70"
-          alt="Title Logo"
-        />
-      </a>
-      <span class="active">Back To Homepage</span>
-    </div>
-    <h1 class="lobbyTitle">Lobby</h1>
-    
-    <div class="block">
-        <!--<h2 ><%= user.username %></h2>
-        <a href="/user_profile"> <%= user.username %></a>-->
+  <a href="/">
+    <img
+      class="titleLogo center"
+      src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
+      height="140"
+      alt="Title Logo"
+      style="padding-left: 50px;" 
+      style="padding-top: 40px;"
+      />
+  </a>
+      <!-- <span class="active">Back To Homepage</span> -->
+       <!-- <h1 class="lobbyTitle">Lobby</h1> -->
+       
+        <!-- <a href="/user_profile"> <%= user.username %></a>-->
 
-        <div class="play-container">
+        <!-- <div class="play-container">
             <a href="/profile/:id">
               <button  href="/profile/:id" class="button"><%= user.username %></button>
-            </a>
-        
-        <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
-        <section id="game-list">
-            <h2>Current Games</h2>
-            <section id="my-game-list" data-user="<%= user.id %>">
-                <ul class="lobul">
-                    <div class="lobby-item">
-                    <% currentGames.forEach(game => { %>
-                    <li >
-                        <a class="lobby-item" href="/game/<%= game.id %>/join">Join <%= game.id %></a>
-                    </li>
-                    <% }) %>
-                </div>
+            </a> -->
+
+  <!--to contain everything-->
+  <div class="big-div"> <!--make this name better later-->
+
+    <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
+      
+    <section id="game-list">   
+      <section id="my-game-list" data-user="<%= user.id %>">
+
+        <!-- games list container -->
+        <div class="game-menu">
+
+          <p class="header">Open Games</p>
+
+            <!-- seperating each join -->
+            <div class="lobby-item">
+              <% currentGames.forEach(game => { %>
+                <button class="lobby-game" onclick="location.href='/game/<%= game.id %>/join'">JOIN <%= game.id %></button>
+                <% }) %>
+            </div>
+            <!-- seperating each join -->
+        </div>
+        <!-- games list container -->
             
-            </section>
-        </section>
-        <form action="/game/create" method="get">
-            <button type="submit" class="submitbtn">CREATE GAME</button>
-        </form>
+      </section>
+    </section>
+
+    <div class="profile">
+
+    <h2 class="username"><%= user.username %></h2>
+    <!-- username container -->
+    <div class="right-info">
+    
+
+    <!-- chat container -->
+    <div class="chat-container">
+      <!-- <h2 class="chat-title">Chat</h2> -->
+      <div class="TT">
+
+      <article id="chat-window"></article>
+
     </div>
-</body>
-<div class="body-container">
-  <div class="chat-container">
-    <h2 class="chat-title">Chat</h2>
-    <article id="chat-window"></article>
-    <div class="message-input">
-      <input type="text" name="message" id="message" placeholder="Message" />
+      <!-- mesage input container -->
+      
+        <input class="message-input" type="text" name="message" id="message" placeholder="Chat with others!" />
+      
+        <!-- mesage input container -->
     </div>
+    <!-- chat container -->
+
+      
+
+    </div>
+    <!-- username container -->
+
+    <form action="/game/create" method="get">
+      <button type="submit" class="button">CREATE GAME</button>
+    </form>
   </div>
-</div>
+
+  </div>
+  <!--to contain everything-->
+
+
+</body>
+
+  
+
 </html>

@@ -9,8 +9,10 @@ const turnDiv = document.querySelector(".turn");
 const roundDiv = document.querySelector(".round");
 const potDiv = document.querySelector(".pot");
 const betDiv = document.querySelector(".bet");
+const generalMessagesDiv = document.querySelector(".generalMessages");
+const startButton = document.getElementById("start");
 const roomId = document.querySelector("#room-id").value;
-const startButton = document.querySelector("#start");
+
 
 const configure = (socketId) => {
   gameSocket = io({ query: { id: socketId } });
@@ -31,15 +33,17 @@ const configure = (socketId) => {
 
   gameSocket.on(GAME_CONSTANTS.UPDATE_MIN_BET, updateMinBet);
 
-  gameSocket.on(GAME_CONSTANTS.USER_ADDED, data => {
-    console.log({event: GAME_CONSTANTS.USER_ADDED, data });
-  })
+  gameSocket.on(GAME_CONSTANTS.GAME_ACTION, renderMessage);
+
+  gameSocket.on(GAME_CONSTANTS.USER_ADDED, renderMessage);
+
 
   gameSocket.on(GAME_CONSTANTS.STATE_UPDATED, data =>{
     console.log(data);
   });
+
   
-  gameSocket.on(`game:deleteChat:${roomId}`, () => {
+  gameSocket.on(`game:deleteStart:${roomId}`, () => {
     if (startButton) {
       startButton.remove();
     }
@@ -59,19 +63,35 @@ const renderDealerHand = ({hand}) => { //updates ui when there is change in game
 };
 
 const updateRound = ({round}) => {
-  roundDiv.innerHTML = "Current round: " + round;
+  roundDiv.innerHTML = "Round: " + round;
 }
 
 const updateCurrentTurn = ({username}) => {
-  turnDiv.innerHTML = "Current Turn: " + username;
+  console.log("next: ", username);
+  turnDiv.innerHTML = "Current Player's Turn: " + username;
 }
 
 const updateCurrentPot = ({pot}) => {
-  potDiv.innerHTML = "Current Pot: " + pot;
+  potDiv.innerHTML = "Game Pot: " + pot;
 }
 
 const updateMinBet = ({bet}) => {
-  betDiv.innerHTML = "Current Bet: " + bet;
+  betDiv.innerHTML = "Minimum Bet: " + bet;
 }
+
+const renderMessage = ({message})=>{
+  generalMessagesDiv.innerHTML = message;
+}
+
+
+startButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log("in button");
+  const gameId = event.target.value;
+  fetch(`/game/${gameId}/ready`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  });
+});
 
 export {configure};

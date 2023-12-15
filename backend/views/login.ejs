@@ -5,21 +5,16 @@
     <link rel="stylesheet" href="../css/authpages.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="backend\static\scripts\favicon.ico" href="/views">
+    <link rel="icon" type="image/x-icon" href="/backend/static/scripts/favicon.ico">
+    <script src="/scripts/fade.js" defer></script>
+
     <title>Login</title>
 </head>
 
 <body>
-  <!-- <img 
-    class="bg src="\css\assets\bg.png"
-    alt=""
-    /> -->
     <% if (locals.error) { %>
-        <p class="error-container" style="color: red;"><%= locals.error %></p>
+        <p id="errorContainer" class="error-container"><%= locals.error %></p>
       <% }%>
-      <% if (user) { %>
-        <h1 style="color: blue;"> TEST: Logged as <%= user.username %></h1>
-    <% }%>
 
 
     <div class="topnav">
