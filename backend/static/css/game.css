@@ -12,7 +12,6 @@ body {
 
 /* ALL INFO ON THE LEFT SIDE */
 .info{
-
   padding:10px;
   margin:10px 0;
   /* border: 2px solid #eee; */
@@ -30,6 +29,10 @@ body {
   line-height: 1.45;
   outline: none;
 
+}
+
+.betDiv{
+  padding-left: 3%;
 }
 
 .game-info{
@@ -77,6 +80,12 @@ body {
 }
 
 /* LEFT SIDE BUTTONS */
+.end-game-button{
+  background-color: #DB0040 !important;
+  background-image: radial-gradient(75% 50% at 50% 0%, #DB0040, transparent), radial-gradient(75% 35% at 50% 80%, #DB0040, transparent) !important;
+  box-shadow: inset 0 -2px 4px 1px rgba(51, 51, 51, 0.6), inset 0 -4px 4px 1px #a80033, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
 
 .game-buttons{
   display: inline-flex;
@@ -84,7 +93,6 @@ body {
   margin-left: 50px;
   margin-top: 0px;
   /* background-color: red; */
-
 }
 
 .leftButton{
@@ -92,7 +100,7 @@ body {
   color: #fff;
   /* text-shadow: 0 1px 1px #000000 !important; */
   width:75px !important;
-
+  border: none !important;
 }
 
 /* .leftButton, .holdButton, .callButton, .foldButton {
@@ -104,22 +112,17 @@ body {
   background-color: #DB0040 !important;
   background-image: radial-gradient(75% 50% at 50% 0%, #DB0040, transparent), radial-gradient(75% 35% at 50% 80%, #DB0040, transparent) !important;
   box-shadow: inset 0 -2px 4px 1px rgba(51, 51, 51, 0.6), inset 0 -4px 4px 1px #a80033, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1) !important;
-
-
-
 }
 
 .callButton{
-
   background-color: #FD9E30 !important;
   background-image: radial-gradient(75% 50% at 50% 0%, #FD9E30, transparent), radial-gradient(75% 35% at 50% 80%, #FD9E30, transparent) !important;
   box-shadow: inset 0 -2px 4px 1px rgba(51, 51, 51, 0.6), inset 0 -4px 4px 1px #995f1d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1) !important;
-
-
 }
 
 .betInput{
-  width:75px !important;}
+  width:100px !important;
+}
 
 .betButton{
   background-color: #03A961 !important;
@@ -137,7 +140,6 @@ body {
 
 }
 
-
 /* RIGHT SIDE BOX */
 .TT{
   /* background-color: blue; */
@@ -149,7 +151,6 @@ body {
   display: flex;
   /* max-width: 180px; */
   align-items: center;
-
   width:200;
   padding: 0 10px; /* Adjust the padding as needed */
 }
@@ -192,7 +193,6 @@ body {
   background: #b1b1b1; 
 }
 
-
 .profile{
   /* background-color: #0048d5; */
   width: 300px;
@@ -205,7 +205,6 @@ body {
   /* background-color: red; */
   
 }
-
 
 .username{
   margin-bottom: 18px;
@@ -222,28 +221,9 @@ body {
   border-radius: 10px;
   height: 500px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
+  color: black;
 }
 
-/* MESSAGE CONTAINER */
-/* .right-info{
-  border-radius: 10px;
-  /*border-color: white;
-  border-style: solid;
-  background-color: white;
-  text-align: center;
-  height: 300px;
-  width: 200px;
-  padding: 10px;
-  position: fixed;
-  float: right;
-  right: 27%; 
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  overflow-y: scroll;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
-} */
-
-/* OPEN GAMES HEADING TEXT */
 .header{
   size: 10px !important;
   font-size: 20px;
@@ -253,7 +233,6 @@ body {
   text-align: left;
 }
 
-/* CHAT BOX TO ENTER AND SEND TEXT */
 .message-input{
     padding:10px;
   margin:10px 0;
@@ -277,7 +256,6 @@ body {
   transition: .18s ease-out;
 }
 
-
 .message-input:hover {
   box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
@@ -287,9 +265,6 @@ body {
   box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* BUTTONS BELOW */
-
-/* THE JOIN BUTTONS */
 .lobby-game{
   width: 100px;
   margin: 25px;
@@ -316,7 +291,6 @@ body {
   transform: scale(1.05) rotate(-1deg);
 }
 
-/* CREATE GAME BUTTONS */
 .button {
   margin-left: 100px;
   width: 300px;
@@ -334,9 +308,6 @@ body {
   text-transform: inherit;
   -webkit-tap-highlight-color: transparent;
   margin-top: 10px !important;
-
-  /* left: 1569px;
-  bottom: 100px; */
 }
   
 .button:focus {
@@ -364,6 +335,7 @@ body {
   transition-property: border-color, transform, background-color;
   transition-duration: 0.2s;
 }
+
 .button::after {
   content: "";
   position: absolute;
@@ -376,9 +348,11 @@ body {
   background-image: linear-gradient(to bottom, #f4feff, transparent);
   opacity: 0.75;
 }
+
 .button:hover {
   transform: scale(1.04);
 }
+
 .button:active {
   border-color: #0048d5;
   transform: scale(0.96);
@@ -386,223 +360,237 @@ body {
 }
 
 div.card {
-  width: 190px;
+  width: 150px;
   height: 275px;
 }
 
-/* .hand-dealer {
+.hand.dealer {
   display: flex;
-  flex-direction: row;
-  background-color: red;
-  height: 100;
-  width: 100;
-} */
+  gap: 10px;
+  justify-content: center;
+  align-items: center; 
+  position: fixed; 
+  top: 40%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+.hand.player-hand {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center; 
+  position: fixed; 
+  top: 60%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
 
 div.suits-0.value-1 {
   background-image: url("../PNG-cards-1.3/2_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-1 {
   background-image: url("../PNG-cards-1.3/2_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-1 {
   background-image: url("../PNG-cards-1.3/2_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-1 {
   background-image: url("../PNG-cards-1.3/2_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-2 {
   background-image: url("../PNG-cards-1.3/3_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-2 {
   background-image: url("../PNG-cards-1.3/3_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-2 {
   background-image: url("../PNG-cards-1.3/3_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-2 {
   background-image: url("../PNG-cards-1.3/3_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-3 {
   background-image: url("../PNG-cards-1.3/4_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-3 {
   background-image: url("../PNG-cards-1.3/4_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-3 {
   background-image: url("../PNG-cards-1.3/4_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-3 {
   background-image: url("../PNG-cards-1.3/4_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-4 {
   background-image: url("../PNG-cards-1.3/5_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-4 {
   background-image: url("../PNG-cards-1.3/5_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-4 {
   background-image: url("../PNG-cards-1.3/5_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-4 {
   background-image: url("../PNG-cards-1.3/5_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-5 {
   background-image: url("../PNG-cards-1.3/6_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-5 {
   background-image: url("../PNG-cards-1.3/6_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-5 {
   background-image: url("../PNG-cards-1.3/6_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-5 {
   background-image: url("../PNG-cards-1.3/6_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-6 {
   background-image: url("../PNG-cards-1.3/7_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-6 {
   background-image: url("../PNG-cards-1.3/7_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-6 {
   background-image: url("../PNG-cards-1.3/7_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-6 {
   background-image: url("../PNG-cards-1.3/7_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-7 {
   background-image: url("../PNG-cards-1.3/8_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-7 {
   background-image: url("../PNG-cards-1.3/8_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-7 {
   background-image: url("../PNG-cards-1.3/8_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-7 {
   background-image: url("../PNG-cards-1.3/8_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-8 {
   background-image: url("../PNG-cards-1.3/9_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-8 {
   background-image: url("../PNG-cards-1.3/9_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-8 {
   background-image: url("../PNG-cards-1.3/9_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-8 {
   background-image: url("../PNG-cards-1.3/9_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-9 {
   background-image: url("../PNG-cards-1.3/10_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-9 {
   background-image: url("../PNG-cards-1.3/10_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-9 {
   background-image: url("../PNG-cards-1.3/10_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-9 {
   background-image: url("../PNG-cards-1.3/10_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-10 {
   background-image: url("../PNG-cards-1.3/jack_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-10 {
   background-image: url("../PNG-cards-1.3/jack_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-10 {
   background-image: url("../PNG-cards-1.3/jack_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-10 {
   background-image: url("../PNG-cards-1.3/jack_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-11 {
   background-image: url("../PNG-cards-1.3/queen_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-11 {
   background-image: url("../PNG-cards-1.3/queen_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-11 {
   background-image: url("../PNG-cards-1.3/queen_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-11 {
   background-image: url("../PNG-cards-1.3/queen_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-12 {
   background-image: url("../PNG-cards-1.3/king_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-12 {
   background-image: url("../PNG-cards-1.3/king_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-12 {
   background-image: url("../PNG-cards-1.3/king_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-12 {
   background-image: url("../PNG-cards-1.3/king_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-0.value-13 {
   background-image: url("../PNG-cards-1.3/ace_of_spades.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-1.value-13 {
   background-image: url("../PNG-cards-1.3/ace_of_diamonds.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-2.value-13 {
   background-image: url("../PNG-cards-1.3/ace_of_clubs.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
 div.suits-3.value-13 {
   background-image: url("../PNG-cards-1.3/ace_of_hearts.png");
-  background-size: contain;
+  background-size: contain; overflow: hidden; height: 150px; width: 103px;
 }
