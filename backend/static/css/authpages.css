@@ -35,7 +35,7 @@ body {
 .logo{
   position: absolute;
   left: 50% !important;
-  top: 40%;
+  top: 35%;
   -webkit-transform: translate(-50%, -50%);
 
 }

@@ -10,8 +10,9 @@ const roundDiv = document.querySelector(".round");
 const potDiv = document.querySelector(".pot");
 const betDiv = document.querySelector(".bet");
 const generalMessagesDiv = document.querySelector(".generalMessages");
+const startButton = document.getElementById("start");
 const roomId = document.querySelector("#room-id").value;
-const startButton = document.querySelector("#start");
+
 
 const configure = (socketId) => {
   gameSocket = io({ query: { id: socketId } });
@@ -81,5 +82,16 @@ const updateMinBet = ({bet}) => {
 const renderMessage = ({message})=>{
   generalMessagesDiv.innerHTML = message;
 }
+
+
+startButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log("in button");
+  const gameId = event.target.value;
+  fetch(`/game/${gameId}/ready`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  });
+});
 
 export {configure};
