@@ -14,6 +14,6 @@ module.exports = {
     ERROR_MESSAGE: "user:error",
     SUCCESSFUL_PLAYER_ACTION_MESSAGE: "user:sucessful_action",
     GAME_ACTION: "game:action",
-    
+    ADD_MIN: 20,
     
   };

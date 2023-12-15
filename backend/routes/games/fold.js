@@ -1,27 +1,44 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
+const {emitErrorMessage} = require("../../utils/emit-error-message");
 
 const method = "post";
 const route = "/:id/fold";
 
 const handler = async (request, response) => {
     const io = request.app.get("io");
-    
     const { id: textGameId } = request.params;
     const { id: userId } = request.session.user;
-    
     const gameId = parseInt(textGameId);
-    
-    // Check if player in game
+    const playerUsername = await Users.getUsername(userId);
+    const user_socket_id = await Users.getUserSocket(userId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
-    console.log({ isPlayerInGame, gameId, userId });
+    const isPlayerTurn = await Games.checkTurn(gameId, userId);
 
-    
-    /*// Broadcast
-    const state = await Games.getState(gameId);
-    io.to(state.game_socket_id).emit(GAME_CONSTANTS.STATE_UPDATED, state);
+    if(await Games.getFolded(gameId, userId)){
+        emitErrorMessage(io, user_socket_id, "You have already folded");
+        return response.status(200).send();
+      }
+
+    if(isPlayerInGame && isPlayerTurn){
+        
+        const playerSeat = await Games.getPlayerSeat(gameId, userId);
+        let next = await Games.updateTurn(gameId, playerSeat);
+        
+        await Games.setFolded(gameId, userId);
+        const gameState = await Games.getState(gameId);
+        io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, 
+            { username: gameState.current_player_username });
+            console.log(next);
+        const message = `${playerUsername} folded`;
+        io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
+
+        // check winner if(only 1 person hasnt folded or last round)
+    }else{
+        emitErrorMessage(io, user_socket_id, "It is not your turn");
+    }
   
-    response.status(200).send();*/
+    response.status(200).send();
 }
     
 module.exports = { method, route, handler };

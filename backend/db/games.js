@@ -19,6 +19,8 @@ const {updateMaxBetRound} = require("./games/update-max-bet");
 const {getMaxBet} = require("./games/get-max-bet");
 const {getRound} = require("./games/get-round");
 const {updateRound} = require("./games/update-round");
+const {setFolded} = require("./games/set-folded");
+const {getFolded} = require("./games/get-folded");
 
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
@@ -39,7 +41,7 @@ const READY_COUNT = `SELECT (SELECT COUNT(*) FROM game_users WHERE game_id=$1) A
 (SELECT COUNT(*) FROM game_users WHERE game_id=$1 AND ready=true) as ready_count`;
 const ADD_USER = "INSERT INTO game_users (user_id, game_id, seat) VALUES ($1, $2, $3)";
 const IS_PLAYER_IN_GAME = `SELECT COUNT(*) FROM game_users WHERE game_id=$1 AND user_id=$2`;
-const SET_USER_CHIPS = `UPDATE game_users SET chips=100 WHERE game_id=$1 AND user_id=$2 RETURNING chips`;
+const SET_USER_CHIPS = `UPDATE game_users SET chips=200 WHERE game_id=$1 AND user_id=$2 RETURNING chips`;
 
 // games
 const create = (gameSocketId) => db.one(CREATE, [gameSocketId]);
@@ -108,4 +110,7 @@ module.exports = {
   updateMaxBetRound,
   getMaxBet,
   getRound,
+  setFolded,
+  getFolded,
+
 };
