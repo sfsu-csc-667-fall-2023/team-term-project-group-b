@@ -38,9 +38,10 @@ const handler = async (request, response) => {
             console.log(next);
         const message = `${playerUsername} folded`;
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
+        
 
-        // update round if:
-        // check winner if(only 1 person hasnt folded or last round)
+ 
+
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn");
     }

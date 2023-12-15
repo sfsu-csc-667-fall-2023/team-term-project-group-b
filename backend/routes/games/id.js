@@ -1,6 +1,7 @@
 const { Games, Users } = require("../../db");
 const GAME_CONSTANTS = require("../../../constants/games");
 const { isInitialized } = require("../../db/games");
+const { renderGameState } = require("../../utils/render-game-state");
 
 const method = "get";
 const route = "/:id";
@@ -13,10 +14,12 @@ const handler = async (request, response) => {
     const userSocketId = await Users.getUserSocket(userId);
 
     const io = request.app.get("io");
-    const message = `${username} joined the game`
+    const message = `${username} joined the game`;
     io.to(gameSocketId).emit(GAME_CONSTANTS.USER_ADDED, {message: message});
+    const gameState = await Games.getState(gameId);
 
     const result = await isInitialized(gameId);
+    renderGameState(io, gameState);
     
     response.render("game", {id: gameId, gameSocketId, userSocketId, roomId: gameId, is_initialized: result});
 };

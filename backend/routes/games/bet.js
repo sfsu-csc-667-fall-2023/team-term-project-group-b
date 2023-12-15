@@ -46,9 +46,7 @@ const handler = async (request, response) => {
       const message = `${playerUsername} bet ${betAmount} chips`
       io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
 
-      //////check round
-      
-      //////checkHand(gameState.players)  
+      await Games.updateGameLoop(gameId, userId); 
     }else{
       emitErrorMessage(io, user_socket_id, "It is not your turn");
     }
@@ -64,6 +62,8 @@ async function completeBetting (gameId, userId, playerChips, betAmount){
       await Games.updatePlayerChips(gameId, userId, playerChips);
       await Games.updatePot(gameId, updatedPot);
       await Games.updateMaxBetRound(gameId, betAmount + GAME_CONSTANTS.ADD_MIN);
+      await Games.setCalled(gameId, userId);
+
 }
 
 function validateBet(user_socket_id, betAmount, playerChips, maxBetRound, io){

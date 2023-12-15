@@ -31,18 +31,24 @@ const handler = async (request, response) => {
       }
 
     if(isPlayerInGame && isPlayerTurn){
-        bet = playerChips < maxBetRound ?  playerChips : maxBetRound;
+        bet = playerChips < maxBetRound ?  playerChips : 
+        maxBetRound - GAME_CONSTANTS.ADD_MIN; //undo min bet
         await completeCall (gameId, userId, playerChips, bet);
         
         const playerSeat = await Games.getPlayerSeat(gameId, userId);
         await Games.updateTurn(gameId, playerSeat);
         
+        const isNextRound = await Games.updateGameRound(gameId);
         const gameState = await Games.getState(gameId);
         emitGameUpdates(io, gameState.game_socket_id, gameState);
         io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - bet});
         const message = `${playerUsername} bet ${bet} chips`
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
         
+        if(isNextRound){
+            io.to(gameState.game_socket_id)
+            .emit(GAME_CONSTANTS.UPDATE_ROUND, {round: gameState.round});
+        }
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn")
     }
@@ -54,6 +60,8 @@ async function completeCall (gameId, userId, playerChips, bet){
     updatedPot = updatedPot + bet;
     await Games.updatePlayerChips(gameId, userId, playerChips);
     await Games.updatePot(gameId, updatedPot);
+    await Games.setCalled(gameId, userId);
+
 }
     
 module.exports = { method, route, handler };

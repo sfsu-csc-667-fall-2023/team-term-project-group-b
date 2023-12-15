@@ -2,7 +2,7 @@
 import { configure as gameSocketConfig } from "./game_socket";
 import { configure as userSocketConfig } from "./user_socket";
 
-const gameSocketId = document.querySelector("#game-socket-id").value;   //getting from html doms
+const gameSocketId = document.querySelector("#game-socket-id").value; 
 const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 
@@ -10,8 +10,6 @@ const holdForm = document.querySelector("#hold-form");
 const callForm = document.querySelector("#call-form");
 const betForm = document.querySelector ("#bet-form");
 const foldForm = document.querySelector("#fold-form");
-const startButton = document.getElementById("start");
-
 
 gameSocketConfig(gameSocketId);
 userSocketConfig(userSocketId);
