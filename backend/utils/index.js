@@ -32,7 +32,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkRoyal(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Royal Flush",
             handVal:1,
             highCard: 0,
@@ -42,7 +42,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkStraightFlush(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnderId: id,
             winningHand:"Straight Flush",
             handVal:2,
             highCard: 0,
@@ -52,7 +52,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkFour(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Four of a Kind",
             handVal:3,
             highCard: 0,
@@ -63,7 +63,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     if (result.found == 1) {
         console.log("Full House Found");
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Full House",
             handVal:4,
             highCard: 0,
@@ -73,7 +73,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkFlush(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Flush",
             handVal:5,
             highCard: 0,
@@ -83,7 +83,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkStraight(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Straight",
             handVal:6,
             highCard: 0,
@@ -93,7 +93,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkThree(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Three of a Kind",
             handVal:7,
             highCard: 0,
@@ -103,7 +103,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkTwoPair(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Two Pair",
             handVal:8,
             highCard: 0,
@@ -113,7 +113,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkTwo(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"Pair",
             handVal:9,
             highCard: 0,
@@ -123,7 +123,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
     result = checkHigh(sorted);
     if (result.found == 1) {
         return {
-            player: id,
+            winnerId: id,
             winningHand:"High Card",
             handVal:10,
             rank:result.high,
@@ -131,7 +131,7 @@ const evalHand = ( tableCards, playerCards, id ) => {
         }
     }
     return {
-        player: id,
+        winnerId: id,
         winningHand:"-1",
         handVal:11,
         rank: -1,
@@ -140,9 +140,9 @@ const evalHand = ( tableCards, playerCards, id ) => {
 
 }
 
-const checkWinner = (players, ) => {
+const checkWinner = (players, dealerCards) => {
 
-    const dealerCards = players.find((player) => player.user_id === -1).hand;
+    //const dealerCards = players.find((player) => player.user_id === -1).hand;
 
     let currentWinner = {
         winnerId: -1, //default before any hands have been checked
@@ -156,10 +156,10 @@ const checkWinner = (players, ) => {
         if(player.user_id != -1){
             const hand = player.hand;
             const id = player.user_id;
+            
             const evaluated = evalHand(dealerCards, hand, id);
-            console.log(evaluated);
             if( evaluated.handVal < currentWinner.handVal) {
-                currentWinner.winnerId = evaluated.player;
+                currentWinner.winnerId = id;
                 currentWinner.handVal = evaluated.handVal;
                 currentWinner.winningHand = evaluated.winningHand;
 

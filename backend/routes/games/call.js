@@ -3,6 +3,7 @@ const GAME_CONSTANTS = require("../../../constants/games");
 const {emitGameUpdates} = require("../../utils/emit-game-updates");
 const {emitErrorMessage} = require("../../utils/emit-error-message");
 const { renderGameState } = require("../../utils/render-game-state");
+const { checkWinner } = require("../../utils/index");
 
 const method = "post";
 const route = "/:id/call";
@@ -54,7 +55,11 @@ const handler = async (request, response) => {
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: dealerHand});
         }
-        if(gameState.round == 2){
+        if(gameState.round == 4){
+            const winner = checkWinner(gameState.players, gameState.dealerHand);
+            const message = `Winner: ${await Users.getUsername(winner.currentWinner.winnerId)} with hand: ${winner.currentWinner.winningHand}`;
+            io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
+            console.log(winner);
             await Games.reInitialize(gameId);
             gameState = await Games.getState(gameId);
             await renderGameState(io, gameState);
