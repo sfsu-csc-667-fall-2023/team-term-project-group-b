@@ -22,7 +22,7 @@ const handler = async (request, response) => {
     const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
     if(!isInitialized){
       emitErrorMessage(io, user_socket_id, "Game has not started Yet");
-      response.status(200).send();
+      return response.status(200).send();
     }
     
     if(await Games.getFolded(gameId, userId)){
@@ -48,6 +48,13 @@ const handler = async (request, response) => {
         if(isNextRound){
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.UPDATE_ROUND, {round: gameState.round});
+            const dealerHand = gameState.dealerHand;
+            console.log(dealerHand);
+            io.to(gameState.game_socket_id)
+            .emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: dealerHand});
+        }
+        if(gameState.round == 4){
+            // who whon? emit a message, reinit game:
         }
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn")

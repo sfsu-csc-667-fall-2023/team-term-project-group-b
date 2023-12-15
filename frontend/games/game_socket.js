@@ -46,7 +46,7 @@ const configure = (socketId) => {
 });
 };
 
-const renderDealerHand = ({hand}) => { //updates ui when there is change in game_state
+const renderDealerHand = ({hand}) => {
   dealerHand.innerHTML = "";
   hand.forEach(({ suit, value }) => {
     const container = cardTemplate.content.cloneNode(true);
@@ -55,7 +55,6 @@ const renderDealerHand = ({hand}) => { //updates ui when there is change in game
     div.classList.add(`value-${value}`);
     dealerHand.appendChild(div);
   })
-
 };
 
 const updateRound = ({round}) => {
@@ -63,7 +62,6 @@ const updateRound = ({round}) => {
 }
 
 const updateCurrentTurn = ({username}) => {
-  console.log("next: ", username);
   turnDiv.innerHTML = username + "'s Turn" ;
 }
 
@@ -82,7 +80,6 @@ const renderMessage = ({message})=>{
 
 startButton.addEventListener("click", (event) => {
   event.preventDefault();
-  console.log("in button");
   const gameId = event.target.value;
   fetch(`/game/${gameId}/ready`, {
     method: "post",

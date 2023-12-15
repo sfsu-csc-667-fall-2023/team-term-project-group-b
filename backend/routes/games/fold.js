@@ -18,7 +18,7 @@ const handler = async (request, response) => {
     const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
     if(!isInitialized){
       emitErrorMessage(io, user_socket_id, "Game has not started Yet");
-      response.status(200).send();
+      return response.status(200).send();
     }
     
     if(await Games.getFolded(gameId, userId)){
@@ -29,19 +29,15 @@ const handler = async (request, response) => {
     if(isPlayerInGame && isPlayerTurn){
         
         const playerSeat = await Games.getPlayerSeat(gameId, userId);
-        let next = await Games.updateTurn(gameId, playerSeat);
+        await Games.updateTurn(gameId, playerSeat);
         
         await Games.setFolded(gameId, userId);
         const gameState = await Games.getState(gameId);
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_CURRENT_TURN, 
             { username: gameState.current_player_username });
-            console.log(next);
         const message = `${playerUsername} folded`;
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
         
-
- 
-
     }else{
         emitErrorMessage(io, user_socket_id, "It is not your turn");
     }

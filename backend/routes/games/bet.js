@@ -20,7 +20,7 @@ const handler = async (request, response) => {
     const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
     if(!isInitialized){
       emitErrorMessage(io, user_socket_id, "Game has not started Yet");
-      response.status(200).send();
+      return response.status(200).send();
     }
     const maxBetRound = await Games.getMaxBet(gameId);
     const isPlayerInGame = await Games.isPlayerInGame(gameId, userId);
