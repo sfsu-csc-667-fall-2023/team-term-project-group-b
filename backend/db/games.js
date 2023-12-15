@@ -14,7 +14,6 @@ const {getUserCount} = require("./games/get-user-count");
 const {getUserChips} = require("./games/get-user-chips");
 const {createGameState} = require("./games/create-game-state");
 const {updatePlayerChips} = require("./games/update-player-chips");
-const {getPotForRound} = require("./games/get-pot-for-round");
 const {getPot} = require("./games/get-pot");
 const {updateMaxBetRound} = require("./games/update-max-bet");
 const {getMaxBet} = require("./games/get-max-bet");
@@ -104,7 +103,6 @@ module.exports = {
   getUserCount,
   getUserChips,
   updatePlayerChips,
-  getPotForRound,
   updatePlayerChips,
   getPot,
   updateMaxBetRound,
