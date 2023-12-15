@@ -68,7 +68,7 @@ const updateRound = ({round}) => {
 
 const updateCurrentTurn = ({username}) => {
   console.log("next: ", username);
-  turnDiv.innerHTML = "Current Player's Turn: " + username;
+  turnDiv.innerHTML = username + "'s Turn" ;
 }
 
 const updateCurrentPot = ({pot}) => {
