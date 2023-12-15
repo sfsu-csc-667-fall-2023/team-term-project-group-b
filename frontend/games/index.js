@@ -6,11 +6,12 @@ const gameSocketId = document.querySelector("#game-socket-id").value;   //gettin
 const userSocketId = document.querySelector("#user-socket-id").value;
 const roomId = document.querySelector("#room-id").value;
 
-const startButton = document.querySelector("#start");
 const holdForm = document.querySelector("#hold-form");
 const callForm = document.querySelector("#call-form");
 const betForm = document.querySelector ("#bet-form");
 const foldForm = document.querySelector("#fold-form");
+const startButton = document.getElementById("start");
+
 
 gameSocketConfig(gameSocketId);
 userSocketConfig(userSocketId);
@@ -30,8 +31,7 @@ const handleUserActionBet = async (event) => {
   formData.forEach((value, key) => {
     formDataObject[key] = value;
   });
-  
-  console.log(formDataObject);
+
   fetch(action.value, { 
    method: method.value, 
    body: JSON.stringify({ formDataObject}),
@@ -39,15 +39,6 @@ const handleUserActionBet = async (event) => {
   },
 });
 }
-
-
-startButton.addEventListener("click", (event) => {
-  const gameId = event.target.value;
-  fetch(`/game/${gameId}/ready`, {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-  });
-});
 
 callForm.addEventListener("submit", handleUserAction);
 holdForm.addEventListener("submit", handleUserAction);
