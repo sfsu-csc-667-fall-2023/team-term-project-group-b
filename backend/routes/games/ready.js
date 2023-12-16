@@ -1,5 +1,4 @@
 const { Games } = require("../../db");
-const Check = require("../../utils/index");
 const {renderGameState} = require("../../utils/render-game-state");
 
 const method = "post";
