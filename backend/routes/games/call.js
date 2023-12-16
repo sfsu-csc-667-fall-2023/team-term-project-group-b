@@ -22,6 +22,11 @@ const handler = async (request, response) => {
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
     let bet;
     const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
+    const pot = await Games.getPot(gameId);
+    if(pot == 0){
+        emitErrorMessage(io, user_socket_id, "Cant Call");
+        return response.status(200).send();
+    }
     if(!isInitialized){
       emitErrorMessage(io, user_socket_id, "Game has not started Yet");
       return response.status(200).send();
@@ -49,6 +54,7 @@ const handler = async (request, response) => {
         io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
         
         if(isNextRound){
+            await Games.resetMaxBet(gameId);
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.UPDATE_ROUND, {round: gameState.round});
             const dealerHand = gameState.dealerHand;
