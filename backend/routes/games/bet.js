@@ -45,7 +45,8 @@ const handler = async (request, response) => {
       io.to(user_socket_id).emit(GAME_CONSTANTS.UPDATE_PLAYER_CHIPS, {chips: playerChips - betAmount});
       const message = `${playerUsername} bet ${betAmount} chips`
       io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.GAME_ACTION, {message: message});
-      io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, {bet: maxBetRound + betAmount});
+      io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, 
+        {bet: GAME_CONSTANTS.ADD_MIN + betAmount});
 
       
       await Games.updateGameLoop(gameId, userId); 
