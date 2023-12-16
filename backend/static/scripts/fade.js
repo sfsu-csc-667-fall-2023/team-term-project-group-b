@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         errorContainer.style.display = "none";
       }, 3000);
+
     }
   }
 
