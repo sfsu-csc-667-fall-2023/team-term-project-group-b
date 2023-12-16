@@ -25,6 +25,8 @@ const {setCalled} = require("./games/set-called");
 const {updateGameRound} = require("./games/update-game-round");
 const {updateGameLoop} = require("./games/update-game-loop");
 const {reInitialize} = require("./games/re-initialize");
+const { resetMaxBet } = require("./games/reset-max-bet");
+
 // Table: games
 const CREATE = "INSERT INTO games (game_socket_id) VALUES ($1) RETURNING id";
 const GET_AVAILABLE_GAMES = "SELECT * FROM games";
@@ -119,5 +121,5 @@ module.exports = {
   setCalled,
   updateGameRound,
   updateGameLoop,
-
+  resetMaxBet,
 };
