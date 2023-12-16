@@ -12,10 +12,9 @@ body {
   background-color: red;
   height: 100px;
 }
+
 .container{
   border-radius: 10px;
-  /*border-color: white;
-  border-style: solid;*/
   background-color: white;
   text-align: center;
   height: 400px;
@@ -48,19 +47,6 @@ body {
   
 }
 
-
-/* try to create a shadow on the image or just use a diff image or do it manually
-
-.logo-div{
-  box-shadow: 4px 4px 4px #000000,
-   6px 6px 6px #000000,
-   8px 8px 8px #000000,
-   10px 10px 10px #000000,
-   12px 12px 12px #000000,
-   14px 14px 14px #000000;
-
-} */
-
 .header{
   size: 100px;
   font-size: 40px;
@@ -72,7 +58,6 @@ body {
   padding: 0px !important;
   bottom: 5000px !important;
 } 
-
 
 .input{
   padding:10px;
@@ -96,15 +81,16 @@ body {
   -o-transition: .18s ease-out;
   transition: .18s ease-out;
 }
+
 .input:hover {
   box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
+
 .input:focus {
   color: #4b515d;
   border: 1px solid #B8B6B6;
   box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
-
 .signininput{
   height: 30px;
 }
@@ -131,7 +117,6 @@ body {
 .logout:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 } 
-
 
 .button {
   margin-left: 100px;
@@ -177,6 +162,7 @@ body {
   transition-property: border-color, transform, background-color;
   transition-duration: 0.2s;
 }
+
 .button::after {
   content: "";
   position: absolute;
@@ -189,9 +175,11 @@ body {
   background-image: linear-gradient(to bottom, #f4feff, transparent);
   opacity: 0.75;
 }
+
 .button:hover {
   transform: scale(1.04);
 }
+
 .button:active {
   border-color: #0048d5;
   transform: scale(0.96);
@@ -200,11 +188,9 @@ body {
 
 .signinbutton{
   margin-top: 0px !important;
- 
   position: absolute !important;
   bottom: 50px !important;
   left: 210px !important;
-  /* align-items: center !important; */
 }
 
 .error-container {

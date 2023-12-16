@@ -9,60 +9,51 @@ body {
 }
 
 .TT{
-  /* background-color: blue; */
   height:230px;
   overflow-y: scroll;
 }
 .message {
-  /* background-color: red; */
   display: flex;
-  /* max-width: 180px; */
   align-items: center;
 
   width:200;
-  padding: 0 10px; /* Adjust the padding as needed */
+  padding: 0 10px; 
 }
 
 .profile-picture {
-  width: 40px; /* Adjust the width of the profile picture as needed */
-  height: 40px; /* Adjust the height of the profile picture as needed */
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
 .message-text {
   display: flex;
   text-align: left;
-  background-color: #e5e5e5; /* Adjust background color for messages */
+  background-color: #e5e5e5; 
   padding: 10px;
   margin-bottom: 12px !important;
   border-radius: 10px;
   margin-left: 10px;
 }
 
-  /* SCROLL BAR */
 ::-webkit-scrollbar {
     width: 20px;
 }
   
-  /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
    
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #b1b1b1; 
   border-radius: 10px;
 }
-  
-/* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #b1b1b1; 
 }
 
-
-/* Box that contains all the join games */
 .game-menu{
   border-radius: 10px;
   background-color: white;
@@ -79,7 +70,6 @@ body {
 }
 
 .profile{
-  /* background-color: #0048d5; */
   width: 300px;
   height: 425px;
   text-align: center;
@@ -88,7 +78,6 @@ body {
   right: 20%; 
   top: 27%;
 }
-
 
 .username{
   margin-bottom: 18px;
@@ -107,26 +96,6 @@ body {
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
 }
 
-/* MESSAGE CONTAINER */
-/* .right-info{
-  border-radius: 10px;
-  /*border-color: white;
-  border-style: solid;
-  background-color: white;
-  text-align: center;
-  height: 300px;
-  width: 200px;
-  padding: 10px;
-  position: fixed;
-  float: right;
-  right: 27%; 
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  overflow-y: scroll;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  
-} */
-
-/* OPEN GAMES HEADING TEXT */
 .header{
   size: 10px !important;
   font-size: 20px;
@@ -136,7 +105,6 @@ body {
   text-align: left;
 }
 
-/* CHAT BOX TO ENTER AND SEND TEXT */
 .message-input{
     padding:10px;
   margin:10px 0;
@@ -160,7 +128,6 @@ body {
   transition: .18s ease-out;
 }
 
-
 .message-input:hover {
   box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
@@ -170,9 +137,6 @@ body {
   box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* BUTTONS BELOW */
-
-/* THE JOIN BUTTONS */
 .lobby-game{
   width: 100px;
   margin: 25px;
@@ -199,7 +163,6 @@ body {
   transform: scale(1.05) rotate(-1deg);
 }
 
-/* CREATE GAME BUTTONS */
 .button {
   margin-left: 100px;
   width: 300px;
@@ -244,6 +207,7 @@ body {
   transition-property: border-color, transform, background-color;
   transition-duration: 0.2s;
 }
+
 .button::after {
   content: "";
   position: absolute;
@@ -256,9 +220,11 @@ body {
   background-image: linear-gradient(to bottom, #f4feff, transparent);
   opacity: 0.75;
 }
+
 .button:hover {
   transform: scale(1.04);
 }
+
 .button:active {
   border-color: #0048d5;
   transform: scale(0.96);

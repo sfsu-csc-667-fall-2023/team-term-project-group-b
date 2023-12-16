@@ -10,20 +10,13 @@ body {
   font-family: 'VT323', monospace;
 }
 
-/* ALL INFO ON THE LEFT SIDE */
 .info{
   padding:10px;
   margin:10px 0;
-  /* border: 2px solid #eee; */
   width: 225px;
   height: 20px;
   font-size: 20px;
   border-radius: 20px;
-  /* background: #4d4d4d;
-  color: #ebebeb;
-  border: 1px solid #000000;
-  /* box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07); */
-  /* box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);  */
   font-family: inherit;
   font-size: 1em;
   line-height: 1.45;
@@ -37,7 +30,6 @@ body {
 
 .game-info{
   align-items: center;
-  /* background-color:#1061d3; */
   padding: 10px;
   margin-top: 50px;
   margin-left: 40px;  
@@ -102,7 +94,6 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-/* LEFT SIDE BUTTONS */
 .end-game-button{
   background-color: #DB0040 !important;
   background-image: radial-gradient(75% 50% at 50% 0%, #DB0040, transparent), radial-gradient(75% 35% at 50% 80%, #DB0040, transparent) !important;
@@ -115,21 +106,13 @@ body {
   width: 200px;
   margin-left: 50px;
   margin-top: 0px;
-  /* background-color: red; */
 }
 
 .leftButton{
-  /* background-color: red; */
   color: #fff;
-  /* text-shadow: 0 1px 1px #000000 !important; */
   width:75px !important;
   border: none !important;
 }
-
-/* .leftButton, .holdButton, .callButton, .foldButton {
-  display: inline-flex;
-  margin-right: 10px; 
-} */
 
 .holdButton{
   background-color: #DB0040 !important;
@@ -163,61 +146,52 @@ body {
 
 }
 
-/* RIGHT SIDE BOX */
 .TT{
-  /* background-color: blue; */
   height:425px;
   overflow-y: scroll;
 }
 .message {
-  /* background-color: red; */
   display: flex;
-  /* max-width: 180px; */
   align-items: center;
   width:200;
-  padding: 0 10px; /* Adjust the padding as needed */
+  padding: 0 10px; 
 }
 
 .profile-picture {
-  width: 40px; /* Adjust the width of the profile picture as needed */
-  height: 40px; /* Adjust the height of the profile picture as needed */
+  width: 40px; 
+  height: 40px; 
   border-radius: 50%;
 }
 
 .message-text {
   display: flex;
   text-align: left;
-  background-color: #e5e5e5; /* Adjust background color for messages */
+  background-color: #e5e5e5; 
   padding: 10px;
   margin-bottom: 12px !important;
   border-radius: 10px;
   margin-left: 10px;
 }
 
-  /* SCROLL BAR */
 ::-webkit-scrollbar {
     width: 20px;
 }
   
-  /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
    
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #b1b1b1; 
   border-radius: 10px;
 }
   
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b1b1b1; 
 }
 
 .profile{
-  /* background-color: #0048d5; */
   width: 300px;
   height: 600px;
   text-align: center;
@@ -225,8 +199,6 @@ body {
   float: right;
   right: 2%; 
   top: 10%;
-  /* background-color: red; */
-  
 }
 
 .username{

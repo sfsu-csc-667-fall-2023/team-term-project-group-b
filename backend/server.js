@@ -19,7 +19,7 @@ const httpServer = createServer(app);
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(bodyParser.json()); // support json  bodies
+app.use(bodyParser.json()); 
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser()); 
 app.set("views", path.join(__dirname,  "views"));
