@@ -4,7 +4,7 @@
 2. Using PostgreSQL create a database to be used by the progrram.
 3. Create a .env file and add your database URL.
 4. Run the following two commands:
-```npm install```
+```npm install``` and
 ```npm run db:migrate```
 5. To start the server run the command: ```npm run start:dev```
 6. Then type ```localhost:3000``` into the browser URL.
