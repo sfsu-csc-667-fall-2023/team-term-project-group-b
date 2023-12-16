@@ -1,23 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get a reference to the error container
-  const errorContainer = document.getElementById("errorContainer");
 
-  // Function to hide the error container with a fade-out effect
-  function hideErrorContainer() {
+  const errorContainer = document.getElementById("errorContainer");
+  const generalContainer = document.getElementById("generalContainer");
+
+  function showErrorContainer() {
     if (errorContainer) {
-      // Add a CSS class to initiate the fade-out transition
+      errorContainer.style.display = "block";
+      errorContainer.classList.remove("fade-out");
+
+      void errorContainer.offsetWidth;
+
       errorContainer.classList.add("fade-out");
 
-      // Set a timeout to hide the container after the transition completes (1000 milliseconds)
       setTimeout(() => {
         errorContainer.style.display = "none";
-      }, 1000);
+      }, 3000);
+
     }
   }
 
-  // Check if there's an error container
+  function showGeneralContainer(){
+    if (generalContainer) {
+      generalContainer.style.display = "block";
+      generalContainer.classList.remove("fade-out");
+
+      void generalContainer.offsetWidth;
+
+      generalContainer.classList.add("fade-out");
+
+      setTimeout(() => {
+        generalContainer.style.display = "none";
+      }, 3000);
+    }
+  }
+
   if (errorContainer) {
-    // Set a timeout to call the hideErrorContainer function after 3000 milliseconds (3 seconds)
-    setTimeout(hideErrorContainer, 2000);
+    const buttons = document.querySelectorAll('.leftButton');
+    buttons.forEach(button => {
+      button.addEventListener('click', showErrorContainer);
+    });
+  } else if (generalContainer){
+    const buttons = document.querySelectorAll('.leftButton');
+    buttons.forEach(button => {
+      button.addEventListener('click', showGeneralContainer);
+    });
   }
 });

@@ -17,33 +17,37 @@
 <body>
   <a href="/">
     <img
-      class="titleLogo center"
-      src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
-      height="140"
-      alt="Title Logo"
-      style="padding-left: 50px;" 
-      style="padding-top: 40px;"
-      />
+    class="titleLogo center"
+    src="https://i0.wp.com/golflakeridge.com/wp-content/uploads/2017/09/Texas_Hold_em_Logo_000.png?fit=763%2C1030&ssl=1"
+    height="140"
+    alt="Title Logo"
+    style="padding-left: 50px;" 
+    style="padding-top: 40px;"
+    />
   </a>
-
+  
   <input type="hidden" name="room-id" id="room-id" value="<%= roomId %>"></input>
-
-
+  
+  
   <!-- <section id="game-board"> -->
-  <!-- Add inline style to the "cards" class -->
-  <div class="game-info">
-    <div class="info turn">____'s Turn! </div>
-    <div class="info round">_____ Round </div>
-    <div class="info pot">Game Pot: </div>
-    <div class="info playerChips">Player Chips: </div>
-    <div class="info bet">Minimum Bet: </div>
-    <div class="hand dealer"></div>
-    <div class="hand player-hand"></div>
-    <div class="errorMessage" style="color: red; background-color: white;"></div>
-    <div class="generalMessages" style="color: blueviolet; background-color: white;"></div>
-  </div>
-
-
+    <!-- Add inline style to the "cards" class -->
+    <div class="game-info">
+      <div class="info turn">____'s Turn! </div>
+      <div class="info round">_____ Round </div>
+      <div class="info pot">Game Pot: </div>
+      <div class="info playerChips">Player Chips: </div>
+      <div class="info bet">Minimum Bet: </div>
+      <div class="hand dealer"></div>
+      <div class="hand player-hand"></div>
+      
+      <div id ="errorContainer" class="errorMessage" style="color: white; background-color: #DB0040;"></div>
+    
+      <div id="generalContainer">
+        <div class="generalMessages" style="color: white; background-color: #00A2CD;"></div>
+      </div>
+    </div>
+    
+    
     <div class="game-buttons">
       <form method="post" action="/game/<%= id %>/hold" id="hold-form">
         <button class="button leftButton holdButton" type="submit">Hold</button>
@@ -56,68 +60,68 @@
         <button class="button leftButton foldButton" type="submit">Fold</button>
       </form>
     </div>
-
+    
     <div class="betDiv">
       <form method="post" action="/game/<%= id %>/bet" id="bet-form">
         <input class="message-input betInput" name="bet-amount" id="bet-amount" required>
         <button class="button leftButton betButton" type="submit">Bet </button>
       </form>
-
+      
     </div>
     
-
+    
   </div>
-
-
-
-<!-- </section> -->
-        <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
-        <input type="hidden" name="user-socket-id" id="user-socket-id" value="<%= userSocketId %>" />
   
-
-
-
+  
+  
+  <!-- </section> -->
+  <input type="hidden" name="game-socket-id" id="game-socket-id" value="<%= gameSocketId %>" />
+  <input type="hidden" name="user-socket-id" id="user-socket-id" value="<%= userSocketId %>" />
+  
+  
+  
+  
   <!-- <div class="chat-container">
     <article id="chat-window"></article>
     <div class="message-input">
       <input type="text" name="message" id="message" placeholder="Message" />
     </div>
   </div>
-
-   -->
-   <div class="profile">
-
-    <h2 class="username"><%= user.username %></h2>
-    <!-- username container -->
-    <div class="right-info">
+  
+-->
+<div class="profile">
+  
+  <h2 class="username"><%= user.username %></h2>
+  <!-- username container -->
+  <div class="right-info">
     
-
+    
     <!-- chat container -->
     <div class="chat-container">
       <!-- <h2 class="chat-title">Chat</h2> -->
       <div class="TT">
-
-      <article id="chat-window"></article>
-
-    </div>
+        
+        <article id="chat-window"></article>
+        
+      </div>
       <!-- mesage input container -->
       
-        <input class="message-input" type="text" name="message" id="message" placeholder="Chat with others!" />
+      <input class="message-input" type="text" name="message" id="message" placeholder="Chat with others!" />
       
-        <!-- mesage input container -->
+      <!-- mesage input container -->
     </div>
     <!-- chat container -->
-
+    
     <% if (!is_initialized.initialized) { %>
       <button class="button" id="start" value="<%= id %>">Start the Game</button>
-    <% } %>
-
-    <template id="card">
-    <div class="card"></div>
-  </template>
-
-  <button class="button end-game-button" type="submit">END GAME</button>
-</div>
-</body>
-
-</html>
+      <% } %>
+      
+      <template id="card">
+        <div class="card"></div>
+      </template>
+      
+      <button class="button end-game-button" type="submit">END GAME</button>
+    </div>
+  </body>
+  
+  </html>
