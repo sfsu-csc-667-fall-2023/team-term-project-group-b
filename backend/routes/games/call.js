@@ -60,6 +60,8 @@ const handler = async (request, response) => {
             const dealerHand = gameState.dealerHand;
             io.to(gameState.game_socket_id)
             .emit(GAME_CONSTANTS.DEALER_STATE_UPDATED, {hand: dealerHand});
+            io.to(gameState.game_socket_id).emit(GAME_CONSTANTS.UPDATE_MIN_BET, {bet: 0});
+
         }
         if(gameState.round == 4){
             const winner = checkWinner(gameState.players, gameState.dealerHand);
