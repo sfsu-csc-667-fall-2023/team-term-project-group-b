@@ -22,8 +22,8 @@ const handler = async (request, response) => {
     const isPlayerTurn = await Games.checkTurn(gameId, userId);
     let bet;
     const isInitialized = await Games.isInitialized(gameId).then(result=> result.initialized);
-    const pot = await Games.getPot(gameId);
-    if(pot == 0){
+    const roundPot = await Games.getMaxBet(gameId);
+    if(roundPot == 0){
         emitErrorMessage(io, user_socket_id, "Cant Call");
         return response.status(200).send();
     }
